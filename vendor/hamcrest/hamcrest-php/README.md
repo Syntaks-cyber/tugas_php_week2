@@ -1,7 +1,13 @@
 This is the PHP port of Hamcrest Matchers
 =========================================
 
+<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/hamcrest/hamcrest-php.png?branch=master)](https://travis-ci.org/hamcrest/hamcrest-php)
+=======
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/hamcrest/hamcrest-php/badges/quality-score.png?s=754f5c0556419fc6204917ca9a9dcf2fa2b45ed0)](https://scrutinizer-ci.com/g/hamcrest/hamcrest-php/)
+[![Build Status](https://travis-ci.org/hamcrest/hamcrest-php.png?branch=master)](https://travis-ci.org/hamcrest/hamcrest-php)
+[![Coverage Status](https://coveralls.io/repos/hamcrest/hamcrest-php/badge.png)](https://coveralls.io/r/hamcrest/hamcrest-php)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 Hamcrest is a matching library originally written for Java, but
 subsequently ported to many other languages.  hamcrest-php is the
@@ -35,12 +41,15 @@ Exceptions, mostly down to PHP language barriers:
      conventions between Java's Arrays, Collections, Sets and Maps compared
      with PHP's Arrays.
 
+<<<<<<< HEAD
 ---
 ** [Unless we consider POPO's (Plain Old PHP Objects) akin to JavaBeans]
      - The POPO thing is a joke.  Java devs coin the term POJO's (Plain Old
        Java Objects).
 
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 Usage
 -----
 
@@ -50,6 +59,7 @@ Hamcrest matchers are easy to use as:
 Hamcrest_MatcherAssert::assertThat('a', Hamcrest_Matchers::equalToIgnoringCase('A'));
 ```
 
+<<<<<<< HEAD
 Alternatively, you can use the global proxy-functions:
 
 ```php
@@ -486,3 +496,8 @@ $doc->loadXML($xml);
 assertThat($doc, hasXPath("book", 2));
 ```
 
+=======
+  ** [Unless we consider POPO's (Plain Old PHP Objects) akin to JavaBeans]
+     - The POPO thing is a joke.  Java devs coin the term POJO's (Plain Old
+       Java Objects).
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

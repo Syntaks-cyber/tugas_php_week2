@@ -12,11 +12,16 @@
     "authors": [
         {
             "name": "Sebastian Bergmann",
+<<<<<<< HEAD
             "email": "sebastian@phpunit.de",
+=======
+            "email": "sb@sebastian-bergmann.de",
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             "role": "lead"
         }
     ],
     "support": {
+<<<<<<< HEAD
         "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues"
     },
     "config": {
@@ -41,12 +46,34 @@
     },
     "suggest": {
         "ext-xdebug": "^2.7.2"
+=======
+        "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
+        "irc": "irc://irc.freenode.net/phpunit"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "phpunit/php-file-iterator": "~1.3",
+        "phpunit/php-token-stream": "~1.3",
+        "phpunit/php-text-template": "~1.2",
+        "sebastian/environment": "^1.3.2",
+        "sebastian/version": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4",
+        "ext-xdebug": ">=2.1.4"
+    },
+    "suggest": {
+        "ext-dom": "*",
+        "ext-xdebug": ">=2.2.1",
+        "ext-xmlwriter": "*"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     },
     "autoload": {
         "classmap": [
             "src/"
         ]
     },
+<<<<<<< HEAD
     "autoload-dev": {
         "files": [
             "tests/TestCase.php",
@@ -56,6 +83,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "7.0-dev"
+=======
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.2.x-dev"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 }

@@ -14,7 +14,11 @@ return [
     */
 
     'paths' => [
+<<<<<<< HEAD
         resource_path('views'),
+=======
+        realpath(base_path('resources/views')),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     ],
 
     /*
@@ -28,9 +32,13 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'compiled' => env(
         'VIEW_COMPILED_PATH',
         realpath(storage_path('framework/views'))
     ),
+=======
+    'compiled' => realpath(storage_path('framework/views')),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 ];

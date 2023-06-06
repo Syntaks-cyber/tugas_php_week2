@@ -1,5 +1,6 @@
 # Change Log
 
+<<<<<<< HEAD
 ## 1.3.6 (2022-09-07)
 * PHP 8.2 | Fix "Use of "parent" in callables is deprecated" notice #1169
 
@@ -118,6 +119,13 @@
   thinks one it's exceptions has been swallowed in PHPUnit > 5.7.6. Use `$e->dismiss()` to dismiss.
 
 ## 0.9.4 (XXXX-XX-XX)
+=======
+## 0.9.11 (2019-02-12)
+
+* Set property values on all related mocks #944
+
+## 0.9.4 (2015-04-02)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 * `shouldIgnoreMissing` will respect global `allowMockingNonExistentMethods`
   config
@@ -136,7 +144,11 @@
 
 ## 0.9.2 (2014-09-03)
 
+<<<<<<< HEAD
 * Some workarounds for the serialisation problems created by changes to PHP in 5.5.13, 5.4.29,
+=======
+* Some workarounds for the serilisation problems created by changes to PHP in 5.5.13, 5.4.29,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
   5.6.
 * Demeter chains attempt to reuse doubles as they see fit, so for foo->bar and
   foo->baz, we'll attempt to use the same foo

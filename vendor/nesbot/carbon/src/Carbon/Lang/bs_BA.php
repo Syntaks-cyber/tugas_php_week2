@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,4 +13,27 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 return require __DIR__.'/bs.php';
+=======
+return array(
+    'year' => ':count godina|:count godine|:count godina',
+    'y' => ':count godina|:count godine|:count godina',
+    'month' => ':count mjesec|:count mjeseca|:count mjeseci',
+    'm' => ':count mjesec|:count mjeseca|:count mjeseci',
+    'week' => ':count nedjelja|:count nedjelje|:count nedjelja',
+    'w' => ':count nedjelja|:count nedjelje|:count nedjelja',
+    'day' => ':count dan|:count dana|:count dana',
+    'd' => ':count dan|:count dana|:count dana',
+    'hour' => ':count sat|:count sata|:count sati',
+    'h' => ':count sat|:count sata|:count sati',
+    'minute' => ':count minut|:count minuta|:count minuta',
+    'min' => ':count minut|:count minuta|:count minuta',
+    'second' => ':count sekund|:count sekunda|:count sekundi',
+    's' => ':count sekund|:count sekunda|:count sekundi',
+    'ago' => 'prije :time',
+    'from_now' => 'za :time',
+    'after' => 'nakon :time',
+    'before' => ':time ranije',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

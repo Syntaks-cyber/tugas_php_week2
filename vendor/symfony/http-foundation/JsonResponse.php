@@ -18,7 +18,11 @@ namespace Symfony\Component\HttpFoundation;
  * object. It is however recommended that you do return an object as it
  * protects yourself against XSSI and JSON-JavaScript Hijacking.
  *
+<<<<<<< HEAD
  * @see https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/AJAX_Security_Cheat_Sheet.md#always-return-json-with-an-object-on-the-outside
+=======
+ * @see https://www.owasp.org/index.php/OWASP_AJAX_Security_Guidelines#Always_return_JSON_with_an_Object_on_the_outside
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * @author Igor Wiedler <igor@wiedler.ch>
  */
@@ -27,6 +31,7 @@ class JsonResponse extends Response
     protected $data;
     protected $callback;
 
+<<<<<<< HEAD
     // Encode <, >, ', &, and " characters in the JSON, making it also safe to be embedded into HTML.
     // 15 === JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT
     public const DEFAULT_ENCODING_OPTIONS = 15;
@@ -47,10 +52,28 @@ class JsonResponse extends Response
             throw new \TypeError(sprintf('"%s": If $json is set to true, argument $data must be a string or object implementing __toString(), "%s" given.', __METHOD__, get_debug_type($data)));
         }
 
+=======
+    // Encode <, >, ', &, and " for RFC4627-compliant JSON, which may also be embedded into HTML.
+    // 15 === JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT
+    protected $encodingOptions = 15;
+
+    /**
+     * Constructor.
+     *
+     * @param mixed $data    The response data
+     * @param int   $status  The response status code
+     * @param array $headers An array of response headers
+     */
+    public function __construct($data = null, $status = 200, $headers = array())
+    {
+        parent::__construct('', $status, $headers);
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if (null === $data) {
             $data = new \ArrayObject();
         }
 
+<<<<<<< HEAD
         $json ? $this->setJson($data) : $this->setData($data);
     }
 
@@ -74,10 +97,21 @@ class JsonResponse extends Response
     {
         trigger_deprecation('symfony/http-foundation', '5.1', 'The "%s()" method is deprecated, use "new %s()" instead.', __METHOD__, static::class);
 
+=======
+        $this->setData($data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function create($data = null, $status = 200, $headers = array())
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return new static($data, $status, $headers);
     }
 
     /**
+<<<<<<< HEAD
      * Factory method for chainability.
      *
      * Example:
@@ -97,10 +131,13 @@ class JsonResponse extends Response
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Sets the JSONP callback.
      *
      * @param string|null $callback The JSONP callback or null to use none
      *
+<<<<<<< HEAD
      * @return $this
      *
      * @throws \InvalidArgumentException When the callback name is not valid
@@ -121,6 +158,20 @@ class JsonResponse extends Response
             $parts = explode('.', $callback);
             foreach ($parts as $part) {
                 if (!preg_match($pattern, $part) || \in_array($part, $reserved, true)) {
+=======
+     * @return JsonResponse
+     *
+     * @throws \InvalidArgumentException When the callback name is not valid
+     */
+    public function setCallback($callback = null)
+    {
+        if (null !== $callback) {
+            // taken from http://www.geekality.net/2011/08/03/valid-javascript-identifier/
+            $pattern = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
+            $parts = explode('.', $callback);
+            foreach ($parts as $part) {
+                if (!preg_match($pattern, $part)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                     throw new \InvalidArgumentException('The callback name is not valid.');
                 }
             }
@@ -132,6 +183,7 @@ class JsonResponse extends Response
     }
 
     /**
+<<<<<<< HEAD
      * Sets a raw string containing a JSON document to be sent.
      *
      * @return $this
@@ -144,10 +196,13 @@ class JsonResponse extends Response
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Sets the data to be sent as JSON.
      *
      * @param mixed $data
      *
+<<<<<<< HEAD
      * @return $this
      *
      * @throws \InvalidArgumentException
@@ -172,6 +227,40 @@ class JsonResponse extends Response
         }
 
         return $this->setJson($data);
+=======
+     * @return JsonResponse
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function setData($data = array())
+    {
+        if (defined('HHVM_VERSION')) {
+            // HHVM does not trigger any warnings and let exceptions
+            // thrown from a JsonSerializable object pass through.
+            // If only PHP did the same...
+            $data = json_encode($data, $this->encodingOptions);
+        } else {
+            try {
+                // PHP 5.4 and up wrap exceptions thrown by JsonSerializable
+                // objects in a new exception that needs to be removed.
+                // Fortunately, PHP 5.5 and up do not trigger any warning anymore.
+                $data = json_encode($data, $this->encodingOptions);
+            } catch (\Exception $e) {
+                if ('Exception' === get_class($e) && 0 === strpos($e->getMessage(), 'Failed calling ')) {
+                    throw $e->getPrevious() ?: $e;
+                }
+                throw $e;
+            }
+        }
+
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new \InvalidArgumentException(json_last_error_msg());
+        }
+
+        $this->data = $data;
+
+        return $this->update();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -187,11 +276,21 @@ class JsonResponse extends Response
     /**
      * Sets options used while encoding data to JSON.
      *
+<<<<<<< HEAD
      * @return $this
      */
     public function setEncodingOptions(int $encodingOptions)
     {
         $this->encodingOptions = $encodingOptions;
+=======
+     * @param int $encodingOptions
+     *
+     * @return JsonResponse
+     */
+    public function setEncodingOptions($encodingOptions)
+    {
+        $this->encodingOptions = (int) $encodingOptions;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return $this->setData(json_decode($this->data));
     }
@@ -199,7 +298,11 @@ class JsonResponse extends Response
     /**
      * Updates the content and headers according to the JSON data and callback.
      *
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return JsonResponse
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     protected function update()
     {

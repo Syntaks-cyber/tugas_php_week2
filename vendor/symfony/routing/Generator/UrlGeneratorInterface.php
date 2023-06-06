@@ -34,25 +34,41 @@ interface UrlGeneratorInterface extends RequestContextAwareInterface
     /**
      * Generates an absolute URL, e.g. "http://example.com/dir/file".
      */
+<<<<<<< HEAD
     public const ABSOLUTE_URL = 0;
+=======
+    const ABSOLUTE_URL = 0;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Generates an absolute path, e.g. "/dir/file".
      */
+<<<<<<< HEAD
     public const ABSOLUTE_PATH = 1;
+=======
+    const ABSOLUTE_PATH = 1;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Generates a relative path based on the current request path, e.g. "../parent-file".
      *
      * @see UrlGenerator::getRelativePath()
      */
+<<<<<<< HEAD
     public const RELATIVE_PATH = 2;
+=======
+    const RELATIVE_PATH = 2;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Generates a network path, e.g. "//example.com/dir/file".
      * Such reference reuses the current scheme but specifies the host.
      */
+<<<<<<< HEAD
     public const NETWORK_PATH = 3;
+=======
+    const NETWORK_PATH = 3;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Generates a URL or path for a specific route based on the given parameters.
@@ -69,14 +85,26 @@ interface UrlGeneratorInterface extends RequestContextAwareInterface
      *
      * If there is no route with the given name, the generator must throw the RouteNotFoundException.
      *
+<<<<<<< HEAD
      * The special parameter _fragment will be used as the document fragment suffixed to the final URL.
      *
      * @return string
+=======
+     * @param string $name          The name of the route
+     * @param mixed  $parameters    An array of parameters
+     * @param int    $referenceType The type of reference to be generated (one of the constants)
+     *
+     * @return string The generated URL
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @throws RouteNotFoundException              If the named route doesn't exist
      * @throws MissingMandatoryParametersException When some parameters are missing that are mandatory for the route
      * @throws InvalidParameterException           When a parameter value for a placeholder is not correct because
      *                                             it does not match the requirement
      */
+<<<<<<< HEAD
     public function generate(string $name, array $parameters = [], int $referenceType = self::ABSOLUTE_PATH);
+=======
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Alessandro Di Felice
@@ -91,3 +96,25 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' και '],
 ];
+=======
+return array(
+    'year' => ':count χρόνος|:count χρόνια',
+    'y' => ':count χρόνος|:count χρόνια',
+    'month' => ':count μήνας|:count μήνες',
+    'm' => ':count μήνας|:count μήνες',
+    'week' => ':count εβδομάδα|:count εβδομάδες',
+    'w' => ':count εβδομάδα|:count εβδομάδες',
+    'day' => ':count μέρα|:count μέρες',
+    'd' => ':count μέρα|:count μέρες',
+    'hour' => ':count ώρα|:count ώρες',
+    'h' => ':count ώρα|:count ώρες',
+    'minute' => ':count λεπτό|:count λεπτά',
+    'min' => ':count λεπτό|:count λεπτά',
+    'second' => ':count δευτερόλεπτο|:count δευτερόλεπτα',
+    's' => ':count δευτερόλεπτο|:count δευτερόλεπτα',
+    'ago' => 'πριν από :time',
+    'from_now' => 'σε :time από τώρα',
+    'after' => ':time μετά',
+    'before' => ':time πριν',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

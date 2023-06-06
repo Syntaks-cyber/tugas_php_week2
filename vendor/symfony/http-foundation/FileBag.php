@@ -21,12 +21,23 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class FileBag extends ParameterBag
 {
+<<<<<<< HEAD
     private const FILE_KEYS = ['error', 'name', 'size', 'tmp_name', 'type'];
 
     /**
      * @param array|UploadedFile[] $parameters An array of HTTP files
      */
     public function __construct(array $parameters = [])
+=======
+    private static $fileKeys = array('error', 'name', 'size', 'tmp_name', 'type');
+
+    /**
+     * Constructor.
+     *
+     * @param array $parameters An array of HTTP files
+     */
+    public function __construct(array $parameters = array())
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->replace($parameters);
     }
@@ -34,18 +45,30 @@ class FileBag extends ParameterBag
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function replace(array $files = [])
     {
         $this->parameters = [];
+=======
+    public function replace(array $files = array())
+    {
+        $this->parameters = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->add($files);
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function set(string $key, $value)
     {
         if (!\is_array($value) && !$value instanceof UploadedFile) {
+=======
+    public function set($key, $value)
+    {
+        if (!is_array($value) && !$value instanceof UploadedFile) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             throw new \InvalidArgumentException('An uploaded file must be an array or an instance of UploadedFile.');
         }
 
@@ -55,7 +78,11 @@ class FileBag extends ParameterBag
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function add(array $files = [])
+=======
+    public function add(array $files = array())
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         foreach ($files as $key => $file) {
             $this->set($key, $file);
@@ -67,7 +94,11 @@ class FileBag extends ParameterBag
      *
      * @param array|UploadedFile $file A (multi-dimensional) array of uploaded file information
      *
+<<<<<<< HEAD
      * @return UploadedFile[]|UploadedFile|null
+=======
+     * @return array A (multi-dimensional) array of UploadedFile instances
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     protected function convertFileInformation($file)
     {
@@ -76,6 +107,7 @@ class FileBag extends ParameterBag
         }
 
         $file = $this->fixPhpFilesArray($file);
+<<<<<<< HEAD
         $keys = array_keys($file);
         sort($keys);
 
@@ -89,6 +121,20 @@ class FileBag extends ParameterBag
             $file = array_map(function ($v) { return $v instanceof UploadedFile || \is_array($v) ? $this->convertFileInformation($v) : $v; }, $file);
             if (array_keys($keys) === $keys) {
                 $file = array_filter($file);
+=======
+        if (is_array($file)) {
+            $keys = array_keys($file);
+            sort($keys);
+
+            if ($keys == self::$fileKeys) {
+                if (UPLOAD_ERR_NO_FILE == $file['error']) {
+                    $file = null;
+                } else {
+                    $file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error']);
+                }
+            } else {
+                $file = array_map(array($this, 'convertFileInformation'), $file);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
         }
 
@@ -107,6 +153,7 @@ class FileBag extends ParameterBag
      * It's safe to pass an already converted array, in which case this method
      * just returns the original array unmodified.
      *
+<<<<<<< HEAD
      * @return array
      */
     protected function fixPhpFilesArray(array $data)
@@ -117,22 +164,50 @@ class FileBag extends ParameterBag
         sort($keys);
 
         if (self::FILE_KEYS != $keys || !isset($data['name']) || !\is_array($data['name'])) {
+=======
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function fixPhpFilesArray($data)
+    {
+        if (!is_array($data)) {
+            return $data;
+        }
+
+        $keys = array_keys($data);
+        sort($keys);
+
+        if (self::$fileKeys != $keys || !isset($data['name']) || !is_array($data['name'])) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             return $data;
         }
 
         $files = $data;
+<<<<<<< HEAD
         foreach (self::FILE_KEYS as $k) {
+=======
+        foreach (self::$fileKeys as $k) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             unset($files[$k]);
         }
 
         foreach ($data['name'] as $key => $name) {
+<<<<<<< HEAD
             $files[$key] = $this->fixPhpFilesArray([
+=======
+            $files[$key] = $this->fixPhpFilesArray(array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 'error' => $data['error'][$key],
                 'name' => $name,
                 'type' => $data['type'][$key],
                 'tmp_name' => $data['tmp_name'][$key],
                 'size' => $data['size'][$key],
+<<<<<<< HEAD
             ]);
+=======
+            ));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $files;

@@ -11,12 +11,21 @@
 
 namespace Symfony\Component\Routing\Generator;
 
+<<<<<<< HEAD
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
+=======
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Exception\InvalidParameterException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+use Psr\Log\LoggerInterface;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * UrlGenerator can generate a URL or a path for any route in the RouteCollection
@@ -27,6 +36,7 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInterface
 {
+<<<<<<< HEAD
     private const QUERY_FRAGMENT_DECODED = [
         // RFC 3986 explicitly allows those in the query/fragment to reference other URIs unencoded
         '%2F' => '/',
@@ -42,6 +52,16 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
     ];
 
     protected $routes;
+=======
+    /**
+     * @var RouteCollection
+     */
+    protected $routes;
+
+    /**
+     * @var RequestContext
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     protected $context;
 
     /**
@@ -49,10 +69,18 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
      */
     protected $strictRequirements = true;
 
+<<<<<<< HEAD
     protected $logger;
 
     private $defaultLocale;
 
+=======
+    /**
+     * @var LoggerInterface|null
+     */
+    protected $logger;
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * This array defines the characters (besides alphanumeric ones) that will not be percent-encoded in the path segment of the generated URL.
      *
@@ -61,12 +89,19 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
      * "?" and "#" (would be interpreted wrongly as query and fragment identifier),
      * "'" and """ (are used as delimiters in HTML).
      */
+<<<<<<< HEAD
     protected $decodedChars = [
+=======
+    protected $decodedChars = array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         // the slash can be used to designate a hierarchical structure and we want allow using it with this meaning
         // some webservers don't allow the slash in encoded form in the path for security reasons anyway
         // see http://stackoverflow.com/questions/4069002/http-400-if-2f-part-of-get-url-in-jboss
         '%2F' => '/',
+<<<<<<< HEAD
         '%252F' => '%2F',
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         // the following chars are general delimiters in the URI specification but have only special meaning in the authority component
         // so they can safely be used in the path in unencoded form
         '%40' => '@',
@@ -80,14 +115,30 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         '%21' => '!',
         '%2A' => '*',
         '%7C' => '|',
+<<<<<<< HEAD
     ];
 
     public function __construct(RouteCollection $routes, RequestContext $context, LoggerInterface $logger = null, string $defaultLocale = null)
+=======
+    );
+
+    /**
+     * Constructor.
+     *
+     * @param RouteCollection      $routes  A RouteCollection instance
+     * @param RequestContext       $context The context
+     * @param LoggerInterface|null $logger  A logger instance
+     */
+    public function __construct(RouteCollection $routes, RequestContext $context, LoggerInterface $logger = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->routes = $routes;
         $this->context = $context;
         $this->logger = $logger;
+<<<<<<< HEAD
         $this->defaultLocale = $defaultLocale;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -109,9 +160,15 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function setStrictRequirements(?bool $enabled)
     {
         $this->strictRequirements = $enabled;
+=======
+    public function setStrictRequirements($enabled)
+    {
+        $this->strictRequirements = null === $enabled ? null : (bool) $enabled;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -125,6 +182,7 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function generate(string $name, array $parameters = [], int $referenceType = self::ABSOLUTE_PATH)
     {
         $route = null;
@@ -141,12 +199,18 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         }
 
         if (null === $route = $route ?? $this->routes->get($name)) {
+=======
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    {
+        if (null === $route = $this->routes->get($name)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             throw new RouteNotFoundException(sprintf('Unable to generate a URL for the named route "%s" as such route does not exist.', $name));
         }
 
         // the Route has a cache of its own and is not recompiled as long as it does not get modified
         $compiledRoute = $route->compile();
 
+<<<<<<< HEAD
         $defaults = $route->getDefaults();
         $variables = $compiledRoute->getVariables();
 
@@ -159,16 +223,24 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         }
 
         return $this->doGenerate($variables, $defaults, $route->getRequirements(), $compiledRoute->getTokens(), $parameters, $name, $referenceType, $compiledRoute->getHostTokens(), $route->getSchemes());
+=======
+        return $this->doGenerate($compiledRoute->getVariables(), $route->getDefaults(), $route->getRequirements(), $compiledRoute->getTokens(), $parameters, $name, $referenceType, $compiledRoute->getHostTokens(), $route->getSchemes());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * @throws MissingMandatoryParametersException When some parameters are missing that are mandatory for the route
      * @throws InvalidParameterException           When a parameter value for a placeholder is not correct because
      *                                             it does not match the requirement
+<<<<<<< HEAD
      *
      * @return string
      */
     protected function doGenerate(array $variables, array $defaults, array $requirements, array $tokens, array $parameters, string $name, int $referenceType, array $hostTokens, array $requiredSchemes = [])
+=======
+     */
+    protected function doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, array $requiredSchemes = array())
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $variables = array_flip($variables);
         $mergedParams = array_replace($defaults, $this->context->getParameters(), $parameters);
@@ -180,6 +252,7 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
 
         $url = '';
         $optional = true;
+<<<<<<< HEAD
         $message = 'Parameter "{parameter}" for route "{route}" must match "{expected}" ("{given}" given) to generate a corresponding URL.';
         foreach ($tokens as $token) {
             if ('variable' === $token[0]) {
@@ -202,6 +275,26 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
                     }
 
                     $url = $token[1].$mergedParams[$varName].$url;
+=======
+        foreach ($tokens as $token) {
+            if ('variable' === $token[0]) {
+                if (!$optional || !array_key_exists($token[3], $defaults) || null !== $mergedParams[$token[3]] && (string) $mergedParams[$token[3]] !== (string) $defaults[$token[3]]) {
+                    // check requirement
+                    if (null !== $this->strictRequirements && !preg_match('#^'.$token[2].'$#', $mergedParams[$token[3]])) {
+                        $message = sprintf('Parameter "%s" for route "%s" must match "%s" ("%s" given) to generate a corresponding URL.', $token[3], $name, $token[2], $mergedParams[$token[3]]);
+                        if ($this->strictRequirements) {
+                            throw new InvalidParameterException($message);
+                        }
+
+                        if ($this->logger) {
+                            $this->logger->error($message);
+                        }
+
+                        return;
+                    }
+
+                    $url = $token[1].$mergedParams[$token[3]].$url;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                     $optional = false;
                 }
             } else {
@@ -221,14 +314,22 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         // the path segments "." and ".." are interpreted as relative reference when resolving a URI; see http://tools.ietf.org/html/rfc3986#section-3.3
         // so we need to encode them as they are not used for this purpose here
         // otherwise we would generate a URI that, when followed by a user agent (e.g. browser), does not match this route
+<<<<<<< HEAD
         $url = strtr($url, ['/../' => '/%2E%2E/', '/./' => '/%2E/']);
         if (str_ends_with($url, '/..')) {
             $url = substr($url, 0, -2).'%2E%2E';
         } elseif (str_ends_with($url, '/.')) {
+=======
+        $url = strtr($url, array('/../' => '/%2E%2E/', '/./' => '/%2E/'));
+        if ('/..' === substr($url, -3)) {
+            $url = substr($url, 0, -2).'%2E%2E';
+        } elseif ('/.' === substr($url, -2)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $url = substr($url, 0, -1).'%2E';
         }
 
         $schemeAuthority = '';
+<<<<<<< HEAD
         $host = $this->context->getHost();
         $scheme = $this->context->getScheme();
 
@@ -280,6 +381,59 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
                 }
 
                 $schemeAuthority = self::NETWORK_PATH === $referenceType || '' === $scheme ? '//' : "$scheme://";
+=======
+        if ($host = $this->context->getHost()) {
+            $scheme = $this->context->getScheme();
+
+            if ($requiredSchemes) {
+                if (!in_array($scheme, $requiredSchemes, true)) {
+                    $referenceType = self::ABSOLUTE_URL;
+                    $scheme = current($requiredSchemes);
+                }
+            }
+
+            if ($hostTokens) {
+                $routeHost = '';
+                foreach ($hostTokens as $token) {
+                    if ('variable' === $token[0]) {
+                        if (null !== $this->strictRequirements && !preg_match('#^'.$token[2].'$#i', $mergedParams[$token[3]])) {
+                            $message = sprintf('Parameter "%s" for route "%s" must match "%s" ("%s" given) to generate a corresponding URL.', $token[3], $name, $token[2], $mergedParams[$token[3]]);
+
+                            if ($this->strictRequirements) {
+                                throw new InvalidParameterException($message);
+                            }
+
+                            if ($this->logger) {
+                                $this->logger->error($message);
+                            }
+
+                            return;
+                        }
+
+                        $routeHost = $token[1].$mergedParams[$token[3]].$routeHost;
+                    } else {
+                        $routeHost = $token[1].$routeHost;
+                    }
+                }
+
+                if ($routeHost !== $host) {
+                    $host = $routeHost;
+                    if (self::ABSOLUTE_URL !== $referenceType) {
+                        $referenceType = self::NETWORK_PATH;
+                    }
+                }
+            }
+
+            if (self::ABSOLUTE_URL === $referenceType || self::NETWORK_PATH === $referenceType) {
+                $port = '';
+                if ('http' === $scheme && 80 != $this->context->getHttpPort()) {
+                    $port = ':'.$this->context->getHttpPort();
+                } elseif ('https' === $scheme && 443 != $this->context->getHttpsPort()) {
+                    $port = ':'.$this->context->getHttpsPort();
+                }
+
+                $schemeAuthority = self::NETWORK_PATH === $referenceType ? '//' : "$scheme://";
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 $schemeAuthority .= $host.$port;
             }
         }
@@ -295,6 +449,7 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
             return $a == $b ? 0 : 1;
         });
 
+<<<<<<< HEAD
         array_walk_recursive($extra, $caster = static function (&$v) use (&$caster) {
             if (\is_object($v)) {
                 if ($vars = get_object_vars($v)) {
@@ -320,6 +475,12 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
 
         if ('' !== $fragment) {
             $url .= '#'.strtr(rawurlencode($fragment), self::QUERY_FRAGMENT_DECODED);
+=======
+        if ($extra && $query = http_build_query($extra, '', '&')) {
+            // "/" and "?" can be left decoded for better user experience, see
+            // http://tools.ietf.org/html/rfc3986#section-3.4
+            $url .= '?'.strtr($query, array('%2F' => '/'));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $url;
@@ -343,9 +504,15 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
      * @param string $basePath   The base path
      * @param string $targetPath The target path
      *
+<<<<<<< HEAD
      * @return string
      */
     public static function getRelativePath(string $basePath, string $targetPath)
+=======
+     * @return string The relative target path
+     */
+    public static function getRelativePath($basePath, $targetPath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ($basePath === $targetPath) {
             return '';
@@ -365,7 +532,11 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         }
 
         $targetDirs[] = $targetFile;
+<<<<<<< HEAD
         $path = str_repeat('../', \count($sourceDirs)).implode('/', $targetDirs);
+=======
+        $path = str_repeat('../', count($sourceDirs)).implode('/', $targetDirs);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         // A reference to the same base directory or an empty subdirectory must be prefixed with "./".
         // This also applies to a segment with a colon character (e.g., "file:colon") that cannot be used

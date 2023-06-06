@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 return [
 
     /*
@@ -14,7 +17,11 @@ return [
     | you may specify any of the other wonderful drivers provided here.
     |
     | Supported: "file", "cookie", "database", "apc",
+<<<<<<< HEAD
     |            "memcached", "redis", "dynamodb", "array"
+=======
+    |            "memcached", "redis", "array"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     |
     */
 
@@ -31,7 +38,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'lifetime' => env('SESSION_LIFETIME', 120),
+=======
+    'lifetime' => 120,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     'expire_on_close' => false,
 
@@ -72,7 +83,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'connection' => env('SESSION_CONNECTION', null),
+=======
+    'connection' => null,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /*
     |--------------------------------------------------------------------------
@@ -89,6 +104,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Session Cache Store
     |--------------------------------------------------------------------------
     |
@@ -104,6 +120,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | Session Sweeping Lottery
     |--------------------------------------------------------------------------
     |
@@ -126,10 +144,14 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'cookie' => env(
         'SESSION_COOKIE',
         Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
     ),
+=======
+    'cookie' => 'laravel_session',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +177,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'domain' => env('SESSION_DOMAIN', null),
+=======
+    'domain' => null,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +194,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'secure' => env('SESSION_SECURE_COOKIE'),
+=======
+    'secure' => false,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +213,7 @@ return [
 
     'http_only' => true,
 
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Same-Site Cookies
@@ -198,4 +229,6 @@ return [
 
     'same_site' => 'lax',
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 ];

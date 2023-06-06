@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,6 +18,8 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery\Generator\StringManipulation\Pass;
 
@@ -41,17 +44,25 @@ class InstanceMockPass
 
         \$directors = \$associatedRealObject->mockery_getExpectations();
         foreach (\$directors as \$method=>\$director) {
+<<<<<<< HEAD
+=======
+            \$expectations = \$director->getExpectations();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             // get the director method needed
             \$existingDirector = \$this->mockery_getExpectationsFor(\$method);
             if (!\$existingDirector) {
                 \$existingDirector = new \Mockery\ExpectationDirector(\$method, \$this);
                 \$this->mockery_setExpectationsFor(\$method, \$existingDirector);
             }
+<<<<<<< HEAD
             \$expectations = \$director->getExpectations();
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             foreach (\$expectations as \$expectation) {
                 \$clonedExpectation = clone \$expectation;
                 \$existingDirector->addExpectation(\$clonedExpectation);
             }
+<<<<<<< HEAD
             \$defaultExpectations = \$director->getDefaultExpectations();
             foreach (array_reverse(\$defaultExpectations) as \$expectation) {
                 \$clonedExpectation = clone \$expectation;
@@ -62,6 +73,10 @@ class InstanceMockPass
         \Mockery::getContainer()->rememberMock(\$this);
         
         \$this->_mockery_constructorCalled(func_get_args());
+=======
+        }
+        \Mockery::getContainer()->rememberMock(\$this);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 MOCK;
 

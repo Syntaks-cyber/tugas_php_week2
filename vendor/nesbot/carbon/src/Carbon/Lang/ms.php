@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -102,3 +107,25 @@ return [
     'day_of_first_week_of_year' => 1,
     'list' => [', ', ' dan '],
 ];
+=======
+return array(
+    'year' => ':count tahun',
+    'y' => ':count tahun',
+    'month' => ':count bulan',
+    'm' => ':count bulan',
+    'week' => ':count minggu',
+    'w' => ':count minggu',
+    'day' => ':count hari',
+    'd' => ':count hari',
+    'hour' => ':count jam',
+    'h' => ':count jam',
+    'minute' => ':count minit',
+    'min' => ':count minit',
+    'second' => ':count saat',
+    's' => ':count saat',
+    'ago' => ':time yang lalu',
+    'from_now' => ':time dari sekarang',
+    'after' => ':time selepas',
+    'before' => ':time sebelum',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

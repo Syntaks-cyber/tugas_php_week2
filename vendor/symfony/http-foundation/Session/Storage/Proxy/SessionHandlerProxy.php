@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\HttpFoundation\Session\Storage\Proxy;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler;
 
 /**
@@ -33,11 +34,36 @@ class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterf
     public function getHandler()
     {
         return $this->handler;
+=======
+/**
+ * SessionHandler proxy.
+ *
+ * @author Drak <drak@zikula.org>
+ */
+class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterface
+{
+    /**
+     * @var \SessionHandlerInterface
+     */
+    protected $handler;
+
+    /**
+     * Constructor.
+     *
+     * @param \SessionHandlerInterface $handler
+     */
+    public function __construct(\SessionHandlerInterface $handler)
+    {
+        $this->handler = $handler;
+        $this->wrapper = ($handler instanceof \SessionHandler);
+        $this->saveHandlerName = $this->wrapper ? ini_get('session.save_handler') : 'user';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     // \SessionHandlerInterface
 
     /**
+<<<<<<< HEAD
      * @return bool
      */
     #[\ReturnTypeWillChange]
@@ -107,5 +133,52 @@ class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterf
     public function updateTimestamp($sessionId, $data)
     {
         return $this->handler instanceof \SessionUpdateTimestampHandlerInterface ? $this->handler->updateTimestamp($sessionId, $data) : $this->write($sessionId, $data);
+=======
+     * {@inheritdoc}
+     */
+    public function open($savePath, $sessionName)
+    {
+        return (bool) $this->handler->open($savePath, $sessionName);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function close()
+    {
+        return (bool) $this->handler->close();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function read($sessionId)
+    {
+        return (string) $this->handler->read($sessionId);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function write($sessionId, $data)
+    {
+        return (bool) $this->handler->write($sessionId, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function destroy($sessionId)
+    {
+        return (bool) $this->handler->destroy($sessionId);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function gc($maxlifetime)
+    {
+        return (bool) $this->handler->gc($maxlifetime);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

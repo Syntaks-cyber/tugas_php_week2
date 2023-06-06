@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /tests/_files/tmp
 /vendor
 /composer.lock
@@ -5,3 +6,16 @@
 /.php_cs
 /.php_cs.cache
 /.phpunit.result.cache
+=======
+build/api
+build/code-browser
+build/coverage
+build/logs
+build/pdepend
+cache.properties
+phpunit.xml
+/vendor
+/composer.lock
+/composer.phar
+/.idea
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

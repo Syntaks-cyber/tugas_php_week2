@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 /.idea
 /.php_cs
 /.php_cs.cache
 /.phpunit.result.cache
 /composer.lock
 /vendor
+=======
+.idea
+composer.lock
+composer.phar
+vendor/
+cache.properties
+phpunit.xml
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

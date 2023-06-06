@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -34,11 +35,18 @@ use Mockery\Generator\StringManipulation\Pass\RemoveDestructorPass;
 use Mockery\Generator\StringManipulation\Pass\RemoveUnserializeForInternalSerializableClassesPass;
 use Mockery\Generator\StringManipulation\Pass\TraitPass;
 use Mockery\Generator\StringManipulation\Pass\AvoidMethodClashPass;
+=======
+
+namespace Mockery\Generator;
+
+use Mockery\Generator\StringManipulation\Pass\Pass;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 class StringManipulationGenerator implements Generator
 {
     protected $passes = array();
 
+<<<<<<< HEAD
     /**
      * Creates a new StringManipulationGenerator with the default passes
      *
@@ -63,6 +71,8 @@ class StringManipulationGenerator implements Generator
         ]);
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function __construct(array $passes)
     {
         $this->passes = $passes;

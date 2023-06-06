@@ -1,11 +1,30 @@
 <?php
 
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+    | PDO Fetch Style
+    |--------------------------------------------------------------------------
+    |
+    | By default, database results will be returned as instances of the PHP
+    | stdClass object; however, you may desire to retrieve records in an
+    | array format for simplicity. Here you can tweak the fetch style.
+    |
+    */
+
+    'fetch' => PDO::FETCH_CLASS,
+
+    /*
+    |--------------------------------------------------------------------------
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | Default Database Connection Name
     |--------------------------------------------------------------------------
     |
@@ -37,20 +56,30 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
+<<<<<<< HEAD
             'url' => env('DATABASE_URL'),
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+=======
+            'database' => database_path('database.sqlite'),
+            'prefix' => '',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
         'mysql' => [
             'driver' => 'mysql',
+<<<<<<< HEAD
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
+=======
+            'host' => env('DB_HOST', 'localhost'),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
+<<<<<<< HEAD
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -61,18 +90,30 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+=======
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
         'pgsql' => [
             'driver' => 'pgsql',
+<<<<<<< HEAD
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
+=======
+            'host' => env('DB_HOST', 'localhost'),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
+<<<<<<< HEAD
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
@@ -89,6 +130,9 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+=======
+            'schema' => 'public',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
     ],
@@ -112,13 +156,18 @@ return [
     |--------------------------------------------------------------------------
     |
     | Redis is an open source, fast, and advanced key-value store that also
+<<<<<<< HEAD
     | provides a richer body of commands than a typical key-value system
+=======
+    | provides a richer set of commands than a typical key-value systems
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
 
     'redis' => [
 
+<<<<<<< HEAD
         'client' => env('REDIS_CLIENT', 'phpredis'),
 
         'options' => [
@@ -140,6 +189,15 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
+=======
+        'cluster' => false,
+
+        'default' => [
+            'host' => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 0,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
     ],

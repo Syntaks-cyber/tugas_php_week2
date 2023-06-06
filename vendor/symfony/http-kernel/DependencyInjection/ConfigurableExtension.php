@@ -37,6 +37,12 @@ abstract class ConfigurableExtension extends Extension
 
     /**
      * Configures the passed container according to the merged configuration.
+<<<<<<< HEAD
+=======
+     *
+     * @param array            $mergedConfig
+     * @param ContainerBuilder $container
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     abstract protected function loadInternal(array $mergedConfig, ContainerBuilder $container);
 }

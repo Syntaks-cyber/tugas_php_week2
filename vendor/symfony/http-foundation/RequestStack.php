@@ -11,9 +11,12 @@
 
 namespace Symfony\Component\HttpFoundation;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /**
  * Request stack that controls the lifecycle of requests.
  *
@@ -24,7 +27,11 @@ class RequestStack
     /**
      * @var Request[]
      */
+<<<<<<< HEAD
     private $requests = [];
+=======
+    private $requests = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Pushes a Request on the stack.
@@ -50,7 +57,11 @@ class RequestStack
     public function pop()
     {
         if (!$this->requests) {
+<<<<<<< HEAD
             return null;
+=======
+            return;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return array_pop($this->requests);
@@ -65,6 +76,7 @@ class RequestStack
     }
 
     /**
+<<<<<<< HEAD
      * Gets the main request.
      *
      * Be warned that making your code aware of the main request
@@ -92,6 +104,23 @@ class RequestStack
         trigger_deprecation('symfony/http-foundation', '5.3', '"%s()" is deprecated, use "getMainRequest()" instead.', __METHOD__);
 
         return $this->getMainRequest();
+=======
+     * Gets the master Request.
+     *
+     * Be warned that making your code aware of the master request
+     * might make it un-compatible with other features of your framework
+     * like ESI support.
+     *
+     * @return Request|null
+     */
+    public function getMasterRequest()
+    {
+        if (!$this->requests) {
+            return;
+        }
+
+        return $this->requests[0];
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -101,12 +130,17 @@ class RequestStack
      * might make it un-compatible with other features of your framework
      * like ESI support.
      *
+<<<<<<< HEAD
      * If current Request is the main request, it returns null.
+=======
+     * If current Request is the master request, it returns null.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return Request|null
      */
     public function getParentRequest()
     {
+<<<<<<< HEAD
         $pos = \count($this->requests) - 2;
 
         return $this->requests[$pos] ?? null;
@@ -124,5 +158,14 @@ class RequestStack
         }
 
         throw new SessionNotFoundException();
+=======
+        $pos = count($this->requests) - 2;
+
+        if (!isset($this->requests[$pos])) {
+            return;
+        }
+
+        return $this->requests[$pos];
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

@@ -1,12 +1,20 @@
 <?php
 /*
+<<<<<<< HEAD
  * This file is part of sebastian/comparator.
+=======
+ * This file is part of the Comparator package.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 namespace SebastianBergmann\Comparator;
 
 /**
@@ -15,11 +23,20 @@ namespace SebastianBergmann\Comparator;
 class Factory
 {
     /**
+<<<<<<< HEAD
+=======
+     * @var Comparator[]
+     */
+    private $comparators = array();
+
+    /**
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @var Factory
      */
     private static $instance;
 
     /**
+<<<<<<< HEAD
      * @var Comparator[]
      */
     private $customComparators = [];
@@ -28,6 +45,25 @@ class Factory
      * @var Comparator[]
      */
     private $defaultComparators = [];
+=======
+     * Constructs a new factory.
+     */
+    public function __construct()
+    {
+        $this->register(new TypeComparator);
+        $this->register(new ScalarComparator);
+        $this->register(new NumericComparator);
+        $this->register(new DoubleComparator);
+        $this->register(new ArrayComparator);
+        $this->register(new ResourceComparator);
+        $this->register(new ObjectComparator);
+        $this->register(new ExceptionComparator);
+        $this->register(new SplObjectStorageComparator);
+        $this->register(new DOMNodeComparator);
+        $this->register(new MockObjectComparator);
+        $this->register(new DateTimeComparator);
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @return Factory
@@ -42,6 +78,7 @@ class Factory
     }
 
     /**
+<<<<<<< HEAD
      * Constructs a new factory.
      */
     public function __construct()
@@ -55,10 +92,17 @@ class Factory
      * @param mixed $expected The first value to compare
      * @param mixed $actual   The second value to compare
      *
+=======
+     * Returns the correct comparator for comparing two values.
+     *
+     * @param  mixed      $expected The first value to compare
+     * @param  mixed      $actual   The second value to compare
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return Comparator
      */
     public function getComparatorFor($expected, $actual)
     {
+<<<<<<< HEAD
         foreach ($this->customComparators as $comparator) {
             if ($comparator->accepts($expected, $actual)) {
                 return $comparator;
@@ -66,6 +110,9 @@ class Factory
         }
 
         foreach ($this->defaultComparators as $comparator) {
+=======
+        foreach ($this->comparators as $comparator) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             if ($comparator->accepts($expected, $actual)) {
                 return $comparator;
             }
@@ -75,6 +122,7 @@ class Factory
     /**
      * Registers a new comparator.
      *
+<<<<<<< HEAD
      * This comparator will be returned by getComparatorFor() if its accept() method
      * returns TRUE for the compared values. It has higher priority than the
      * existing comparators, meaning that its accept() method will be invoked
@@ -85,6 +133,18 @@ class Factory
     public function register(Comparator $comparator)
     {
         \array_unshift($this->customComparators, $comparator);
+=======
+     * This comparator will be returned by getInstance() if its accept() method
+     * returns TRUE for the compared values. It has higher priority than the
+     * existing comparators, meaning that its accept() method will be tested
+     * before those of the other comparators.
+     *
+     * @param Comparator $comparator The registered comparator
+     */
+    public function register(Comparator $comparator)
+    {
+        array_unshift($this->comparators, $comparator);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         $comparator->setFactory($this);
     }
@@ -92,6 +152,7 @@ class Factory
     /**
      * Unregisters a comparator.
      *
+<<<<<<< HEAD
      * This comparator will no longer be considered by getComparatorFor().
      *
      * @param Comparator $comparator The comparator to be unregistered
@@ -134,4 +195,18 @@ class Factory
 
         $comparator->setFactory($this);
     }
+=======
+     * This comparator will no longer be returned by getInstance().
+     *
+     * @param Comparator $comparator The unregistered comparator
+     */
+    public function unregister(Comparator $comparator)
+    {
+        foreach ($this->comparators as $key => $_comparator) {
+            if ($comparator === $_comparator) {
+                unset($this->comparators[$key]);
+            }
+        }
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

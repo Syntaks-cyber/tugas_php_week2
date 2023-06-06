@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 5.4
 ---
 
@@ -214,6 +215,8 @@ CHANGELOG
  * added `Symfony\Component\HttpKernel\DataCollector\RequestDataCollector::getRedirect()`
  * added the `kernel.controller_arguments` event, triggered after controller arguments have been resolved
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 3.0.0
 -----
 
@@ -225,8 +228,13 @@ CHANGELOG
  * removed `Symfony\Component\HttpKernel\EventListener\RouterListener::setRequest()`
  * removed `Symfony\Component\HttpKernel\EventListener\ProfilerListener::onKernelRequest()`
  * removed `Symfony\Component\HttpKernel\Fragment\FragmentHandler::setRequest()`
+<<<<<<< HEAD
  * removed `Symfony\Component\HttpKernel\HttpCache\Esi::hasSurrogateEsiCapability()`
  * removed `Symfony\Component\HttpKernel\HttpCache\Esi::addSurrogateEsiCapability()`
+=======
+ * removed `Symfony\Component\HttpKernel\HttpCache\Esi::hasSurrogateEsiCapability()` 
+ * removed `Symfony\Component\HttpKernel\HttpCache\Esi::addSurrogateEsiCapability()` 
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * removed `Symfony\Component\HttpKernel\HttpCache\Esi::needsEsiParsing()`
  * removed `Symfony\Component\HttpKernel\HttpCache\HttpCache::getEsi()`
  * removed `Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel`

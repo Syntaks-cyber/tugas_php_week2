@@ -18,10 +18,17 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
+=======
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     },
     "autoload": {
         "classmap": [
@@ -30,7 +37,11 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "3.0.x-dev"
+=======
+            "dev-master": "1.0.x-dev"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 }

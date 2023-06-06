@@ -25,7 +25,11 @@ class TranslationReader implements TranslationReaderInterface
     /**
      * Loaders used for import.
      *
+<<<<<<< HEAD
      * @var array<string, LoaderInterface>
+=======
+     * @var array
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     private $loaders = [];
 
@@ -34,7 +38,11 @@ class TranslationReader implements TranslationReaderInterface
      *
      * @param string $format The format of the loader
      */
+<<<<<<< HEAD
     public function addLoader(string $format, LoaderInterface $loader)
+=======
+    public function addLoader($format, LoaderInterface $loader)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->loaders[$format] = $loader;
     }
@@ -42,7 +50,11 @@ class TranslationReader implements TranslationReaderInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function read(string $directory, MessageCatalogue $catalogue)
+=======
+    public function read($directory, MessageCatalogue $catalogue)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!is_dir($directory)) {
             return;

@@ -53,8 +53,14 @@ abstract class FactoryFile
     public function generateFactoryCall(FactoryCall $call)
     {
         $method = $call->getMethod();
+<<<<<<< HEAD
         $code = $method->getComment($this->indent) . "\n";
         $code .= $this->generateDeclaration($call->getName(), $method);
+=======
+        $code = $method->getComment($this->indent) . PHP_EOL;
+        $code .= $this->generateDeclaration($call->getName(), $method);
+        // $code .= $this->generateImport($method);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $code .= $this->generateCall($method);
         $code .= $this->generateClosing();
         return $code;
@@ -65,7 +71,11 @@ abstract class FactoryFile
         $code = $this->indent . $this->getDeclarationModifiers()
             . 'function ' . $name . '('
             . $this->generateDeclarationArguments($method)
+<<<<<<< HEAD
             . ')' . "\n" . $this->indent . '{' . "\n";
+=======
+            . ')' . PHP_EOL . $this->indent . '{' . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return $code;
     }
 
@@ -85,25 +95,41 @@ abstract class FactoryFile
 
     public function generateImport(FactoryMethod $method)
     {
+<<<<<<< HEAD
         return $this->indent . self::INDENT . "require_once '" . $method->getClass()->getFile() . "';" . "\n";
+=======
+        return $this->indent . self::INDENT . "require_once '" . $method->getClass()->getFile() . "';" . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function generateCall(FactoryMethod $method)
     {
         $code = '';
         if ($method->acceptsVariableArguments()) {
+<<<<<<< HEAD
             $code .= $this->indent . self::INDENT . '$args = func_get_args();' . "\n";
+=======
+            $code .= $this->indent . self::INDENT . '$args = func_get_args();' . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $code .= $this->indent . self::INDENT . 'return ';
         if ($method->acceptsVariableArguments()) {
             $code .= 'call_user_func_array(array(\''
                 . '\\' . $method->getClassName() . '\', \''
+<<<<<<< HEAD
                 . $method->getName() . '\'), $args);' . "\n";
         } else {
             $code .= '\\' . $method->getClassName() . '::'
                 . $method->getName() . '('
                 . $method->getParameterInvocations() . ');' . "\n";
+=======
+                . $method->getName() . '\'), $args);' . PHP_EOL;
+        } else {
+            $code .= '\\' . $method->getClassName() . '::'
+                . $method->getName() . '('
+                . $method->getParameterInvocations() . ');' . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $code;
@@ -111,7 +137,11 @@ abstract class FactoryFile
 
     public function generateClosing()
     {
+<<<<<<< HEAD
         return $this->indent . '}' . "\n";
+=======
+        return $this->indent . '}' . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function write()

@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /**
  * This file is part of the Carbon package.
  *
@@ -55,11 +56,33 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $events->listen(class_exists('Illuminate\Foundation\Events\LocaleUpdated') ? 'Illuminate\Foundation\Events\LocaleUpdated' : 'locale.changed', function () use ($service) {
                 $service->updateLocale();
             });
+=======
+namespace Carbon\Laravel;
+
+use Carbon\Carbon;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Events\EventDispatcher;
+use Illuminate\Translation\Translator as IlluminateTranslator;
+use Symfony\Component\Translation\Translator;
+
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
+{
+    public function boot()
+    {
+        $service = $this;
+        $events = $this->app['events'];
+        if ($events instanceof EventDispatcher || $events instanceof Dispatcher) {
+            $events->listen(class_exists('Illuminate\Foundation\Events\LocaleUpdated') ? 'Illuminate\Foundation\Events\LocaleUpdated' : 'locale.changed', function () use ($service) {
+                $service->updateLocale();
+            });
+            $service->updateLocale();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 
     public function updateLocale()
     {
+<<<<<<< HEAD
         $locale = $this->getLocale();
 
         if ($locale === null) {
@@ -82,6 +105,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             } catch (Throwable $e) {
                 // Non Carbon class in use in Date facade
             }
+=======
+        $translator = $this->app['translator'];
+        if ($translator instanceof Translator || $translator instanceof IlluminateTranslator) {
+            Carbon::setLocale($translator->getLocale());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 
@@ -89,6 +117,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         // Needed for Laravel < 5.3 compatibility
     }
+<<<<<<< HEAD
 
     protected function getLocale()
     {
@@ -124,4 +153,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             || $instance instanceof Dispatcher
             || $instance instanceof DispatcherContract;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

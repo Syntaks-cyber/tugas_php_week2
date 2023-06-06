@@ -33,6 +33,7 @@ class FunctionExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getFunctionTranslators(): array
     {
         return [
@@ -54,6 +55,36 @@ class FunctionExtension extends AbstractExtension
             [$a, $b] = Parser::parseSeries($function->getArguments());
         } catch (SyntaxErrorException $e) {
             throw new ExpressionErrorException(sprintf('Invalid series: "%s".', implode('", "', $function->getArguments())), 0, $e);
+=======
+    public function getFunctionTranslators()
+    {
+        return array(
+            'nth-child' => array($this, 'translateNthChild'),
+            'nth-last-child' => array($this, 'translateNthLastChild'),
+            'nth-of-type' => array($this, 'translateNthOfType'),
+            'nth-last-of-type' => array($this, 'translateNthLastOfType'),
+            'contains' => array($this, 'translateContains'),
+            'lang' => array($this, 'translateLang'),
+        );
+    }
+
+    /**
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     * @param bool         $last
+     * @param bool         $addNameTest
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateNthChild(XPathExpr $xpath, FunctionNode $function, $last = false, $addNameTest = true)
+    {
+        try {
+            list($a, $b) = Parser::parseSeries($function->getArguments());
+        } catch (SyntaxErrorException $e) {
+            throw new ExpressionErrorException(sprintf('Invalid series: %s', implode(', ', $function->getArguments())), 0, $e);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $xpath->addStarPrefix();
@@ -86,7 +117,11 @@ class FunctionExtension extends AbstractExtension
             $expr .= ' - '.$b;
         }
 
+<<<<<<< HEAD
         $conditions = [sprintf('%s %s 0', $expr, $sign)];
+=======
+        $conditions = array(sprintf('%s %s 0', $expr, $sign));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         if (1 !== $a && -1 !== $a) {
             $conditions[] = sprintf('(%s) mod %d = 0', $expr, $a);
@@ -103,20 +138,51 @@ class FunctionExtension extends AbstractExtension
         // -1n+6 means elements 6 and previous
     }
 
+<<<<<<< HEAD
     public function translateNthLastChild(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+    /**
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     */
+    public function translateNthLastChild(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->translateNthChild($xpath, $function, true);
     }
 
+<<<<<<< HEAD
     public function translateNthOfType(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+    /**
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     */
+    public function translateNthOfType(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->translateNthChild($xpath, $function, false, false);
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateNthLastOfType(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateNthLastOfType(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ('*' === $xpath->getElement()) {
             throw new ExpressionErrorException('"*:nth-of-type()" is not implemented.');
@@ -126,14 +192,32 @@ class FunctionExtension extends AbstractExtension
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateContains(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateContains(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $arguments = $function->getArguments();
         foreach ($arguments as $token) {
             if (!($token->isString() || $token->isIdentifier())) {
+<<<<<<< HEAD
                 throw new ExpressionErrorException('Expected a single string or identifier for :contains(), got '.implode(', ', $arguments));
+=======
+                throw new ExpressionErrorException(
+                    'Expected a single string or identifier for :contains(), got '
+                    .implode(', ', $arguments)
+                );
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
         }
 
@@ -144,14 +228,32 @@ class FunctionExtension extends AbstractExtension
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateLang(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateLang(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $arguments = $function->getArguments();
         foreach ($arguments as $token) {
             if (!($token->isString() || $token->isIdentifier())) {
+<<<<<<< HEAD
                 throw new ExpressionErrorException('Expected a single string or identifier for :lang(), got '.implode(', ', $arguments));
+=======
+                throw new ExpressionErrorException(
+                    'Expected a single string or identifier for :lang(), got '
+                    .implode(', ', $arguments)
+                );
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
         }
 
@@ -164,7 +266,11 @@ class FunctionExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getName(): string
+=======
+    public function getName()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return 'function';
     }

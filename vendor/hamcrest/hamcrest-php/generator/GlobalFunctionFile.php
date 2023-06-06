@@ -19,7 +19,11 @@ class GlobalFunctionFile extends FactoryFile
 
     public function addCall(FactoryCall $call)
     {
+<<<<<<< HEAD
         $this->functions .= "\n" . $this->generateFactoryCall($call);
+=======
+        $this->functions .= PHP_EOL . $this->generateFactoryCall($call);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function build()
@@ -33,7 +37,11 @@ class GlobalFunctionFile extends FactoryFile
 
     public function generateFactoryCall(FactoryCall $call)
     {
+<<<<<<< HEAD
         $code = "if (!function_exists('{$call->getName()}')) {\n";
+=======
+        $code = "if (!function_exists('{$call->getName()}')) {";
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $code.= parent::generateFactoryCall($call);
         $code.= "}\n";
 

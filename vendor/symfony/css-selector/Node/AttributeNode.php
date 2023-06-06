@@ -23,6 +23,7 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class AttributeNode extends AbstractNode
 {
+<<<<<<< HEAD
     private $selector;
     private $namespace;
     private $attribute;
@@ -30,6 +31,41 @@ class AttributeNode extends AbstractNode
     private $value;
 
     public function __construct(NodeInterface $selector, ?string $namespace, string $attribute, string $operator, ?string $value)
+=======
+    /**
+     * @var NodeInterface
+     */
+    private $selector;
+
+    /**
+     * @var string
+     */
+    private $namespace;
+
+    /**
+     * @var string
+     */
+    private $attribute;
+
+    /**
+     * @var string
+     */
+    private $operator;
+
+    /**
+     * @var string
+     */
+    private $value;
+
+    /**
+     * @param NodeInterface $selector
+     * @param string        $namespace
+     * @param string        $attribute
+     * @param string        $operator
+     * @param string        $value
+     */
+    public function __construct(NodeInterface $selector, $namespace, $attribute, $operator, $value)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->selector = $selector;
         $this->namespace = $namespace;
@@ -38,27 +74,62 @@ class AttributeNode extends AbstractNode
         $this->value = $value;
     }
 
+<<<<<<< HEAD
     public function getSelector(): NodeInterface
+=======
+    /**
+     * @return NodeInterface
+     */
+    public function getSelector()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector;
     }
 
+<<<<<<< HEAD
     public function getNamespace(): ?string
+=======
+    /**
+     * @return string
+     */
+    public function getNamespace()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->namespace;
     }
 
+<<<<<<< HEAD
     public function getAttribute(): string
+=======
+    /**
+     * @return string
+     */
+    public function getAttribute()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->attribute;
     }
 
+<<<<<<< HEAD
     public function getOperator(): string
+=======
+    /**
+     * @return string
+     */
+    public function getOperator()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->operator;
     }
 
+<<<<<<< HEAD
     public function getValue(): ?string
+=======
+    /**
+     * @return string
+     */
+    public function getValue()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->value;
     }
@@ -66,12 +137,23 @@ class AttributeNode extends AbstractNode
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getSpecificity(): Specificity
+=======
+    public function getSpecificity()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector->getSpecificity()->plus(new Specificity(0, 1, 0));
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $attribute = $this->namespace ? $this->namespace.'|'.$this->attribute : $this->attribute;
 

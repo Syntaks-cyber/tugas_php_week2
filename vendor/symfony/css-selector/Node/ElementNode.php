@@ -23,21 +23,53 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class ElementNode extends AbstractNode
 {
+<<<<<<< HEAD
     private $namespace;
     private $element;
 
     public function __construct(string $namespace = null, string $element = null)
+=======
+    /**
+     * @var string|null
+     */
+    private $namespace;
+
+    /**
+     * @var string|null
+     */
+    private $element;
+
+    /**
+     * @param string|null $namespace
+     * @param string|null $element
+     */
+    public function __construct($namespace = null, $element = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->namespace = $namespace;
         $this->element = $element;
     }
 
+<<<<<<< HEAD
     public function getNamespace(): ?string
+=======
+    /**
+     * @return null|string
+     */
+    public function getNamespace()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->namespace;
     }
 
+<<<<<<< HEAD
     public function getElement(): ?string
+=======
+    /**
+     * @return null|string
+     */
+    public function getElement()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->element;
     }
@@ -45,12 +77,23 @@ class ElementNode extends AbstractNode
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getSpecificity(): Specificity
+=======
+    public function getSpecificity()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return new Specificity(0, 0, $this->element ? 1 : 0);
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $element = $this->element ?: '*';
 

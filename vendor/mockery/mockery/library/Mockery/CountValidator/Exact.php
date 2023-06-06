@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -24,6 +28,10 @@ use Mockery;
 
 class Exact extends CountValidatorAbstract
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Validate the call count against this validator
      *
@@ -33,15 +41,21 @@ class Exact extends CountValidatorAbstract
     public function validate($n)
     {
         if ($this->_limit !== $n) {
+<<<<<<< HEAD
             $because = $this->_expectation->getExceptionMessage();
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $exception = new Mockery\Exception\InvalidCountException(
                 'Method ' . (string) $this->_expectation
                 . ' from ' . $this->_expectation->getMock()->mockery_getName()
                 . ' should be called' . PHP_EOL
                 . ' exactly ' . $this->_limit . ' times but called ' . $n
                 . ' times.'
+<<<<<<< HEAD
                 . ($because ? ' Because ' . $this->_expectation->getExceptionMessage() : '')
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             );
             $exception->setMock($this->_expectation->getMock())
                 ->setMethodName((string) $this->_expectation)

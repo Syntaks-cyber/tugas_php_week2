@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 
 class BankAccountTest extends TestCase
@@ -6,6 +7,15 @@ class BankAccountTest extends TestCase
     protected $ba;
 
     protected function setUp(): void
+=======
+require_once 'BankAccount.php';
+
+class BankAccountTest extends PHPUnit_Framework_TestCase
+{
+    protected $ba;
+
+    protected function setUp()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->ba = new BankAccount;
     }

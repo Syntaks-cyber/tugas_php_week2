@@ -26,40 +26,70 @@ abstract class AbstractExtension implements ExtensionInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getNodeTranslators(): array
     {
         return [];
+=======
+    public function getNodeTranslators()
+    {
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getCombinationTranslators(): array
     {
         return [];
+=======
+    public function getCombinationTranslators()
+    {
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getFunctionTranslators(): array
     {
         return [];
+=======
+    public function getFunctionTranslators()
+    {
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getPseudoClassTranslators(): array
     {
         return [];
+=======
+    public function getPseudoClassTranslators()
+    {
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getAttributeMatchingTranslators(): array
     {
         return [];
+=======
+    public function getAttributeMatchingTranslators()
+    {
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

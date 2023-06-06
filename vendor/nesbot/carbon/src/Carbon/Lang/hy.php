@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - mhamlet
@@ -93,3 +98,25 @@ return [
     'list' => [', ', ' եւ '],
     'first_day_of_week' => 1,
 ];
+=======
+return array(
+    'year' => ':count տարի',
+    'y' => ':countտ',
+    'month' => ':count ամիս',
+    'm' => ':countամ',
+    'week' => ':count շաբաթ',
+    'w' => ':countշ',
+    'day' => ':count օր',
+    'd' => ':countօր',
+    'hour' => ':count ժամ',
+    'h' => ':countժ',
+    'minute' => ':count րոպե',
+    'min' => ':countր',
+    'second' => ':count վարկյան',
+    's' => ':countվրկ',
+    'ago' => ':time առաջ',
+    'from_now' => ':time ներկա պահից',
+    'after' => ':time հետո',
+    'before' => ':time առաջ',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

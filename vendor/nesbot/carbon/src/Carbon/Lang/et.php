@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Philippe Vaucher
@@ -48,6 +53,23 @@ return [
     'min' => ':count min',
     'second' => ':count sekund|:count sekundit',
     's' => ':count s',
+=======
+return array(
+    'year' => ':count aasta|:count aastat',
+    'y' => ':count aasta|:count aastat',
+    'month' => ':count kuu|:count kuud',
+    'm' => ':count kuu|:count kuud',
+    'week' => ':count nädal|:count nädalat',
+    'w' => ':count nädal|:count nädalat',
+    'day' => ':count päev|:count päeva',
+    'd' => ':count päev|:count päeva',
+    'hour' => ':count tund|:count tundi',
+    'h' => ':count tund|:count tundi',
+    'minute' => ':count minut|:count minutit',
+    'min' => ':count minut|:count minutit',
+    'second' => ':count sekund|:count sekundit',
+    's' => ':count sekund|:count sekundit',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'ago' => ':time tagasi',
     'from_now' => ':time pärast',
     'after' => ':time pärast',
@@ -59,6 +81,7 @@ return [
     'hour_from_now' => ':count tunni',
     'minute_from_now' => ':count minuti',
     'second_from_now' => ':count sekundi',
+<<<<<<< HEAD
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'diff_now' => 'nüüd',
@@ -91,3 +114,6 @@ return [
     'list' => [', ', ' ja '],
     'meridiem' => ['enne lõunat', 'pärast lõunat'],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

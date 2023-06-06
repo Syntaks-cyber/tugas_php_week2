@@ -14,21 +14,42 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
 use Mockery\ClosureWrapper;
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+ * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
+ */
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 use Mockery\ExpectationInterface;
 use Mockery\Generator\CachingGenerator;
 use Mockery\Generator\Generator;
 use Mockery\Generator\MockConfigurationBuilder;
+<<<<<<< HEAD
 use Mockery\Generator\MockNameBuilder;
 use Mockery\Generator\StringManipulationGenerator;
 use Mockery\Loader\EvalLoader;
 use Mockery\Loader\Loader;
 use Mockery\Matcher\MatcherAbstract;
 use Mockery\Reflector;
+=======
+use Mockery\Generator\StringManipulationGenerator;
+use Mockery\Generator\StringManipulation\Pass\CallTypeHintPass;
+use Mockery\Generator\StringManipulation\Pass\ClassNamePass;
+use Mockery\Generator\StringManipulation\Pass\ClassPass;
+use Mockery\Generator\StringManipulation\Pass\InstanceMockPass;
+use Mockery\Generator\StringManipulation\Pass\InterfacePass;
+use Mockery\Generator\StringManipulation\Pass\MethodDefinitionPass;
+use Mockery\Generator\StringManipulation\Pass\RemoveBuiltinMethodsThatAreFinalPass;
+use Mockery\Generator\StringManipulation\Pass\RemoveUnserializeForInternalSerializableClassesPass;
+use Mockery\Loader\EvalLoader;
+use Mockery\Loader\Loader;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 class Mockery
 {
@@ -37,7 +58,11 @@ class Mockery
     /**
      * Global container to hold all mocks for the current unit test running.
      *
+<<<<<<< HEAD
      * @var \Mockery\Container|null
+=======
+     * @var \Mockery\Container
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     protected static $_container = null;
 
@@ -61,7 +86,11 @@ class Mockery
     /**
      * @var array
      */
+<<<<<<< HEAD
     private static $_filesToCleanUp = [];
+=======
+    private static $_filesToCleanUp = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Defines the global helper functions
@@ -70,6 +99,7 @@ class Mockery
      */
     public static function globalHelpers()
     {
+<<<<<<< HEAD
         require_once __DIR__ . '/helpers.php';
     }
 
@@ -109,21 +139,34 @@ class Mockery
     public static function isBuiltInType($type)
     {
         return in_array($type, \Mockery::builtInTypes());
+=======
+        require_once __DIR__.'/helpers.php';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Static shortcut to \Mockery\Container::mock().
      *
+<<<<<<< HEAD
      * @param mixed ...$args
      *
      * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
      */
     public static function mock(...$args)
     {
+=======
+     * @return \Mockery\MockInterface
+     */
+    public static function mock()
+    {
+        $args = func_get_args();
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return call_user_func_array(array(self::getContainer(), 'mock'), $args);
     }
 
     /**
+<<<<<<< HEAD
      * Static and semantic shortcut for getting a mock from the container
      * and applying the spy's expected behavior into it.
      *
@@ -137,10 +180,18 @@ class Mockery
             $args[0] = new ClosureWrapper($args[0]);
         }
 
+=======
+     * @return \Mockery\MockInterface
+     */
+    public static function spy()
+    {
+        $args = func_get_args();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return call_user_func_array(array(self::getContainer(), 'mock'), $args)->shouldIgnoreMissing();
     }
 
     /**
+<<<<<<< HEAD
      * Static and Semantic shortcut to \Mockery\Container::mock().
      *
      * @param mixed ...$args
@@ -149,18 +200,34 @@ class Mockery
      */
     public static function instanceMock(...$args)
     {
+=======
+     * @return \Mockery\MockInterface
+     */
+    public static function instanceMock()
+    {
+        $args = func_get_args();
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return call_user_func_array(array(self::getContainer(), 'mock'), $args);
     }
 
     /**
      * Static shortcut to \Mockery\Container::mock(), first argument names the mock.
      *
+<<<<<<< HEAD
      * @param mixed ...$args
      *
      * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
      */
     public static function namedMock(...$args)
     {
+=======
+     * @return \Mockery\MockInterface
+     */
+    public static function namedMock()
+    {
+        $args = func_get_args();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $name = array_shift($args);
 
         $builder = new MockConfigurationBuilder();
@@ -176,7 +243,11 @@ class Mockery
      *
      * @throws LogicException
      *
+<<<<<<< HEAD
      * @return \Mockery\MockInterface|\Mockery\LegacyMockInterface
+=======
+     * @return \Mockery\MockInterface
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public static function self()
     {
@@ -198,28 +269,43 @@ class Mockery
         foreach (self::$_filesToCleanUp as $fileName) {
             @unlink($fileName);
         }
+<<<<<<< HEAD
         self::$_filesToCleanUp = [];
+=======
+        self::$_filesToCleanUp = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         if (is_null(self::$_container)) {
             return;
         }
 
+<<<<<<< HEAD
         $container = self::$_container;
         self::$_container = null;
 
         $container->mockery_teardown();
         $container->mockery_close();
+=======
+        self::$_container->mockery_teardown();
+        self::$_container->mockery_close();
+        self::$_container = null;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Static fetching of a mock associated with a name or explicit class poser.
      *
+<<<<<<< HEAD
      * @param string $name
+=======
+     * @param $name
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Mock
      */
     public static function fetchMock($name)
     {
+<<<<<<< HEAD
         return self::getContainer()->fetchMock($name);
     }
 
@@ -228,6 +314,13 @@ class Mockery
      * the container property.
      *
      * @return Mockery\Container
+=======
+        return self::$_container->fetchMock($name);
+    }
+
+    /**
+     * Get the container.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public static function getContainer()
     {
@@ -239,8 +332,11 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Setter for the $_generator static property.
      *
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param \Mockery\Generator\Generator $generator
      */
     public static function setGenerator(Generator $generator)
@@ -248,12 +344,15 @@ class Mockery
         self::$_generator = $generator;
     }
 
+<<<<<<< HEAD
     /**
      * Lazy loader method and getter for
      * the generator property.
      *
      * @return Generator
      */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public static function getGenerator()
     {
         if (is_null(self::$_generator)) {
@@ -263,6 +362,7 @@ class Mockery
         return self::$_generator;
     }
 
+<<<<<<< HEAD
     /**
      * Creates and returns a default generator
      * used inside this class.
@@ -277,6 +377,25 @@ class Mockery
     /**
      * Setter for the $_loader static property.
      *
+=======
+    public static function getDefaultGenerator()
+    {
+        $generator = new StringManipulationGenerator(array(
+            new CallTypeHintPass(),
+            new ClassPass(),
+            new ClassNamePass(),
+            new InstanceMockPass(),
+            new InterfacePass(),
+            new MethodDefinitionPass(),
+            new RemoveUnserializeForInternalSerializableClassesPass(),
+            new RemoveBuiltinMethodsThatAreFinalPass(),
+        ));
+
+        return new CachingGenerator($generator);
+    }
+
+    /**
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param Loader $loader
      */
     public static function setLoader(Loader $loader)
@@ -285,9 +404,12 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Lazy loader method and getter for
      * the $_loader property.
      *
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return Loader
      */
     public static function getLoader()
@@ -300,8 +422,11 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Gets an EvalLoader to be used as default.
      *
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return EvalLoader
      */
     public static function getDefaultLoader()
@@ -323,8 +448,11 @@ class Mockery
 
     /**
      * Reset the container to null.
+<<<<<<< HEAD
      *
      * @return void
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public static function resetContainer()
     {
@@ -342,6 +470,7 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Return instance of AndAnyOtherArgs matcher.
      *
      * An alternative name to `andAnyOtherArgs` so
@@ -368,6 +497,11 @@ class Mockery
      * Return instance of TYPE matcher.
      *
      * @param mixed $expected
+=======
+     * Return instance of TYPE matcher.
+     *
+     * @param $expected
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\Type
      */
@@ -379,6 +513,7 @@ class Mockery
     /**
      * Return instance of DUCKTYPE matcher.
      *
+<<<<<<< HEAD
      * @param array ...$args
      *
      * @return \Mockery\Matcher\Ducktype
@@ -386,12 +521,20 @@ class Mockery
     public static function ducktype(...$args)
     {
         return new \Mockery\Matcher\Ducktype($args);
+=======
+     * @return \Mockery\Matcher\Ducktype
+     */
+    public static function ducktype()
+    {
+        return new \Mockery\Matcher\Ducktype(func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Return instance of SUBSET matcher.
      *
      * @param array $part
+<<<<<<< HEAD
      * @param bool $strict - (Optional) True for strict comparison, false for loose
      *
      * @return \Mockery\Matcher\Subset
@@ -399,11 +542,20 @@ class Mockery
     public static function subset(array $part, $strict = true)
     {
         return new \Mockery\Matcher\Subset($part, $strict);
+=======
+     *
+     * @return \Mockery\Matcher\Subset
+     */
+    public static function subset(array $part)
+    {
+        return new \Mockery\Matcher\Subset($part);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Return instance of CONTAINS matcher.
      *
+<<<<<<< HEAD
      * @param array ...$args
      *
      * @return \Mockery\Matcher\Contains
@@ -411,12 +563,23 @@ class Mockery
     public static function contains(...$args)
     {
         return new \Mockery\Matcher\Contains($args);
+=======
+     * @return \Mockery\Matcher\Contains
+     */
+    public static function contains()
+    {
+        return new \Mockery\Matcher\Contains(func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Return instance of HASKEY matcher.
      *
+<<<<<<< HEAD
      * @param mixed $key
+=======
+     * @param $key
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\HasKey
      */
@@ -428,7 +591,11 @@ class Mockery
     /**
      * Return instance of HASVALUE matcher.
      *
+<<<<<<< HEAD
      * @param mixed $val
+=======
+     * @param $val
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\HasValue
      */
@@ -440,6 +607,7 @@ class Mockery
     /**
      * Return instance of CLOSURE matcher.
      *
+<<<<<<< HEAD
      * @param $reference
      *
      * @return \Mockery\Matcher\Closure
@@ -458,6 +626,9 @@ class Mockery
      * Return instance of CLOSURE matcher.
      *
      * @param mixed $closure
+=======
+     * @param $closure
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\Closure
      */
@@ -469,7 +640,11 @@ class Mockery
     /**
      * Return instance of MUSTBE matcher.
      *
+<<<<<<< HEAD
      * @param mixed $expected
+=======
+     * @param $expected
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\MustBe
      */
@@ -481,7 +656,11 @@ class Mockery
     /**
      * Return instance of NOT matcher.
      *
+<<<<<<< HEAD
      * @param mixed $expected
+=======
+     * @param $expected
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return \Mockery\Matcher\Not
      */
@@ -493,6 +672,7 @@ class Mockery
     /**
      * Return instance of ANYOF matcher.
      *
+<<<<<<< HEAD
      * @param array ...$args
      *
      * @return \Mockery\Matcher\AnyOf
@@ -500,11 +680,19 @@ class Mockery
     public static function anyOf(...$args)
     {
         return new \Mockery\Matcher\AnyOf($args);
+=======
+     * @return \Mockery\Matcher\AnyOf
+     */
+    public static function anyOf()
+    {
+        return new \Mockery\Matcher\AnyOf(func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Return instance of NOTANYOF matcher.
      *
+<<<<<<< HEAD
      * @param array ...$args
      *
      * @return \Mockery\Matcher\NotAnyOf
@@ -531,6 +719,17 @@ class Mockery
      * configuration container.
      *
      * @return \Mockery\Configuration
+=======
+     * @return \Mockery\Matcher\NotAnyOf
+     */
+    public static function notAnyOf()
+    {
+        return new \Mockery\Matcher\NotAnyOf(func_get_args());
+    }
+
+    /**
+     * Get the global configuration container.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public static function getConfiguration()
     {
@@ -563,6 +762,7 @@ class Mockery
         return $method . '(' . implode(', ', $formattedArguments) . ')';
     }
 
+<<<<<<< HEAD
     /**
      * Gets the string representation
      * of any passed argument.
@@ -578,6 +778,10 @@ class Mockery
             return (string) $argument;
         }
 
+=======
+    private static function formatArgument($argument, $depth = 0)
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if (is_object($argument)) {
             return 'object(' . get_class($argument) . ')';
         }
@@ -588,6 +792,7 @@ class Mockery
 
         if (is_array($argument)) {
             if ($depth === 1) {
+<<<<<<< HEAD
                 $argument = '[...]';
             } else {
                 $sample = array();
@@ -601,6 +806,18 @@ class Mockery
             }
 
             return ((strlen($argument) > 1000) ? substr($argument, 0, 1000) . '...]' : $argument);
+=======
+                $argument = 'array(...)';
+            } else {
+                $sample = array();
+                foreach ($argument as $key => $value) {
+                    $sample[$key] = self::formatArgument($value, $depth + 1);
+                }
+                $argument = preg_replace("{\s}", '', var_export($sample, true));
+            }
+
+            return ((strlen($argument) > 1000) ? substr($argument, 0, 1000).'...)' : $argument);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         if (is_bool($argument)) {
@@ -615,7 +832,13 @@ class Mockery
             return 'NULL';
         }
 
+<<<<<<< HEAD
         return "'" . (string) $argument . "'";
+=======
+        $argument = (string) $argument;
+
+        return $depth === 0 ? '"' . $argument . '"' : $argument;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -657,7 +880,11 @@ class Mockery
     /**
      * Utility function to turn public properties and public get* and is* method values into an array.
      *
+<<<<<<< HEAD
      * @param object $object
+=======
+     * @param     $object
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param int $nesting
      *
      * @return array
@@ -670,15 +897,25 @@ class Mockery
 
         return array(
             'class' => get_class($object),
+<<<<<<< HEAD
             'properties' => self::extractInstancePublicProperties($object, $nesting)
+=======
+            'properties' => self::extractInstancePublicProperties($object, $nesting),
+            'getters' => self::extractGetters($object, $nesting)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         );
     }
 
     /**
      * Returns all public instance properties.
      *
+<<<<<<< HEAD
      * @param mixed $object
      * @param int $nesting
+=======
+     * @param $object
+     * @param $nesting
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @return array
      */
@@ -699,6 +936,7 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Utility method used for recursively generating
      * an object or array representation.
      *
@@ -707,6 +945,41 @@ class Mockery
      *
      * @return mixed
      */
+=======
+     * Returns all object getters.
+     *
+     * @param $object
+     * @param $nesting
+     *
+     * @return array
+     */
+    private static function extractGetters($object, $nesting)
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $publicMethods = $reflection->getMethods(\ReflectionMethod::IS_PUBLIC);
+        $getters = array();
+
+        foreach ($publicMethods as $publicMethod) {
+            $name = $publicMethod->getName();
+            $irrelevantName = (substr($name, 0, 3) !== 'get' && substr($name, 0, 2) !== 'is');
+            $isStatic = $publicMethod->isStatic();
+            $numberOfParameters = $publicMethod->getNumberOfParameters();
+
+            if ($irrelevantName || $numberOfParameters != 0 || $isStatic) {
+                continue;
+            }
+
+            try {
+                $getters[$name] = self::cleanupNesting($object->$name(), $nesting);
+            } catch (\Exception $e) {
+                $getters[$name] = '!! ' . get_class($e) . ': ' . $e->getMessage() . ' !!';
+            }
+        }
+
+        return $getters;
+    }
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     private static function cleanupNesting($argument, $nesting)
     {
         if (is_object($argument)) {
@@ -723,6 +996,7 @@ class Mockery
         return $argument;
     }
 
+<<<<<<< HEAD
     /**
      * Utility method for recursively
      * gerating a representation
@@ -733,6 +1007,8 @@ class Mockery
      *
      * @return mixed
      */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     private static function cleanupArray($argument, $nesting = 3)
     {
         if ($nesting == 0) {
@@ -754,12 +1030,21 @@ class Mockery
      * Utility function to parse shouldReceive() arguments and generate
      * expectations from such as needed.
      *
+<<<<<<< HEAD
      * @param Mockery\LegacyMockInterface $mock
      * @param array ...$args
      * @param callable $add
      * @return \Mockery\CompositeExpectation
      */
     public static function parseShouldReturnArgs(\Mockery\LegacyMockInterface $mock, $args, $add)
+=======
+     * @param Mockery\MockInterface $mock
+     * @param array $args
+     * @param callable $add
+     * @return \Mockery\CompositeExpectation
+     */
+    public static function parseShouldReturnArgs(\Mockery\MockInterface $mock, $args, $add)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $composite = new \Mockery\CompositeExpectation();
 
@@ -782,6 +1067,7 @@ class Mockery
      * Sets up expectations on the members of the CompositeExpectation and
      * builds up any demeter chain that was passed to shouldReceive.
      *
+<<<<<<< HEAD
      * @param \Mockery\LegacyMockInterface $mock
      * @param string $arg
      * @param callable $add
@@ -789,6 +1075,15 @@ class Mockery
      * @return \Mockery\ExpectationInterface
      */
     protected static function buildDemeterChain(\Mockery\LegacyMockInterface $mock, $arg, $add)
+=======
+     * @param \Mockery\MockInterface $mock
+     * @param string $arg
+     * @param callable $add
+     * @throws Mockery\Exception
+     * @return \Mockery\ExpectationDirector
+     */
+    protected static function buildDemeterChain(\Mockery\MockInterface $mock, $arg, $add)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         /** @var Mockery\Container $container */
         $container = $mock->mockery_getContainer();
@@ -814,8 +1109,11 @@ class Mockery
             return $add($method);
         };
 
+<<<<<<< HEAD
         $parent = get_class($mock);
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         while (true) {
             $method = array_shift($methodNames);
             $expectations = $mock->mockery_getExpectationsFor($method);
@@ -826,16 +1124,25 @@ class Mockery
                     break;
                 }
 
+<<<<<<< HEAD
                 $mock = self::getNewDemeterMock($container, $parent, $method, $expectations);
             } else {
                 $demeterMockKey = $container->getKeyOfDemeterMockFor($method, $parent);
+=======
+                $mock = self::getNewDemeterMock($container, $method, $expectations);
+            } else {
+                $demeterMockKey = $container->getKeyOfDemeterMockFor($method);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 if ($demeterMockKey) {
                     $mock = self::getExistingDemeterMock($container, $demeterMockKey);
                 }
             }
 
+<<<<<<< HEAD
             $parent .= '->' . $method;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $nextExp = function ($n) use ($mock) {
                 return $mock->shouldReceive($n);
             };
@@ -845,16 +1152,21 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Gets a new demeter configured
      * mock from the container.
      *
      * @param \Mockery\Container $container
      * @param string $parent
+=======
+     * @param \Mockery\Container $container
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param string $method
      * @param Mockery\ExpectationInterface $exp
      *
      * @return \Mockery\Mock
      */
+<<<<<<< HEAD
     private static function getNewDemeterMock(
         Mockery\Container $container,
         $parent,
@@ -889,24 +1201,39 @@ class Mockery
         }
 
         $mock = $container->mock($newMockName);
+=======
+    private static function getNewDemeterMock(Mockery\Container $container,
+        $method,
+        Mockery\ExpectationInterface $exp
+    ) {
+        $mock = $container->mock('demeter_' . $method);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $exp->andReturn($mock);
 
         return $mock;
     }
 
     /**
+<<<<<<< HEAD
      * Gets an specific demeter mock from
      * the ones kept by the container.
      *
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param \Mockery\Container $container
      * @param string $demeterMockKey
      *
      * @return mixed
      */
+<<<<<<< HEAD
     private static function getExistingDemeterMock(
         Mockery\Container $container,
         $demeterMockKey
     ) {
+=======
+    private static function getExistingDemeterMock(Mockery\Container $container, $demeterMockKey)
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $mocks = $container->getMocks();
         $mock = $mocks[$demeterMockKey];
 
@@ -914,9 +1241,12 @@ class Mockery
     }
 
     /**
+<<<<<<< HEAD
      * Checks if the passed array representing a demeter
      * chain with the method names is empty.
      *
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param array $methodNames
      *
      * @return bool
@@ -926,6 +1256,7 @@ class Mockery
         return empty($methodNames);
     }
 
+<<<<<<< HEAD
     public static function declareClass($fqn)
     {
         return static::declareType($fqn, "class");
@@ -963,6 +1294,8 @@ class Mockery
         \Mockery::registerFileForCleanUp($tmpfname);
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Register a file to be deleted on tearDown.
      *

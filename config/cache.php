@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 return [
 
     /*
@@ -13,9 +16,12 @@ return [
     | using this caching library. This connection is used when another is
     | not explicitly specified when executing a given caching function.
     |
+<<<<<<< HEAD
     | Supported: "apc", "array", "database", "file",
     |            "memcached", "redis", "dynamodb"
     |
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     */
 
     'default' => env('CACHE_DRIVER', 'file'),
@@ -39,7 +45,10 @@ return [
 
         'array' => [
             'driver' => 'array',
+<<<<<<< HEAD
             'serialize' => false,
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
         'database' => [
@@ -50,11 +59,16 @@ return [
 
         'file' => [
             'driver' => 'file',
+<<<<<<< HEAD
             'path' => storage_path('framework/cache/data'),
+=======
+            'path' => storage_path('framework/cache'),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
         'memcached' => [
             'driver' => 'memcached',
+<<<<<<< HEAD
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
             'sasl' => [
                 env('MEMCACHED_USERNAME'),
@@ -63,6 +77,8 @@ return [
             'options' => [
                 // Memcached::OPT_CONNECT_TIMEOUT => 2000,
             ],
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             'servers' => [
                 [
                     'host' => env('MEMCACHED_HOST', '127.0.0.1'),
@@ -74,6 +90,7 @@ return [
 
         'redis' => [
             'driver' => 'redis',
+<<<<<<< HEAD
             'connection' => 'cache',
         ],
 
@@ -84,6 +101,9 @@ return [
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
             'endpoint' => env('DYNAMODB_ENDPOINT'),
+=======
+            'connection' => 'default',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         ],
 
     ],
@@ -99,6 +119,10 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),
+=======
+    'prefix' => 'laravel',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 ];

@@ -34,7 +34,11 @@ class FeatureMatcherTest extends \Hamcrest\AbstractMatcherTest
 
     private $_resultMatcher;
 
+<<<<<<< HEAD
     protected function setUp()
+=======
+    public function setUp()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->_resultMatcher = $this->_resultMatcher();
     }

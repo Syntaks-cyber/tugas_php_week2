@@ -33,10 +33,13 @@ class Foo{function foo(){}
     public function blaz($x, $y)
     {
     }
+<<<<<<< HEAD
 
     public function buzz($foo)
     {
         echo "${foo}";
         return true;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

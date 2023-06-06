@@ -18,8 +18,11 @@ namespace Symfony\Component\HttpFoundation;
  */
 class IpUtils
 {
+<<<<<<< HEAD
     private static $checkedIps = [];
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * This class should not be instantiated.
      */
@@ -30,6 +33,7 @@ class IpUtils
     /**
      * Checks if an IPv4 or IPv6 address is contained in the list of given IPs or subnets.
      *
+<<<<<<< HEAD
      * @param string|array $ips List of IPs or subnets (can be a string if only a single one)
      *
      * @return bool
@@ -44,6 +48,17 @@ class IpUtils
 
         if (!\is_array($ips)) {
             $ips = [$ips];
+=======
+     * @param string       $requestIp IP to check
+     * @param string|array $ips       List of IPs or subnets (can be a string if only a single one)
+     *
+     * @return bool Whether the IP is valid
+     */
+    public static function checkIp($requestIp, $ips)
+    {
+        if (!is_array($ips)) {
+            $ips = array($ips);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $method = substr_count($requestIp, ':') > 1 ? 'checkIp6' : 'checkIp4';
@@ -61,6 +76,7 @@ class IpUtils
      * Compares two IPv4 addresses.
      * In case a subnet is given, it checks if it contains the request IP.
      *
+<<<<<<< HEAD
      * @param string $ip IPv4 address or subnet in CIDR notation
      *
      * @return bool Whether the request IP matches the IP, or whether the request IP is within the CIDR subnet
@@ -91,17 +107,40 @@ class IpUtils
 
             if ($netmask < 0 || $netmask > 32) {
                 return self::$checkedIps[$cacheKey] = false;
+=======
+     * @param string $requestIp IPv4 address to check
+     * @param string $ip        IPv4 address or subnet in CIDR notation
+     *
+     * @return bool Whether the request IP matches the IP, or whether the request IP is within the CIDR subnet
+     */
+    public static function checkIp4($requestIp, $ip)
+    {
+        if (false !== strpos($ip, '/')) {
+            list($address, $netmask) = explode('/', $ip, 2);
+
+            if ($netmask === '0') {
+                // Ensure IP is valid - using ip2long below implicitly validates, but we need to do it manually here
+                return filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+            }
+
+            if ($netmask < 0 || $netmask > 32) {
+                return false;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
         } else {
             $address = $ip;
             $netmask = 32;
         }
 
+<<<<<<< HEAD
         if (false === ip2long($address)) {
             return self::$checkedIps[$cacheKey] = false;
         }
 
         return self::$checkedIps[$cacheKey] = 0 === substr_compare(sprintf('%032b', ip2long($requestIp)), sprintf('%032b', ip2long($address)), 0, $netmask);
+=======
+        return 0 === substr_compare(sprintf('%032b', ip2long($requestIp)), sprintf('%032b', ip2long($address)), 0, $netmask);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -112,6 +151,7 @@ class IpUtils
      *
      * @see https://github.com/dsp/v6tools
      *
+<<<<<<< HEAD
      * @param string $ip IPv6 address or subnet in CIDR notation
      *
      * @return bool
@@ -159,6 +199,28 @@ class IpUtils
                 return self::$checkedIps[$cacheKey] = false;
             }
 
+=======
+     * @param string $requestIp IPv6 address to check
+     * @param string $ip        IPv6 address or subnet in CIDR notation
+     *
+     * @return bool Whether the IP is valid
+     *
+     * @throws \RuntimeException When IPV6 support is not enabled
+     */
+    public static function checkIp6($requestIp, $ip)
+    {
+        if (!((extension_loaded('sockets') && defined('AF_INET6')) || @inet_pton('::1'))) {
+            throw new \RuntimeException('Unable to check Ipv6. Check that PHP was not compiled with option "disable-ipv6".');
+        }
+
+        if (false !== strpos($ip, '/')) {
+            list($address, $netmask) = explode('/', $ip, 2);
+
+            if ($netmask < 1 || $netmask > 128) {
+                return false;
+            }
+        } else {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $address = $ip;
             $netmask = 128;
         }
@@ -167,12 +229,17 @@ class IpUtils
         $bytesTest = unpack('n*', @inet_pton($requestIp));
 
         if (!$bytesAddr || !$bytesTest) {
+<<<<<<< HEAD
             return self::$checkedIps[$cacheKey] = false;
+=======
+            return false;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         for ($i = 1, $ceil = ceil($netmask / 16); $i <= $ceil; ++$i) {
             $left = $netmask - 16 * ($i - 1);
             $left = ($left <= 16) ? $left : 16;
+<<<<<<< HEAD
             $mask = ~(0xFFFF >> $left) & 0xFFFF;
             if (($bytesAddr[$i] & $mask) != ($bytesTest[$i] & $mask)) {
                 return self::$checkedIps[$cacheKey] = false;
@@ -212,5 +279,14 @@ class IpUtils
         }
 
         return $ip;
+=======
+            $mask = ~(0xffff >> $left) & 0xffff;
+            if (($bytesAddr[$i] & $mask) != ($bytesTest[$i] & $mask)) {
+                return false;
+            }
+        }
+
+        return true;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

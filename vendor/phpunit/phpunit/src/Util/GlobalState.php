@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Util;
 
 use function array_keys;
@@ -63,6 +68,47 @@ final class GlobalState
     public static function processIncludedFilesAsString(array $files): string
     {
         $blacklist = new Blacklist;
+=======
+
+/**
+ * @since Class available since Release 3.4.0
+ */
+class PHPUnit_Util_GlobalState
+{
+    /**
+     * @var array
+     */
+    protected static $superGlobalArrays = array(
+      '_ENV',
+      '_POST',
+      '_GET',
+      '_COOKIE',
+      '_SERVER',
+      '_FILES',
+      '_REQUEST'
+    );
+
+    /**
+     * @var array
+     */
+    protected static $superGlobalArraysLong = array(
+      'HTTP_ENV_VARS',
+      'HTTP_POST_VARS',
+      'HTTP_GET_VARS',
+      'HTTP_COOKIE_VARS',
+      'HTTP_SERVER_VARS',
+      'HTTP_POST_FILES'
+    );
+
+    public static function getIncludedFilesAsString()
+    {
+        return static::processIncludedFilesAsString(get_included_files());
+    }
+
+    public static function processIncludedFilesAsString(array $files)
+    {
+        $blacklist = new PHPUnit_Util_Blacklist;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $prefix    = false;
         $result    = '';
 
@@ -70,6 +116,7 @@ final class GlobalState
             $prefix = 'phar://' . __PHPUNIT_PHAR__ . '/';
         }
 
+<<<<<<< HEAD
         // Do not process bootstrap script
         array_shift($files);
 
@@ -86,6 +133,11 @@ final class GlobalState
                 continue;
             }
 
+=======
+        for ($i = count($files) - 1; $i > 0; $i--) {
+            $file = $files[$i];
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             if ($prefix !== false && strpos($file, $prefix) === 0) {
                 continue;
             }
@@ -103,6 +155,7 @@ final class GlobalState
         return $result;
     }
 
+<<<<<<< HEAD
     public static function getIniSettingsAsString(): string
     {
         $result = '';
@@ -112,13 +165,29 @@ final class GlobalState
                 '@ini_set(%s, %s);' . "\n",
                 self::exportVariable($key),
                 self::exportVariable((string) $value)
+=======
+    public static function getIniSettingsAsString()
+    {
+        $result      = '';
+        $iniSettings = ini_get_all(null, false);
+
+        foreach ($iniSettings as $key => $value) {
+            $result .= sprintf(
+                '@ini_set(%s, %s);' . "\n",
+                self::exportVariable($key),
+                self::exportVariable($value)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             );
         }
 
         return $result;
     }
 
+<<<<<<< HEAD
     public static function getConstantsAsString(): string
+=======
+    public static function getConstantsAsString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $constants = get_defined_constants(true);
         $result    = '';
@@ -137,12 +206,23 @@ final class GlobalState
         return $result;
     }
 
+<<<<<<< HEAD
     public static function getGlobalsAsString(): string
     {
         $result = '';
 
         foreach (self::SUPER_GLOBAL_ARRAYS as $superGlobalArray) {
             if (isset($GLOBALS[$superGlobalArray]) && is_array($GLOBALS[$superGlobalArray])) {
+=======
+    public static function getGlobalsAsString()
+    {
+        $result            = '';
+        $superGlobalArrays = self::getSuperGlobalArrays();
+
+        foreach ($superGlobalArrays as $superGlobalArray) {
+            if (isset($GLOBALS[$superGlobalArray]) &&
+                is_array($GLOBALS[$superGlobalArray])) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 foreach (array_keys($GLOBALS[$superGlobalArray]) as $key) {
                     if ($GLOBALS[$superGlobalArray][$key] instanceof Closure) {
                         continue;
@@ -158,11 +238,19 @@ final class GlobalState
             }
         }
 
+<<<<<<< HEAD
         $blacklist   = self::SUPER_GLOBAL_ARRAYS;
         $blacklist[] = 'GLOBALS';
 
         foreach (array_keys($GLOBALS) as $key) {
             if (!$GLOBALS[$key] instanceof Closure && !in_array($key, $blacklist, true)) {
+=======
+        $blacklist   = $superGlobalArrays;
+        $blacklist[] = 'GLOBALS';
+
+        foreach (array_keys($GLOBALS) as $key) {
+            if (!in_array($key, $blacklist) && !$GLOBALS[$key] instanceof Closure) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 $result .= sprintf(
                     '$GLOBALS[\'%s\'] = %s;' . "\n",
                     $key,
@@ -174,6 +262,7 @@ final class GlobalState
         return $result;
     }
 
+<<<<<<< HEAD
     private static function exportVariable($variable): string
     {
         if (is_scalar($variable) || $variable === null ||
@@ -185,17 +274,52 @@ final class GlobalState
     }
 
     private static function arrayOnlyContainsScalars(array $array): bool
+=======
+    protected static function getSuperGlobalArrays()
+    {
+        if (ini_get('register_long_arrays') == '1') {
+            return array_merge(
+                self::$superGlobalArrays,
+                self::$superGlobalArraysLong
+            );
+        } else {
+            return self::$superGlobalArrays;
+        }
+    }
+
+    protected static function exportVariable($variable)
+    {
+        if (is_scalar($variable) || is_null($variable) ||
+           (is_array($variable) && self::arrayOnlyContainsScalars($variable))) {
+            return var_export($variable, true);
+        }
+
+        return 'unserialize(' .
+                var_export(serialize($variable), true) .
+                ')';
+    }
+
+    protected static function arrayOnlyContainsScalars(array $array)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $result = true;
 
         foreach ($array as $element) {
             if (is_array($element)) {
                 $result = self::arrayOnlyContainsScalars($element);
+<<<<<<< HEAD
             } elseif (!is_scalar($element) && $element !== null) {
                 $result = false;
             }
 
             if (!$result) {
+=======
+            } elseif (!is_scalar($element) && !is_null($element)) {
+                $result = false;
+            }
+
+            if ($result === false) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 break;
             }
         }

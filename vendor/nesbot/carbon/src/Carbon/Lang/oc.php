@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Quentí
@@ -56,12 +61,41 @@ return [
     'diff_yesterday_regexp' => 'Ièr(?:\\s+a)?',
     'diff_tomorrow' => 'deman',
     'diff_tomorrow_regexp' => 'Deman(?:\\s+a)?',
+=======
+\Symfony\Component\Translation\PluralizationRules::set(function ($number) {
+    return $number == 1 ? 0 : 1;
+}, 'oc');
+
+return array(
+    'year' => ':count an|:count ans',
+    'y' => ':count an|:count ans',
+    'month' => ':count mes|:count meses',
+    'm' => ':count mes|:count meses',
+    'week' => ':count setmana|:count setmanas',
+    'w' => ':count setmana|:count setmanas',
+    'day' => ':count jorn|:count jorns',
+    'd' => ':count jorn|:count jorns',
+    'hour' => ':count ora|:count oras',
+    'h' => ':count ora|:count oras',
+    'minute' => ':count minuta|:count minutas',
+    'min' => ':count minuta|:count minutas',
+    'second' => ':count segonda|:count segondas',
+    's' => ':count segonda|:count segondas',
+    'ago' => 'fa :time',
+    'from_now' => 'dins :time',
+    'after' => ':time aprèp',
+    'before' => ':time abans',
+    'diff_now' => 'ara meteis',
+    'diff_yesterday' => 'ièr',
+    'diff_tomorrow' => 'deman',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'diff_before_yesterday' => 'ièr delà',
     'diff_after_tomorrow' => 'deman passat',
     'period_recurrences' => ':count còp|:count còps',
     'period_interval' => 'cada :interval',
     'period_start_date' => 'de :date',
     'period_end_date' => 'fins a :date',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'H:mm',
         'LTS' => 'H:mm:ss',
@@ -98,3 +132,6 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' e '],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

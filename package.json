@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "private": true,
     "scripts": {
         "dev": "npm run development",
@@ -22,4 +23,14 @@
         "sass-loader": "^8.0.0",
         "vue-template-compiler": "^2.7.14"
     }
+=======
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "laravel-elixir": "^4.0.0",
+    "bootstrap-sass": "^3.0.0"
+  }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -27,11 +27,21 @@ interface ResponseCacheStrategyInterface
 {
     /**
      * Adds a Response.
+<<<<<<< HEAD
+=======
+     *
+     * @param Response $response
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function add(Response $response);
 
     /**
      * Updates the Response HTTP headers based on the embedded Responses.
+<<<<<<< HEAD
+=======
+     *
+     * @param Response $response
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function update(Response $response);
 }

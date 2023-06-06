@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Dmitriy Shabanov
@@ -83,3 +88,25 @@ return [
     'meridiem' => ['эрталаб', 'кечаси'],
     'list' => [', ', ' ва '],
 ];
+=======
+return array(
+    'year' => ':count yil',
+    'y' => ':count yil',
+    'month' => ':count oy',
+    'm' => ':count oy',
+    'week' => ':count hafta',
+    'w' => ':count hafta',
+    'day' => ':count kun',
+    'd' => ':count kun',
+    'hour' => ':count soat',
+    'h' => ':count soat',
+    'minute' => ':count daqiqa',
+    'min' => ':count daq',
+    'second' => ':count soniya',
+    's' => ':count s',
+    'ago' => ':time avval',
+    'from_now' => ':time dan keyin',
+    'after' => ':time keyin',
+    'before' => ':time oldin',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

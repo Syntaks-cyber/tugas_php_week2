@@ -26,7 +26,11 @@ interface CacheWarmerInterface extends WarmableInterface
      * A warmer should return true if the cache can be
      * generated incrementally and on-demand.
      *
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return bool true if the warmer is optional, false otherwise
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function isOptional();
 }

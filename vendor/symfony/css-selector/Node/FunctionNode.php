@@ -25,6 +25,7 @@ use Symfony\Component\CssSelector\Parser\Token;
  */
 class FunctionNode extends AbstractNode
 {
+<<<<<<< HEAD
     private $selector;
     private $name;
     private $arguments;
@@ -33,18 +34,55 @@ class FunctionNode extends AbstractNode
      * @param Token[] $arguments
      */
     public function __construct(NodeInterface $selector, string $name, array $arguments = [])
+=======
+    /**
+     * @var NodeInterface
+     */
+    private $selector;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var Token[]
+     */
+    private $arguments;
+
+    /**
+     * @param NodeInterface $selector
+     * @param string        $name
+     * @param Token[]       $arguments
+     */
+    public function __construct(NodeInterface $selector, $name, array $arguments = array())
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->selector = $selector;
         $this->name = strtolower($name);
         $this->arguments = $arguments;
     }
 
+<<<<<<< HEAD
     public function getSelector(): NodeInterface
+=======
+    /**
+     * @return NodeInterface
+     */
+    public function getSelector()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector;
     }
 
+<<<<<<< HEAD
     public function getName(): string
+=======
+    /**
+     * @return string
+     */
+    public function getName()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->name;
     }
@@ -52,7 +90,11 @@ class FunctionNode extends AbstractNode
     /**
      * @return Token[]
      */
+<<<<<<< HEAD
     public function getArguments(): array
+=======
+    public function getArguments()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->arguments;
     }
@@ -60,12 +102,23 @@ class FunctionNode extends AbstractNode
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getSpecificity(): Specificity
+=======
+    public function getSpecificity()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector->getSpecificity()->plus(new Specificity(0, 1, 0));
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $arguments = implode(', ', array_map(function (Token $token) {
             return "'".$token->getValue()."'";

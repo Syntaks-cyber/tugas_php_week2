@@ -13,7 +13,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+<<<<<<< HEAD
         //
+=======
+        // Commands\Inspire::class,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     ];
 
     /**
@@ -24,6 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+<<<<<<< HEAD
         // $schedule->command('inspire')->hourly();
     }
 
@@ -37,5 +42,9 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
+=======
+        // $schedule->command('inspire')
+        //          ->hourly();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

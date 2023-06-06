@@ -11,10 +11,19 @@
 
 namespace Symfony\Component\HttpKernel\Controller;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
+=======
+use Symfony\Component\Stopwatch\Stopwatch;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * TraceableControllerResolver.
+ *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class TraceableControllerResolver implements ControllerResolverInterface
@@ -22,6 +31,15 @@ class TraceableControllerResolver implements ControllerResolverInterface
     private $resolver;
     private $stopwatch;
 
+<<<<<<< HEAD
+=======
+    /**
+     * Constructor.
+     *
+     * @param ControllerResolverInterface $resolver  A ControllerResolverInterface instance
+     * @param Stopwatch                   $stopwatch A Stopwatch instance
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function __construct(ControllerResolverInterface $resolver, Stopwatch $stopwatch)
     {
         $this->resolver = $resolver;
@@ -41,4 +59,21 @@ class TraceableControllerResolver implements ControllerResolverInterface
 
         return $ret;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getArguments(Request $request, $controller)
+    {
+        $e = $this->stopwatch->start('controller.get_arguments');
+
+        $ret = $this->resolver->getArguments($request, $controller);
+
+        $e->stop();
+
+        return $ret;
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

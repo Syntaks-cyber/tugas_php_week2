@@ -25,7 +25,11 @@ class Profile
     /**
      * @var DataCollectorInterface[]
      */
+<<<<<<< HEAD
     private $collectors = [];
+=======
+    private $collectors = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     private $ip;
     private $method;
@@ -41,14 +45,34 @@ class Profile
     /**
      * @var Profile[]
      */
+<<<<<<< HEAD
     private $children = [];
 
     public function __construct(string $token)
+=======
+    private $children = array();
+
+    /**
+     * Constructor.
+     *
+     * @param string $token The token
+     */
+    public function __construct($token)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->token = $token;
     }
 
+<<<<<<< HEAD
     public function setToken(string $token)
+=======
+    /**
+     * Sets the token.
+     *
+     * @param string $token The token
+     */
+    public function setToken($token)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->token = $token;
     }
@@ -56,7 +80,11 @@ class Profile
     /**
      * Gets the token.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string The token
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getToken()
     {
@@ -65,8 +93,15 @@ class Profile
 
     /**
      * Sets the parent token.
+<<<<<<< HEAD
      */
     public function setParent(self $parent)
+=======
+     *
+     * @param Profile $parent The parent Profile
+     */
+    public function setParent(Profile $parent)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->parent = $parent;
     }
@@ -74,7 +109,11 @@ class Profile
     /**
      * Returns the parent profile.
      *
+<<<<<<< HEAD
      * @return self|null
+=======
+     * @return Profile The parent profile
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getParent()
     {
@@ -84,7 +123,11 @@ class Profile
     /**
      * Returns the parent token.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return null|string The parent token
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getParentToken()
     {
@@ -94,14 +137,27 @@ class Profile
     /**
      * Returns the IP.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string The IP
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getIp()
     {
         return $this->ip;
     }
 
+<<<<<<< HEAD
     public function setIp(?string $ip)
+=======
+    /**
+     * Sets the IP.
+     *
+     * @param string $ip
+     */
+    public function setIp($ip)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->ip = $ip;
     }
@@ -109,14 +165,22 @@ class Profile
     /**
      * Returns the request method.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string The request method
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getMethod()
     {
         return $this->method;
     }
 
+<<<<<<< HEAD
     public function setMethod(string $method)
+=======
+    public function setMethod($method)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->method = $method;
     }
@@ -124,19 +188,28 @@ class Profile
     /**
      * Returns the URL.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string The URL
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getUrl()
     {
         return $this->url;
     }
 
+<<<<<<< HEAD
     public function setUrl(?string $url)
+=======
+    public function setUrl($url)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->url = $url;
     }
 
     /**
+<<<<<<< HEAD
      * @return int
      */
     public function getTime()
@@ -145,17 +218,44 @@ class Profile
     }
 
     public function setTime(int $time)
+=======
+     * Returns the time.
+     *
+     * @return string The time
+     */
+    public function getTime()
+    {
+        if (null === $this->time) {
+            return 0;
+        }
+
+        return $this->time;
+    }
+
+    public function setTime($time)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->time = $time;
     }
 
+<<<<<<< HEAD
     public function setStatusCode(int $statusCode)
+=======
+    /**
+     * @param int $statusCode
+     */
+    public function setStatusCode($statusCode)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->statusCode = $statusCode;
     }
 
     /**
+<<<<<<< HEAD
      * @return int|null
+=======
+     * @return int
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getStatusCode()
     {
@@ -165,7 +265,11 @@ class Profile
     /**
      * Finds children profilers.
      *
+<<<<<<< HEAD
      * @return self[]
+=======
+     * @return Profile[] An array of Profile
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getChildren()
     {
@@ -175,11 +279,19 @@ class Profile
     /**
      * Sets children profiler.
      *
+<<<<<<< HEAD
      * @param Profile[] $children
      */
     public function setChildren(array $children)
     {
         $this->children = [];
+=======
+     * @param Profile[] $children An array of Profile
+     */
+    public function setChildren(array $children)
+    {
+        $this->children = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         foreach ($children as $child) {
             $this->addChild($child);
         }
@@ -187,13 +299,21 @@ class Profile
 
     /**
      * Adds the child token.
+<<<<<<< HEAD
      */
     public function addChild(self $child)
+=======
+     *
+     * @param Profile $child The child Profile
+     */
+    public function addChild(Profile $child)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->children[] = $child;
         $child->setParent($this);
     }
 
+<<<<<<< HEAD
     public function getChildByToken(string $token): ?self
     {
         foreach ($this->children as $child) {
@@ -213,6 +333,18 @@ class Profile
      * @throws \InvalidArgumentException if the collector does not exist
      */
     public function getCollector(string $name)
+=======
+    /**
+     * Gets a Collector by name.
+     *
+     * @param string $name A collector name
+     *
+     * @return DataCollectorInterface A DataCollectorInterface instance
+     *
+     * @throws \InvalidArgumentException if the collector does not exist
+     */
+    public function getCollector($name)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!isset($this->collectors[$name])) {
             throw new \InvalidArgumentException(sprintf('Collector "%s" does not exist.', $name));
@@ -238,7 +370,11 @@ class Profile
      */
     public function setCollectors(array $collectors)
     {
+<<<<<<< HEAD
         $this->collectors = [];
+=======
+        $this->collectors = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         foreach ($collectors as $collector) {
             $this->addCollector($collector);
         }
@@ -246,6 +382,11 @@ class Profile
 
     /**
      * Adds a Collector.
+<<<<<<< HEAD
+=======
+     *
+     * @param DataCollectorInterface $collector A DataCollectorInterface instance
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function addCollector(DataCollectorInterface $collector)
     {
@@ -253,18 +394,34 @@ class Profile
     }
 
     /**
+<<<<<<< HEAD
      * @return bool
      */
     public function hasCollector(string $name)
+=======
+     * Returns true if a Collector for the given name exists.
+     *
+     * @param string $name A collector name
+     *
+     * @return bool
+     */
+    public function hasCollector($name)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return isset($this->collectors[$name]);
     }
 
+<<<<<<< HEAD
     /**
      * @return array
      */
     public function __sleep()
     {
         return ['token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time', 'statusCode'];
+=======
+    public function __sleep()
+    {
+        return array('token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

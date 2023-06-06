@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 == Version 2.0.1: Released Jul 09 2020 ==
 
 * Added support for PHP 8
@@ -8,6 +9,8 @@
 * Removed automatic loading of global functions
 
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 == Version 1.1.0: Released Feb 2 2012 ==
 
 Issues Fixed: 121, 138, 147

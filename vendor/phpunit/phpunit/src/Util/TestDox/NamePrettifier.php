@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Util\TestDox;
 
 use function array_key_exists;
@@ -66,10 +71,35 @@ final class NamePrettifier
     {
         $this->useColor = $useColor;
     }
+=======
+
+/**
+ * Prettifies class and method names for use in TestDox documentation.
+ *
+ * @since Class available since Release 2.1.0
+ */
+class PHPUnit_Util_TestDox_NamePrettifier
+{
+    /**
+     * @var string
+     */
+    protected $prefix = 'Test';
+
+    /**
+     * @var string
+     */
+    protected $suffix = 'Test';
+
+    /**
+     * @var array
+     */
+    protected $strings = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Prettifies the name of a test class.
      *
+<<<<<<< HEAD
      * @psalm-param class-string $className
      */
     public function prettifyTestClass(string $className): string
@@ -166,10 +196,36 @@ final class NamePrettifier
         }
 
         return $data;
+=======
+     * @param string $name
+     *
+     * @return string
+     */
+    public function prettifyTestClass($name)
+    {
+        $title = $name;
+
+        if ($this->suffix !== null &&
+            $this->suffix == substr($name, -1 * strlen($this->suffix))) {
+            $title = substr($title, 0, strripos($title, $this->suffix));
+        }
+
+        if ($this->prefix !== null &&
+            $this->prefix == substr($name, 0, strlen($this->prefix))) {
+            $title = substr($title, strlen($this->prefix));
+        }
+
+        if (substr($title, 0, 1) == '\\') {
+            $title = substr($title, 1);
+        }
+
+        return $title;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Prettifies the name of a test method.
+<<<<<<< HEAD
      */
     public function prettifyTestMethod(string $name): string
     {
@@ -197,22 +253,63 @@ final class NamePrettifier
             return $buffer;
         }
 
+=======
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    public function prettifyTestMethod($name)
+    {
+        $buffer = '';
+
+        if (!is_string($name) || strlen($name) == 0) {
+            return $buffer;
+        }
+
+        $string = preg_replace('#\d+$#', '', $name, -1, $count);
+
+        if (in_array($string, $this->strings)) {
+            $name = $string;
+        } elseif ($count == 0) {
+            $this->strings[] = $string;
+        }
+
+        if (substr($name, 0, 4) == 'test') {
+            $name = substr($name, 4);
+        }
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $name[0] = strtoupper($name[0]);
 
         if (strpos($name, '_') !== false) {
             return trim(str_replace('_', ' ', $name));
         }
 
+<<<<<<< HEAD
         $wasNumeric = false;
 
         foreach (range(0, strlen($name) - 1) as $i) {
             if ($i > 0 && ord($name[$i]) >= 65 && ord($name[$i]) <= 90) {
+=======
+        $max        = strlen($name);
+        $wasNumeric = false;
+
+        for ($i = 0; $i < $max; $i++) {
+            if ($i > 0 &&
+                ord($name[$i]) >= 65 &&
+                ord($name[$i]) <= 90) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 $buffer .= ' ' . strtolower($name[$i]);
             } else {
                 $isNumeric = is_numeric($name[$i]);
 
                 if (!$wasNumeric && $isNumeric) {
+<<<<<<< HEAD
                     $buffer .= ' ';
+=======
+                    $buffer    .= ' ';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                     $wasNumeric = true;
                 }
 
@@ -228,6 +325,7 @@ final class NamePrettifier
     }
 
     /**
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     private function mapTestMethodParameterNamesToProvidedDataValues(TestCase $test): array
@@ -304,5 +402,24 @@ final class NamePrettifier
         }
 
         return $providedData;
+=======
+     * Sets the prefix of test names.
+     *
+     * @param string $prefix
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+    }
+
+    /**
+     * Sets the suffix of test names.
+     *
+     * @param string $suffix
+     */
+    public function setSuffix($suffix)
+    {
+        $this->suffix = $suffix;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

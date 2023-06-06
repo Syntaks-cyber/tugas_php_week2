@@ -1,8 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 use Mockery\Matcher\AndAnyOtherArgs;
 use Mockery\Matcher\AnyArgs;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /**
  * Mockery
  *
@@ -23,20 +26,33 @@ use Mockery\Matcher\AnyArgs;
  */
 
 if (!function_exists("mock")) {
+<<<<<<< HEAD
     function mock(...$args)
     {
         return Mockery::mock(...$args);
+=======
+    function mock()
+    {
+        return call_user_func_array(array('Mockery', 'mock'), func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }
 
 if (!function_exists("spy")) {
+<<<<<<< HEAD
     function spy(...$args)
     {
         return Mockery::spy(...$args);
+=======
+    function spy()
+    {
+        return call_user_func_array(array('Mockery', 'spy'), func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }
 
 if (!function_exists("namedMock")) {
+<<<<<<< HEAD
     function namedMock(...$args)
     {
         return Mockery::namedMock(...$args);
@@ -61,5 +77,10 @@ if (!function_exists("andAnyOthers")) {
     function andAnyOthers()
     {
         return new AndAnyOtherArgs();
+=======
+    function namedMock()
+    {
+        return call_user_func_array(array('Mockery', 'namedMock'), func_get_args());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

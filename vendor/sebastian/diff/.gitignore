@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 /.idea
 /composer.lock
 /vendor
 /.php_cs.cache
 /.phpunit.result.cache
 /from.txt.orig
+=======
+.idea
+phpunit.xml
+composer.lock
+composer.phar
+vendor/
+cache.properties
+build/SebastianBergmann
+build/LICENSE
+build/README.md
+build/*.tgz
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

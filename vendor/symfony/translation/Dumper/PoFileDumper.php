@@ -23,7 +23,11 @@ class PoFileDumper extends FileDumper
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+=======
+    public function formatCatalogue(MessageCatalogue $messages, $domain, array $options = [])
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $output = 'msgid ""'."\n";
         $output .= 'msgstr ""'."\n";
@@ -39,6 +43,7 @@ class PoFileDumper extends FileDumper
             } else {
                 $newLine = true;
             }
+<<<<<<< HEAD
             $metadata = $messages->getMetadata($source, $domain);
 
             if (isset($metadata['comments'])) {
@@ -63,11 +68,16 @@ class PoFileDumper extends FileDumper
                 $output .= sprintf('msgid "%s"'."\n", $this->escape($source));
                 $output .= sprintf('msgstr "%s"'."\n", $this->escape($target));
             }
+=======
+            $output .= sprintf('msgid "%s"'."\n", $this->escape($source));
+            $output .= sprintf('msgstr "%s"'."\n", $this->escape($target));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $output;
     }
 
+<<<<<<< HEAD
     private function getStandardRules(string $id)
     {
         // Partly copied from TranslatorTrait::trans.
@@ -111,6 +121,8 @@ EOF;
         return $standardRules;
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * {@inheritdoc}
      */
@@ -119,6 +131,7 @@ EOF;
         return 'po';
     }
 
+<<<<<<< HEAD
     private function escape(string $str): string
     {
         return addcslashes($str, "\0..\37\42\134");
@@ -134,4 +147,10 @@ EOF;
 
         return $output;
     }
+=======
+    private function escape($str)
+    {
+        return addcslashes($str, "\0..\37\42\134");
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -25,6 +26,13 @@ use Mockery\Reflector;
 class Method
 {
     /** @var \ReflectionMethod */
+=======
+
+namespace Mockery\Generator;
+
+class Method
+{
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     private $method;
 
     public function __construct(\ReflectionMethod $method)
@@ -37,21 +45,46 @@ class Method
         return call_user_func_array(array($this->method, $method), $args);
     }
 
+<<<<<<< HEAD
     /**
      * @return Parameter[]
      */
     public function getParameters()
     {
         return array_map(function (\ReflectionParameter $parameter) {
+=======
+    public function getParameters()
+    {
+        return array_map(function ($parameter) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             return new Parameter($parameter);
         }, $this->method->getParameters());
     }
 
+<<<<<<< HEAD
     /**
      * @return string|null
      */
     public function getReturnType()
     {
         return Reflector::getReturnType($this->method);
+=======
+    public function getReturnType()
+    {
+        if (version_compare(PHP_VERSION, '7.0.0-dev') >= 0 && $this->method->hasReturnType()) {
+            $returnType = (string) $this->method->getReturnType();
+
+            if ('self' === $returnType) {
+                $returnType = "\\".$this->method->getDeclaringClass()->getName();
+            }
+
+            if (version_compare(PHP_VERSION, '7.1.0-dev') >= 0 && $this->method->getReturnType()->allowsNull()) {
+                $returnType = '?'.$returnType;
+            }
+
+            return $returnType;
+        }
+        return '';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

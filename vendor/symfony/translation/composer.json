@@ -1,7 +1,11 @@
 {
     "name": "symfony/translation",
     "type": "library",
+<<<<<<< HEAD
     "description": "Provides tools to internationalize your application",
+=======
+    "description": "Symfony Translation Component",
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     "keywords": [],
     "homepage": "https://symfony.com",
     "license": "MIT",
@@ -16,6 +20,7 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.2.5",
         "symfony/deprecation-contracts": "^2.1|^3",
         "symfony/polyfill-mbstring": "~1.0",
@@ -45,6 +50,25 @@
     },
     "provide": {
         "symfony/translation-implementation": "2.3"
+=======
+        "php": "^5.5.9|>=7.0.8",
+        "symfony/polyfill-mbstring": "~1.0"
+    },
+    "require-dev": {
+        "symfony/config": "~2.8|~3.0|~4.0",
+        "symfony/dependency-injection": "~3.4|~4.0",
+        "symfony/http-kernel": "~3.4|~4.0",
+        "symfony/intl": "^2.8.18|^3.2.5|~4.0",
+        "symfony/var-dumper": "~3.4|~4.0",
+        "symfony/yaml": "~3.4|~4.0",
+        "symfony/finder": "~2.8|~3.0|~4.0",
+        "psr/log": "~1.0"
+    },
+    "conflict": {
+        "symfony/config": "<2.8",
+        "symfony/dependency-injection": "<3.4",
+        "symfony/yaml": "<3.4"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     },
     "suggest": {
         "symfony/config": "",
@@ -52,7 +76,10 @@
         "psr/log-implementation": "To use logging capability in translator"
     },
     "autoload": {
+<<<<<<< HEAD
         "files": [ "Resources/functions.php" ],
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         "psr-4": { "Symfony\\Component\\Translation\\": "" },
         "exclude-from-classmap": [
             "/Tests/"

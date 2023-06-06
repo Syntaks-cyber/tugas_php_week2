@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -22,6 +26,10 @@ namespace Mockery;
 
 class Configuration
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Boolean assertion of whether we can mock methods which do not actually
      * exist for the given class or object (ignored for unreal mocks)
@@ -47,6 +55,7 @@ class Configuration
      */
     protected $_internalClassParamMap = array();
 
+<<<<<<< HEAD
     protected $_constantsMap = array();
 
     /**
@@ -61,6 +70,12 @@ class Configuration
      * Set boolean to allow/prevent mocking of non-existent methods
      *
      * @param bool $flag
+=======
+    /**
+     * Set boolean to allow/prevent mocking of non-existent methods
+     *
+     * @param bool
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function allowMockingNonExistentMethods($flag = true)
     {
@@ -78,6 +93,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * @deprecated
      *
      * Set boolean to allow/prevent unnecessary mocking of methods
@@ -88,6 +104,14 @@ class Configuration
     {
         trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
 
+=======
+     * Set boolean to allow/prevent unnecessary mocking of methods
+     *
+     * @param bool
+     */
+    public function allowMockingMethodsUnnecessarily($flag = true)
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->_allowMockingMethodsUnnecessarily = (bool) $flag;
     }
 
@@ -98,8 +122,11 @@ class Configuration
      */
     public function mockingMethodsUnnecessarilyAllowed()
     {
+<<<<<<< HEAD
         trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return $this->_allowMockingMethodsUnnecessarily;
     }
 
@@ -113,10 +140,13 @@ class Configuration
      */
     public function setInternalClassMethodParamMap($class, $method, array $map)
     {
+<<<<<<< HEAD
         if (\PHP_MAJOR_VERSION > 7) {
             throw new \LogicException('Internal class parameter overriding is not available in PHP 8. Incompatible signatures have been reclassified as fatal errors.');
         }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if (!isset($this->_internalClassParamMap[strtolower($class)])) {
             $this->_internalClassParamMap[strtolower($class)] = array();
         }
@@ -124,7 +154,11 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Remove all overridden parameter maps from internal PHP classes.
+=======
+     * Remove all overriden parameter maps from internal PHP classes.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function resetInternalClassMethodParamMaps()
     {
@@ -134,7 +168,11 @@ class Configuration
     /**
      * Get the parameter map of an internal PHP class method
      *
+<<<<<<< HEAD
      * @return array|null
+=======
+     * @return array
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getInternalClassMethodParamMap($class, $method)
     {
@@ -147,6 +185,7 @@ class Configuration
     {
         return $this->_internalClassParamMap;
     }
+<<<<<<< HEAD
 
     public function setConstantsMap(array $map)
     {
@@ -191,4 +230,6 @@ class Configuration
     {
         return $this->_reflectionCacheEnabled;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

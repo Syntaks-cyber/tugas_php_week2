@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -22,6 +26,7 @@ namespace Mockery\Matcher;
 
 class Subset extends MatcherAbstract
 {
+<<<<<<< HEAD
     private $expected;
     private $strict = true;
 
@@ -54,6 +59,8 @@ class Subset extends MatcherAbstract
     {
         return new static($expected, false);
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Check if the actual value matches the expected.
@@ -63,6 +70,7 @@ class Subset extends MatcherAbstract
      */
     public function match(&$actual)
     {
+<<<<<<< HEAD
         if (!is_array($actual)) {
             return false;
         }
@@ -72,6 +80,17 @@ class Subset extends MatcherAbstract
         }
 
         return $actual == array_replace_recursive($actual, $this->expected);
+=======
+        foreach ($this->_expected as $k=>$v) {
+            if (!array_key_exists($k, $actual)) {
+                return false;
+            }
+            if ($actual[$k] !== $v) {
+                return false;
+            }
+        }
+        return true;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -83,7 +102,11 @@ class Subset extends MatcherAbstract
     {
         $return = '<Subset[';
         $elements = array();
+<<<<<<< HEAD
         foreach ($this->expected as $k=>$v) {
+=======
+        foreach ($this->_expected as $k=>$v) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $elements[] = $k . '=' . (string) $v;
         }
         $return .= implode(', ', $elements) . ']>';

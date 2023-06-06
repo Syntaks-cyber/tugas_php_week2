@@ -19,11 +19,20 @@ namespace Symfony\Component\Finder\Comparator;
 class DateComparator extends Comparator
 {
     /**
+<<<<<<< HEAD
+=======
+     * Constructor.
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param string $test A comparison string
      *
      * @throws \InvalidArgumentException If the test is not understood
      */
+<<<<<<< HEAD
     public function __construct(string $test)
+=======
+    public function __construct($test)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!preg_match('#^\s*(==|!=|[<>]=?|after|since|before|until)?\s*(.+?)\s*$#i', $test, $matches)) {
             throw new \InvalidArgumentException(sprintf('Don\'t understand "%s" as a date test.', $test));
@@ -36,7 +45,11 @@ class DateComparator extends Comparator
             throw new \InvalidArgumentException(sprintf('"%s" is not a valid date.', $matches[2]));
         }
 
+<<<<<<< HEAD
         $operator = $matches[1] ?? '==';
+=======
+        $operator = isset($matches[1]) ? $matches[1] : '==';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if ('since' === $operator || 'after' === $operator) {
             $operator = '>';
         }
@@ -45,6 +58,11 @@ class DateComparator extends Comparator
             $operator = '<';
         }
 
+<<<<<<< HEAD
         parent::__construct($target, $operator);
+=======
+        $this->setOperator($operator);
+        $this->setTarget($target);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

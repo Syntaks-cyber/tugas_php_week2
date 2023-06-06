@@ -15,10 +15,16 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+ * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
+ */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 namespace Mockery;
 
 interface ExpectationInterface
@@ -29,11 +35,16 @@ interface ExpectationInterface
     public function getOrderNumber();
 
     /**
+<<<<<<< HEAD
      * @return LegacyMockInterface|MockInterface
+=======
+     * @return MockInterface
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getMock();
 
     /**
+<<<<<<< HEAD
      * @param array ...$args
      * @return self
      */
@@ -43,4 +54,9 @@ interface ExpectationInterface
      * @return self
      */
     public function andReturns();
+=======
+     * @return self
+     */
+    public function andReturn();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

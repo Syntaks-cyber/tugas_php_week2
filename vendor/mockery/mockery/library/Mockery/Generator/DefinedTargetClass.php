@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -34,11 +35,32 @@ class DefinedTargetClass implements TargetClassInterface
     public static function factory($name, $alias = null)
     {
         return new self(new \ReflectionClass($name), $alias);
+=======
+
+namespace Mockery\Generator;
+
+class DefinedTargetClass
+{
+    private $rfc;
+
+    public function __construct(\ReflectionClass $rfc)
+    {
+        $this->rfc = $rfc;
+    }
+
+    public static function factory($name)
+    {
+        return new self(new \ReflectionClass($name));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function getName()
     {
+<<<<<<< HEAD
         return $this->name;
+=======
+        return $this->rfc->getName();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function isAbstract()

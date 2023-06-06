@@ -1,6 +1,7 @@
 language: php
 
 php:
+<<<<<<< HEAD
   - 7.0
   - 7.0snapshot
   - 7.1
@@ -21,3 +22,23 @@ script:
 
 notifications:
   email: false
+=======
+  - 5.3.3
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+
+sudo: false
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source --dev
+
+script: ./vendor/bin/phpunit
+
+notifications:
+  email: false
+  irc: "irc.freenode.org#phpunit"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

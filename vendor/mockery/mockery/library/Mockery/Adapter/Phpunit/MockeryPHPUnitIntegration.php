@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -28,20 +29,28 @@ if (class_exists('PHPUnit_Framework_TestCase') || version_compare(\PHPUnit\Runne
     class_alias(MockeryPHPUnitIntegrationAssertPostConditionsForV8::class, MockeryPHPUnitIntegrationAssertPostConditions::class);
 }
 
+=======
+namespace Mockery\Adapter\Phpunit;
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /**
  * Integrates Mockery into PHPUnit. Ensures Mockery expectations are verified
  * for each test and are included by the assertion counter.
  */
 trait MockeryPHPUnitIntegration
 {
+<<<<<<< HEAD
     use MockeryPHPUnitIntegrationAssertPostConditions;
 
     protected $mockeryOpen;
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Performs assertions shared by all tests of a test case. This method is
      * called before execution of a test ends and before the tearDown method.
      */
+<<<<<<< HEAD
     protected function mockeryAssertPostConditions()
     {
         $this->addMockeryExpectationsToAssertionCount();
@@ -92,5 +101,18 @@ trait MockeryPHPUnitIntegration
             // post conditions wasn't called, so test probably failed
             Mockery::close();
         }
+=======
+    protected function assertPostConditions()
+    {
+        parent::assertPostConditions();
+
+        // Add Mockery expectations to assertion count.
+        if (($container = \Mockery::getContainer()) !== null) {
+            $this->addToAssertionCount($container->mockery_getExpectationCount());
+        }
+
+        // Verify Mockery expectations.
+        \Mockery::close();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

@@ -1,7 +1,11 @@
 {
     "name": "symfony/http-kernel",
     "type": "library",
+<<<<<<< HEAD
     "description": "Provides a structured process for converting a Request into a Response",
+=======
+    "description": "Symfony HttpKernel Component",
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     "keywords": [],
     "homepage": "https://symfony.com",
     "license": "MIT",
@@ -16,6 +20,7 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.2.5",
         "symfony/deprecation-contracts": "^2.1|^3",
         "symfony/error-handler": "^4.4|^5.0|^6.0",
@@ -68,6 +73,42 @@
         "symfony/config": "",
         "symfony/console": "",
         "symfony/dependency-injection": ""
+=======
+        "php": ">=5.5.9",
+        "symfony/event-dispatcher": "~2.8|~3.0",
+        "symfony/http-foundation": "~2.8.8|~3.0.8|~3.1.2|~3.2",
+        "symfony/debug": "~2.8|~3.0",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "~2.8|~3.0",
+        "symfony/class-loader": "~2.8|~3.0",
+        "symfony/config": "~2.8|~3.0",
+        "symfony/console": "~2.8|~3.0",
+        "symfony/css-selector": "~2.8|~3.0",
+        "symfony/dependency-injection": "~2.8|~3.0",
+        "symfony/dom-crawler": "~2.8|~3.0",
+        "symfony/expression-language": "~2.8|~3.0",
+        "symfony/finder": "~2.8|~3.0",
+        "symfony/process": "~2.8|~3.0",
+        "symfony/routing": "~2.8|~3.0",
+        "symfony/stopwatch": "~2.8|~3.0",
+        "symfony/templating": "~2.8|~3.0",
+        "symfony/translation": "~2.8|~3.0",
+        "symfony/var-dumper": "~2.8|~3.0"
+    },
+    "conflict": {
+        "symfony/config": "<2.8"
+    },
+    "suggest": {
+        "symfony/browser-kit": "",
+        "symfony/class-loader": "",
+        "symfony/config": "",
+        "symfony/console": "",
+        "symfony/dependency-injection": "",
+        "symfony/finder": "",
+        "symfony/var-dumper": ""
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\HttpKernel\\": "" },
@@ -75,5 +116,14 @@
             "/Tests/"
         ]
     },
+<<<<<<< HEAD
     "minimum-stability": "dev"
+=======
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0-dev"
+        }
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

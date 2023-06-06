@@ -1,14 +1,22 @@
 <?php
 
+<<<<<<< HEAD
 /**
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
+=======
+/*
+ * This file is part of the Carbon package.
+ *
+ * (c) Ahmed Ali <ajaaibu@gmail.com>
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Ahmed Ali
@@ -40,6 +48,9 @@ $weekdays = [
 ];
 
 return [
+=======
+return array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'year' => '{0}އަހަރެއް|[1,Inf]:count އަހަރު',
     'y' => '{0}އަހަރެއް|[1,Inf]:count އަހަރު',
     'month' => '{0}މައްސަރެއް|[1,Inf]:count މަސް',
@@ -58,6 +69,7 @@ return [
     'from_now' => ':time ފަހުން',
     'after' => ':time ފަހުން',
     'before' => ':time ކުރި',
+<<<<<<< HEAD
     'diff_yesterday' => 'އިއްޔެ',
     'diff_today' => 'މިއަދު',
     'diff_tomorrow' => 'މާދަމާ',
@@ -85,3 +97,6 @@ return [
     'weekdays_min' => ['އާދި', 'ހޯމަ', 'އަން', 'ބުދަ', 'ބުރާ', 'ހުކު', 'ހޮނި'],
     'list' => [', ', ' އަދި '],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

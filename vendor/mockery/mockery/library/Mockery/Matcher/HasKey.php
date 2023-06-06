@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -22,6 +26,10 @@ namespace Mockery\Matcher;
 
 class HasKey extends MatcherAbstract
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Check if the actual value matches the expected.
      *
@@ -30,7 +38,11 @@ class HasKey extends MatcherAbstract
      */
     public function match(&$actual)
     {
+<<<<<<< HEAD
         return array_key_exists($this->_expected, $actual);
+=======
+        return in_array($this->_expected, array_keys($actual));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -40,6 +52,11 @@ class HasKey extends MatcherAbstract
      */
     public function __toString()
     {
+<<<<<<< HEAD
         return "<HasKey[$this->_expected]>";
+=======
+        $return = '<HasKey[' . (string) $this->_expected . ']>';
+        return $return;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

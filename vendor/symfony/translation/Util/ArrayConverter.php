@@ -31,7 +31,11 @@ class ArrayConverter
      *
      * @param array $messages Linear messages array
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array Tree-like messages array
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public static function expandToTree(array $messages)
     {
@@ -84,7 +88,11 @@ class ArrayConverter
         return $elem;
     }
 
+<<<<<<< HEAD
     private static function cancelExpand(array &$tree, string $prefix, array $node)
+=======
+    private static function cancelExpand(array &$tree, $prefix, array $node)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $prefix .= '.';
 

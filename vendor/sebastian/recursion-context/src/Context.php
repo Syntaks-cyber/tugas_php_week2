@@ -92,6 +92,7 @@ final class Context
             return $key;
         }
 
+<<<<<<< HEAD
         $key            = count($this->arrays);
         $this->arrays[] = &$array;
 
@@ -113,6 +114,11 @@ final class Context
         }
 
         return $key;
+=======
+        $this->arrays[] = &$array;
+
+        return count($this->arrays) - 1;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -136,9 +142,28 @@ final class Context
      */
     private function containsArray(array &$array)
     {
+<<<<<<< HEAD
         $end = array_slice($array, -2);
 
         return isset($end[1]) && $end[1] === $this->objects ? $end[0] : false;
+=======
+        $keys = array_keys($this->arrays, $array, true);
+        $hash = '_Key_' . microtime(true);
+
+        foreach ($keys as $key) {
+            $this->arrays[$key][$hash] = $hash;
+
+            if (isset($array[$hash]) && $array[$hash] === $hash) {
+                unset($this->arrays[$key][$hash]);
+
+                return $key;
+            }
+
+            unset($this->arrays[$key][$hash]);
+        }
+
+        return false;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -154,6 +179,7 @@ final class Context
 
         return false;
     }
+<<<<<<< HEAD
 
     public function __destruct()
     {
@@ -164,4 +190,6 @@ final class Context
             }
         }
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -6,7 +6,11 @@ Preserving Pass-By-Reference Method Parameter Behaviour
 
 PHP Class method may accept parameters by reference. In this case, changes
 made to the parameter (a reference to the original variable passed to the
+<<<<<<< HEAD
 method) are reflected in the original variable. An example:
+=======
+method) are reflected in the original variable. A simple example:
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 .. code-block:: php
 
@@ -26,11 +30,16 @@ method) are reflected in the original variable. An example:
 
     echo $baz; // will echo the integer 2
 
+<<<<<<< HEAD
 In the example above, the variable ``$baz`` is passed by reference to
+=======
+In the example above, the variable $baz is passed by reference to
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 ``Foo::bar()`` (notice the ``&`` symbol in front of the parameter?).  Any
 change ``bar()`` makes to the parameter reference is reflected in the original
 variable, ``$baz``.
 
+<<<<<<< HEAD
 Mockery handles references correctly for all methods where it can analyse
 the parameter (using ``Reflection``) to see if it is passed by reference. To
 mock how a reference is manipulated by the class method, we can use a closure
@@ -41,6 +50,18 @@ There is an exception for internal PHP classes where Mockery cannot analyse
 method parameters using ``Reflection`` (a limitation in PHP). To work around
 this, we can explicitly declare method parameters for an internal class using
 ``\Mockery\Configuration::setInternalClassMethodParamMap()``.
+=======
+Mockery 0.7+ handles references correctly for all methods where it can analyse
+the parameter (using ``Reflection``) to see if it is passed by reference. To
+mock how a reference is manipulated by the class method, you can use a closure
+argument matcher to manipulate it, i.e. ``\Mockery::on()`` - see the
+":doc:`argument_validation`" chapter.
+
+There is an exception for internal PHP classes where Mockery cannot analyse
+method parameters using ``Reflection`` (a limitation in PHP). To work around
+this, you can explicitly declare method parameters for an internal class using
+``/Mockery/Configuration::setInternalClassMethodParamMap()``.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 Here's an example using ``MongoCollection::insert()``. ``MongoCollection`` is
 an internal class offered by the mongo extension from PECL. Its ``insert()``
@@ -81,6 +102,7 @@ preserved:
 
         \Mockery::resetContainer();
     }
+<<<<<<< HEAD
 
 Protected Methods
 -----------------
@@ -128,3 +150,5 @@ This is quite an edge case, so we need to change the original code a little bit,
 by creating a public method that will call our protected method, and then mock
 that, instead of the protected method. This new public method will act as a
 proxy to our protected method.
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

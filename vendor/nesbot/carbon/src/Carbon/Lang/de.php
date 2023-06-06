@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Michael Hohl
@@ -46,6 +51,23 @@ return [
     'microsecond' => ':count Mikrosekunde|:count Mikrosekunden',
     'a_microsecond' => 'eine Mikrosekunde|:count Mikrosekunden',
     'µs' => ':countµs',
+=======
+return array(
+    'year' => ':count Jahr|:count Jahre',
+    'y' => ':countJ|:countJ',
+    'month' => ':count Monat|:count Monate',
+    'm' => ':countMon|:countMon',
+    'week' => ':count Woche|:count Wochen',
+    'w' => ':countWo|:countWo',
+    'day' => ':count Tag|:count Tage',
+    'd' => ':countTg|:countTg',
+    'hour' => ':count Stunde|:count Stunden',
+    'h' => ':countStd|:countStd',
+    'minute' => ':count Minute|:count Minuten',
+    'min' => ':countMin|:countMin',
+    'second' => ':count Sekunde|:count Sekunden',
+    's' => ':countSek|:countSek',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'ago' => 'vor :time',
     'from_now' => 'in :time',
     'after' => ':time später',
@@ -59,6 +81,7 @@ return [
     'month_ago' => ':count Monat|:count Monaten',
     'week_ago' => ':count Woche|:count Wochen',
     'day_ago' => ':count Tag|:count Tagen',
+<<<<<<< HEAD
     'a_year_from_now' => 'ein Jahr|:count Jahren',
     'a_month_from_now' => 'ein Monat|:count Monaten',
     'a_week_from_now' => 'eine Woche|:count Wochen',
@@ -115,3 +138,12 @@ return [
         'last' => 'letzten',
     ],
 ];
+=======
+
+    'diff_now' => 'Gerade eben',
+    'diff_yesterday' => 'Gestern',
+    'diff_tomorrow' => 'Heute',
+    'diff_before_yesterday' => 'Vorgestern',
+    'diff_after_tomorrow' => 'Übermorgen',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

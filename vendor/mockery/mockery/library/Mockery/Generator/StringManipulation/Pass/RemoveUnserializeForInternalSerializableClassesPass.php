@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,6 +18,8 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery\Generator\StringManipulation\Pass;
 
@@ -30,8 +33,12 @@ use Mockery\Generator\MockConfiguration;
  */
 class RemoveUnserializeForInternalSerializableClassesPass
 {
+<<<<<<< HEAD
     const DUMMY_METHOD_DEFINITION_LEGACY = 'public function unserialize($string) {} ';
     const DUMMY_METHOD_DEFINITION = 'public function unserialize(string $data): void {} ';
+=======
+    const DUMMY_METHOD_DEFINITION = 'public function unserialize($string) {} ';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     public function apply($code, MockConfiguration $config)
     {
@@ -45,7 +52,11 @@ class RemoveUnserializeForInternalSerializableClassesPass
             return $code;
         }
 
+<<<<<<< HEAD
         $code = $this->appendToClass($code, \PHP_VERSION_ID < 80100 ? self::DUMMY_METHOD_DEFINITION_LEGACY : self::DUMMY_METHOD_DEFINITION);
+=======
+        $code = $this->appendToClass($code, self::DUMMY_METHOD_DEFINITION);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return $code;
     }

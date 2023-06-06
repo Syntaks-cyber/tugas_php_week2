@@ -27,6 +27,11 @@ interface SessionBagInterface
 
     /**
      * Initializes the Bag.
+<<<<<<< HEAD
+=======
+     *
+     * @param array $array
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function initialize(array &$array);
 

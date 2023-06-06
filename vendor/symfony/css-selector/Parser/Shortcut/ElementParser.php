@@ -30,7 +30,11 @@ class ElementParser implements ParserInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function parse(string $source): array
+=======
+    public function parse($source)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // Matches an optional namespace, required element or `*`
         // $source = 'testns|testel';
@@ -39,9 +43,16 @@ class ElementParser implements ParserInterface
         //     1 => string 'testns' (length=6)
         //     2 => string 'testel' (length=6)
         if (preg_match('/^(?:([a-z]++)\|)?([\w-]++|\*)$/i', trim($source), $matches)) {
+<<<<<<< HEAD
             return [new SelectorNode(new ElementNode($matches[1] ?: null, $matches[2]))];
         }
 
         return [];
+=======
+            return array(new SelectorNode(new ElementNode($matches[1] ?: null, $matches[2])));
+        }
+
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

@@ -23,11 +23,36 @@ namespace Symfony\Component\CssSelector\XPath;
  */
 class XPathExpr
 {
+<<<<<<< HEAD
     private $path;
     private $element;
     private $condition;
 
     public function __construct(string $path = '', string $element = '*', string $condition = '', bool $starPrefix = false)
+=======
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var string
+     */
+    private $element;
+
+    /**
+     * @var string
+     */
+    private $condition;
+
+    /**
+     * @param string $path
+     * @param string $element
+     * @param string $condition
+     * @param bool   $starPrefix
+     */
+    public function __construct($path = '', $element = '*', $condition = '', $starPrefix = false)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->path = $path;
         $this->element = $element;
@@ -38,30 +63,60 @@ class XPathExpr
         }
     }
 
+<<<<<<< HEAD
     public function getElement(): string
+=======
+    /**
+     * @return string
+     */
+    public function getElement()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->element;
     }
 
     /**
+<<<<<<< HEAD
      * @return $this
      */
     public function addCondition(string $condition): self
     {
         $this->condition = $this->condition ? sprintf('(%s) and (%s)', $this->condition, $condition) : $condition;
+=======
+     * @param $condition
+     *
+     * @return XPathExpr
+     */
+    public function addCondition($condition)
+    {
+        $this->condition = $this->condition ? sprintf('%s and (%s)', $this->condition, $condition) : $condition;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function getCondition(): string
+=======
+    /**
+     * @return string
+     */
+    public function getCondition()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->condition;
     }
 
     /**
+<<<<<<< HEAD
      * @return $this
      */
     public function addNameTest(): self
+=======
+     * @return XPathExpr
+     */
+    public function addNameTest()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ('*' !== $this->element) {
             $this->addCondition('name() = '.Translator::getXpathLiteral($this->element));
@@ -72,9 +127,15 @@ class XPathExpr
     }
 
     /**
+<<<<<<< HEAD
      * @return $this
      */
     public function addStarPrefix(): self
+=======
+     * @return XPathExpr
+     */
+    public function addStarPrefix()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->path .= '*/';
 
@@ -84,9 +145,18 @@ class XPathExpr
     /**
      * Joins another XPathExpr with a combiner.
      *
+<<<<<<< HEAD
      * @return $this
      */
     public function join(string $combiner, self $expr): self
+=======
+     * @param string    $combiner
+     * @param XPathExpr $expr
+     *
+     * @return XPathExpr
+     */
+    public function join($combiner, XPathExpr $expr)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $path = $this->__toString().$combiner;
 
@@ -101,7 +171,14 @@ class XPathExpr
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    /**
+     * @return string
+     */
+    public function __toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $path = $this->path.$this->element;
         $condition = null === $this->condition || '' === $this->condition ? '' : '['.$this->condition.']';

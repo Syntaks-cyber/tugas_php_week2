@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Cassiano Montanari
@@ -37,3 +42,34 @@ return array_replace_recursive(require __DIR__.'/pt.php', [
     'first_day_of_week' => 0,
     'day_of_first_week_of_year' => 1,
 ]);
+=======
+return array(
+    'year' => ':count ano|:count anos',
+    'y' => ':counta|:counta',
+    'month' => ':count mês|:count meses',
+    'm' => ':countm|:countm',
+    'week' => ':count semana|:count semanas',
+    'w' => ':countsem|:countsem',
+    'day' => ':count dia|:count dias',
+    'd' => ':countd|:countd',
+    'hour' => ':count hora|:count horas',
+    'h' => ':counth|:counth',
+    'minute' => ':count minuto|:count minutos',
+    'min' => ':countmin|:countmin',
+    'second' => ':count segundo|:count segundos',
+    's' => ':counts|:counts',
+    'ago' => 'há :time',
+    'from_now' => 'em :time',
+    'after' => 'após :time',
+    'before' => ':time atrás',
+    'diff_now' => 'agora',
+    'diff_yesterday' => 'ontem',
+    'diff_tomorrow' => 'amanhã',
+    'diff_before_yesterday' => 'anteontem',
+    'diff_after_tomorrow' => 'depois de amanhã',
+    'period_recurrences' => 'uma|:count vez',
+    'period_interval' => 'toda :interval',
+    'period_start_date' => 'de :date',
+    'period_end_date' => 'até :date',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

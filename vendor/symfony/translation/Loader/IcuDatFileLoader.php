@@ -26,7 +26,11 @@ class IcuDatFileLoader extends IcuResFileLoader
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function load($resource, string $locale, string $domain = 'messages')
+=======
+    public function load($resource, $locale, $domain = 'messages')
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!stream_is_local($resource.'.dat')) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
@@ -39,6 +43,10 @@ class IcuDatFileLoader extends IcuResFileLoader
         try {
             $rb = new \ResourceBundle($locale, $resource);
         } catch (\Exception $e) {
+<<<<<<< HEAD
+=======
+            // HHVM compatibility: constructor throws on invalid resource
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $rb = null;
         }
 
@@ -52,7 +60,11 @@ class IcuDatFileLoader extends IcuResFileLoader
         $catalogue = new MessageCatalogue($locale);
         $catalogue->add($messages, $domain);
 
+<<<<<<< HEAD
         if (class_exists(FileResource::class)) {
+=======
+        if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $catalogue->addResource(new FileResource($resource.'.dat'));
         }
 

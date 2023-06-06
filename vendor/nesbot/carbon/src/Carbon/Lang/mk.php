@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Sashko Todorov
@@ -114,3 +119,18 @@ return [
     'list' => [', ', ' и '],
     'meridiem' => ['АМ', 'ПМ'],
 ];
+=======
+return array(
+    'year' => ':count година|:count години',
+    'month' => ':count месец|:count месеци',
+    'week' => ':count седмица|:count седмици',
+    'day' => ':count ден|:count дена',
+    'hour' => ':count час|:count часа',
+    'minute' => ':count минута|:count минути',
+    'second' => ':count секунда|:count секунди',
+    'ago' => 'пред :time',
+    'from_now' => ':time од сега',
+    'after' => 'по :time',
+    'before' => 'пред :time',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

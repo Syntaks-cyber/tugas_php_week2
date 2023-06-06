@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,6 +18,8 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery\Loader;
 
@@ -27,9 +30,15 @@ class RequireLoader implements Loader
 {
     protected $path;
 
+<<<<<<< HEAD
     public function __construct($path = null)
     {
         $this->path = realpath($path) ?: sys_get_temp_dir();
+=======
+    public function __construct($path)
+    {
+        $this->path = $path;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function load(MockDefinition $definition)
@@ -38,7 +47,11 @@ class RequireLoader implements Loader
             return;
         }
 
+<<<<<<< HEAD
         $tmpfname = $this->path . DIRECTORY_SEPARATOR . "Mockery_" . uniqid() . ".php";
+=======
+        $tmpfname = tempnam($this->path, "Mockery");
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         file_put_contents($tmpfname, $definition->getCode());
 
         require $tmpfname;

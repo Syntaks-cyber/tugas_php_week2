@@ -28,7 +28,11 @@ class IcuResFileDumper extends FileDumper
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+=======
+    public function formatCatalogue(MessageCatalogue $messages, $domain, array $options = [])
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $data = $indexes = $resources = '';
 
@@ -47,7 +51,11 @@ class IcuResFileDumper extends FileDumper
             $data .= pack('V', \strlen($target))
                 .mb_convert_encoding($target."\0", 'UTF-16LE', 'UTF-8')
                 .$this->writePadding($data)
+<<<<<<< HEAD
             ;
+=======
+                  ;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $resOffset = $this->getPosition($data);
@@ -56,7 +64,11 @@ class IcuResFileDumper extends FileDumper
             .$indexes
             .$this->writePadding($data)
             .$resources
+<<<<<<< HEAD
         ;
+=======
+              ;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         $bundleTop = $this->getPosition($data);
 
@@ -82,14 +94,22 @@ class IcuResFileDumper extends FileDumper
         return $header.$root.$data;
     }
 
+<<<<<<< HEAD
     private function writePadding(string $data): ?string
+=======
+    private function writePadding($data)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $padding = \strlen($data) % 4;
 
         return $padding ? str_repeat("\xAA", 4 - $padding) : null;
     }
 
+<<<<<<< HEAD
     private function getPosition(string $data)
+=======
+    private function getPosition($data)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return (\strlen($data) + 28) / 4;
     }

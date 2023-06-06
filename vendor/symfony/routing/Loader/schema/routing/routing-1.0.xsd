@@ -21,6 +21,7 @@
     <xsd:choice minOccurs="0" maxOccurs="unbounded">
       <xsd:element name="import" type="import" />
       <xsd:element name="route" type="route" />
+<<<<<<< HEAD
       <xsd:element name="when" type="when" />
     </xsd:choice>
   </xsd:complexType>
@@ -44,6 +45,14 @@
   <xsd:group name="configs">
     <xsd:choice>
       <xsd:element name="default" nillable="true" type="default" />
+=======
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:group name="configs">
+    <xsd:choice>
+      <xsd:element name="default" nillable="true" type="element" />
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
       <xsd:element name="requirement" type="element" />
       <xsd:element name="option" type="element" />
       <xsd:element name="condition" type="xsd:string" />
@@ -51,6 +60,7 @@
   </xsd:group>
 
   <xsd:complexType name="route">
+<<<<<<< HEAD
     <xsd:sequence>
       <xsd:group ref="configs" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="path" type="localized-path" minOccurs="0" maxOccurs="unbounded" />
@@ -103,6 +113,26 @@
       <xsd:element name="map" type="map" />
     </xsd:choice>
     <xsd:attribute name="key" type="xsd:string" use="required" />
+=======
+    <xsd:group ref="configs" minOccurs="0" maxOccurs="unbounded" />
+
+    <xsd:attribute name="id" type="xsd:string" use="required" />
+    <xsd:attribute name="path" type="xsd:string" use="required" />
+    <xsd:attribute name="host" type="xsd:string" />
+    <xsd:attribute name="schemes" type="xsd:string" />
+    <xsd:attribute name="methods" type="xsd:string" />
+  </xsd:complexType>
+
+  <xsd:complexType name="import">
+    <xsd:group ref="configs" minOccurs="0" maxOccurs="unbounded" />
+
+    <xsd:attribute name="resource" type="xsd:string" use="required" />
+    <xsd:attribute name="type" type="xsd:string" />
+    <xsd:attribute name="prefix" type="xsd:string" />
+    <xsd:attribute name="host" type="xsd:string" />
+    <xsd:attribute name="schemes" type="xsd:string" />
+    <xsd:attribute name="methods" type="xsd:string" />
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
   </xsd:complexType>
 
   <xsd:complexType name="element">
@@ -112,6 +142,7 @@
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
+<<<<<<< HEAD
 
   <xsd:complexType name="list">
     <xsd:choice minOccurs="0" maxOccurs="unbounded">
@@ -191,4 +222,6 @@
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 </xsd:schema>

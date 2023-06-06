@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -22,6 +26,10 @@ namespace Mockery;
 
 class ExpectationDirector
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Method name the director is directing
      *
@@ -32,7 +40,11 @@ class ExpectationDirector
     /**
      * Mock object the director is attached to
      *
+<<<<<<< HEAD
      * @var \Mockery\MockInterface|\Mockery\LegacyMockInterface
+=======
+     * @var \Mockery\MockInterface
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     protected $_mock = null;
 
@@ -61,9 +73,15 @@ class ExpectationDirector
      * Constructor
      *
      * @param string $name
+<<<<<<< HEAD
      * @param \Mockery\LegacyMockInterface $mock
      */
     public function __construct($name, \Mockery\LegacyMockInterface $mock)
+=======
+     * @param \Mockery\MockInterface $mock
+     */
+    public function __construct($name, \Mockery\MockInterface $mock)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->_name = $name;
         $this->_mock = $mock;
@@ -72,7 +90,11 @@ class ExpectationDirector
     /**
      * Add a new expectation to the director
      *
+<<<<<<< HEAD
      * @param \Mockery\Expectation $expectation
+=======
+     * @param Mutateme\Expectation $expectation
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function addExpectation(\Mockery\Expectation $expectation)
     {
@@ -133,6 +155,7 @@ class ExpectationDirector
      */
     public function findExpectation(array $args)
     {
+<<<<<<< HEAD
         $expectation = null;
 
         if (!empty($this->_expectations)) {
@@ -144,13 +167,24 @@ class ExpectationDirector
         }
 
         return $expectation;
+=======
+        if (!empty($this->_expectations)) {
+            return $this->_findExpectationIn($this->_expectations, $args);
+        } else {
+            return $this->_findExpectationIn($this->_defaults, $args);
+        }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Make the given expectation a default for all others assuming it was
      * correctly created last
      *
+<<<<<<< HEAD
      * @param \Mockery\Expectation $expectation
+=======
+     * @param \Mockery\Expectation
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function makeExpectationDefault(\Mockery\Expectation $expectation)
     {
@@ -175,7 +209,11 @@ class ExpectationDirector
     protected function _findExpectationIn(array $expectations, array $args)
     {
         foreach ($expectations as $exp) {
+<<<<<<< HEAD
             if ($exp->isEligible() && $exp->matchArgs($args)) {
+=======
+            if ($exp->matchArgs($args) && $exp->isEligible()) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 return $exp;
             }
         }
@@ -197,6 +235,7 @@ class ExpectationDirector
     }
 
     /**
+<<<<<<< HEAD
      * Return all expectations assigned to this director
      *
      * @return array
@@ -207,12 +246,18 @@ class ExpectationDirector
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Return the number of expectations assigned to this director.
      *
      * @return int
      */
     public function getExpectationCount()
     {
+<<<<<<< HEAD
         return count($this->getExpectations()) ?: count($this->getDefaultExpectations());
+=======
+        return count($this->getExpectations());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

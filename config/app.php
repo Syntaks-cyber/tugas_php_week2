@@ -4,6 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -17,12 +18,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | Application Environment
     |--------------------------------------------------------------------------
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
+<<<<<<< HEAD
     | services the application utilizes. Set this in your ".env" file.
+=======
+    | services your application utilizes. Set this in your ".env" file.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     |
     */
 
@@ -39,7 +46,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'debug' => (bool) env('APP_DEBUG', false),
+=======
+    'debug' => env('APP_DEBUG', false),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /*
     |--------------------------------------------------------------------------
@@ -54,8 +65,11 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+<<<<<<< HEAD
     'asset_url' => env('ASSET_URL', null),
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -97,6 +111,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Faker Locale
     |--------------------------------------------------------------------------
     |
@@ -110,6 +125,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | Encryption Key
     |--------------------------------------------------------------------------
     |
@@ -125,6 +142,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log settings for your application. Out of
+    | the box, Laravel uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
+    | Available Settings: "single", "daily", "syslog", "errorlog"
+    |
+    */
+
+    'log' => env('APP_LOG', 'single'),
+
+    /*
+    |--------------------------------------------------------------------------
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -151,7 +186,10 @@ return [
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
+<<<<<<< HEAD
         Illuminate\Notifications\NotificationServiceProvider::class,
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         Illuminate\Pagination\PaginationServiceProvider::class,
         Illuminate\Pipeline\PipelineServiceProvider::class,
         Illuminate\Queue\QueueServiceProvider::class,
@@ -161,17 +199,24 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+<<<<<<< HEAD
 
         /*
          * Package Service Providers...
          */
+=======
+        Collective\Html\HtmlServiceProvider::class,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+<<<<<<< HEAD
         // App\Providers\BroadcastServiceProvider::class,
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -191,12 +236,18 @@ return [
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
+<<<<<<< HEAD
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
+=======
+        'Artisan' => Illuminate\Support\Facades\Artisan::class,
+        'Auth' => Illuminate\Support\Facades\Auth::class,
+        'Blade' => Illuminate\Support\Facades\Blade::class,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
@@ -207,11 +258,17 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+<<<<<<< HEAD
         'Http' => Illuminate\Support\Facades\Http::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
+=======
+        'Lang' => Illuminate\Support\Facades\Lang::class,
+        'Log' => Illuminate\Support\Facades\Log::class,
+        'Mail' => Illuminate\Support\Facades\Mail::class,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
@@ -222,10 +279,18 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
+<<<<<<< HEAD
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+=======
+        'URL' => Illuminate\Support\Facades\URL::class,
+        'Validator' => Illuminate\Support\Facades\Validator::class,
+        'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     ],
 

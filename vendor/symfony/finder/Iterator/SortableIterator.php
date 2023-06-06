@@ -15,6 +15,7 @@ namespace Symfony\Component\Finder\Iterator;
  * SortableIterator applies a sort on a given Iterator.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+<<<<<<< HEAD
  *
  * @implements \IteratorAggregate<string, \SplFileInfo>
  */
@@ -27,11 +28,22 @@ class SortableIterator implements \IteratorAggregate
     public const SORT_BY_CHANGED_TIME = 4;
     public const SORT_BY_MODIFIED_TIME = 5;
     public const SORT_BY_NAME_NATURAL = 6;
+=======
+ */
+class SortableIterator implements \IteratorAggregate
+{
+    const SORT_BY_NAME = 1;
+    const SORT_BY_TYPE = 2;
+    const SORT_BY_ACCESSED_TIME = 3;
+    const SORT_BY_CHANGED_TIME = 4;
+    const SORT_BY_MODIFIED_TIME = 5;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     private $iterator;
     private $sort;
 
     /**
+<<<<<<< HEAD
      * @param \Traversable<string, \SplFileInfo> $iterator
      * @param int|callable                       $sort     The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
      *
@@ -76,11 +88,53 @@ class SortableIterator implements \IteratorAggregate
             $this->sort = $order;
         } elseif (\is_callable($sort)) {
             $this->sort = $reverseOrder ? static function (\SplFileInfo $a, \SplFileInfo $b) use ($sort) { return -$sort($a, $b); } : $sort;
+=======
+     * Constructor.
+     *
+     * @param \Traversable $iterator The Iterator to filter
+     * @param int|callable $sort     The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function __construct(\Traversable $iterator, $sort)
+    {
+        $this->iterator = $iterator;
+
+        if (self::SORT_BY_NAME === $sort) {
+            $this->sort = function ($a, $b) {
+                return strcmp($a->getRealpath(), $b->getRealpath());
+            };
+        } elseif (self::SORT_BY_TYPE === $sort) {
+            $this->sort = function ($a, $b) {
+                if ($a->isDir() && $b->isFile()) {
+                    return -1;
+                } elseif ($a->isFile() && $b->isDir()) {
+                    return 1;
+                }
+
+                return strcmp($a->getRealpath(), $b->getRealpath());
+            };
+        } elseif (self::SORT_BY_ACCESSED_TIME === $sort) {
+            $this->sort = function ($a, $b) {
+                return $a->getATime() - $b->getATime();
+            };
+        } elseif (self::SORT_BY_CHANGED_TIME === $sort) {
+            $this->sort = function ($a, $b) {
+                return $a->getCTime() - $b->getCTime();
+            };
+        } elseif (self::SORT_BY_MODIFIED_TIME === $sort) {
+            $this->sort = function ($a, $b) {
+                return $a->getMTime() - $b->getMTime();
+            };
+        } elseif (is_callable($sort)) {
+            $this->sort = $sort;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         } else {
             throw new \InvalidArgumentException('The SortableIterator takes a PHP callable or a valid built-in sort algorithm as an argument.');
         }
     }
 
+<<<<<<< HEAD
     /**
      * @return \Traversable<string, \SplFileInfo>
      */
@@ -98,6 +152,12 @@ class SortableIterator implements \IteratorAggregate
         } else {
             uasort($array, $this->sort);
         }
+=======
+    public function getIterator()
+    {
+        $array = iterator_to_array($this->iterator, true);
+        uasort($array, $this->sort);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return new \ArrayIterator($array);
     }

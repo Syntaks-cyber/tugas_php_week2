@@ -17,6 +17,7 @@ use Symfony\Component\Finder\Comparator\NumberComparator;
  * SizeRangeFilterIterator filters out files that are not in the given size range.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+<<<<<<< HEAD
  *
  * @extends \FilterIterator<string, \SplFileInfo>
  */
@@ -27,6 +28,18 @@ class SizeRangeFilterIterator extends \FilterIterator
     /**
      * @param \Iterator<string, \SplFileInfo> $iterator
      * @param NumberComparator[]              $comparators
+=======
+ */
+class SizeRangeFilterIterator extends FilterIterator
+{
+    private $comparators = array();
+
+    /**
+     * Constructor.
+     *
+     * @param \Iterator          $iterator    The Iterator to filter
+     * @param NumberComparator[] $comparators An array of NumberComparator instances
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function __construct(\Iterator $iterator, array $comparators)
     {
@@ -38,9 +51,14 @@ class SizeRangeFilterIterator extends \FilterIterator
     /**
      * Filters the iterator values.
      *
+<<<<<<< HEAD
      * @return bool
      */
     #[\ReturnTypeWillChange]
+=======
+     * @return bool true if the value should be kept, false otherwise
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function accept()
     {
         $fileinfo = $this->current();

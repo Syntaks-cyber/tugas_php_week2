@@ -28,6 +28,14 @@ use Symfony\Component\CssSelector\XPath\XPathExpr;
  */
 class HtmlExtension extends AbstractExtension
 {
+<<<<<<< HEAD
+=======
+    /**
+     * Constructor.
+     *
+     * @param Translator $translator
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function __construct(Translator $translator)
     {
         $translator
@@ -39,6 +47,7 @@ class HtmlExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getPseudoClassTranslators(): array
     {
         return [
@@ -51,11 +60,26 @@ class HtmlExtension extends AbstractExtension
             'hover' => [$this, 'translateHover'],
             'visited' => [$this, 'translateVisited'],
         ];
+=======
+    public function getPseudoClassTranslators()
+    {
+        return array(
+            'checked' => array($this, 'translateChecked'),
+            'link' => array($this, 'translateLink'),
+            'disabled' => array($this, 'translateDisabled'),
+            'enabled' => array($this, 'translateEnabled'),
+            'selected' => array($this, 'translateSelected'),
+            'invalid' => array($this, 'translateInvalid'),
+            'hover' => array($this, 'translateHover'),
+            'visited' => array($this, 'translateVisited'),
+        );
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getFunctionTranslators(): array
     {
         return [
@@ -64,6 +88,21 @@ class HtmlExtension extends AbstractExtension
     }
 
     public function translateChecked(XPathExpr $xpath): XPathExpr
+=======
+    public function getFunctionTranslators()
+    {
+        return array(
+            'lang' => array($this, 'translateLang'),
+        );
+    }
+
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateChecked(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition(
             '(@checked '
@@ -72,12 +111,30 @@ class HtmlExtension extends AbstractExtension
         );
     }
 
+<<<<<<< HEAD
     public function translateLink(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateLink(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition("@href and (name(.) = 'a' or name(.) = 'link' or name(.) = 'area')");
     }
 
+<<<<<<< HEAD
     public function translateDisabled(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateDisabled(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition(
             '('
@@ -103,7 +160,16 @@ class HtmlExtension extends AbstractExtension
         // todo: in the second half, add "and is not a descendant of that fieldset element's first legend element child, if any."
     }
 
+<<<<<<< HEAD
     public function translateEnabled(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateEnabled(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition(
             '('
@@ -137,14 +203,32 @@ class HtmlExtension extends AbstractExtension
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateLang(XPathExpr $xpath, FunctionNode $function): XPathExpr
+=======
+     * @param XPathExpr    $xpath
+     * @param FunctionNode $function
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateLang(XPathExpr $xpath, FunctionNode $function)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $arguments = $function->getArguments();
         foreach ($arguments as $token) {
             if (!($token->isString() || $token->isIdentifier())) {
+<<<<<<< HEAD
                 throw new ExpressionErrorException('Expected a single string or identifier for :lang(), got '.implode(', ', $arguments));
+=======
+                throw new ExpressionErrorException(
+                    'Expected a single string or identifier for :lang(), got '
+                    .implode(', ', $arguments)
+                );
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
         }
 
@@ -157,22 +241,58 @@ class HtmlExtension extends AbstractExtension
         ));
     }
 
+<<<<<<< HEAD
     public function translateSelected(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateSelected(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition("(@selected and name(.) = 'option')");
     }
 
+<<<<<<< HEAD
     public function translateInvalid(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateInvalid(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition('0');
     }
 
+<<<<<<< HEAD
     public function translateHover(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateHover(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition('0');
     }
 
+<<<<<<< HEAD
     public function translateVisited(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateVisited(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition('0');
     }
@@ -180,7 +300,11 @@ class HtmlExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getName(): string
+=======
+    public function getName()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return 'html';
     }

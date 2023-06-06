@@ -11,8 +11,13 @@
 
 namespace Symfony\Component\Routing\Matcher;
 
+<<<<<<< HEAD
 use Symfony\Component\Routing\Exception\ExceptionInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+=======
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Route;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -22,6 +27,7 @@ abstract class RedirectableUrlMatcher extends UrlMatcher implements Redirectable
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function match(string $pathinfo)
     {
         try {
@@ -60,5 +66,46 @@ abstract class RedirectableUrlMatcher extends UrlMatcher implements Redirectable
                 }
             }
         }
+=======
+    public function match($pathinfo)
+    {
+        try {
+            $parameters = parent::match($pathinfo);
+        } catch (ResourceNotFoundException $e) {
+            if ('/' === substr($pathinfo, -1) || !in_array($this->context->getMethod(), array('HEAD', 'GET'))) {
+                throw $e;
+            }
+
+            try {
+                parent::match($pathinfo.'/');
+
+                return $this->redirect($pathinfo.'/', null);
+            } catch (ResourceNotFoundException $e2) {
+                throw $e;
+            }
+        }
+
+        return $parameters;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function handleRouteRequirements($pathinfo, $name, Route $route)
+    {
+        // expression condition
+        if ($route->getCondition() && !$this->getExpressionLanguage()->evaluate($route->getCondition(), array('context' => $this->context, 'request' => $this->request))) {
+            return array(self::REQUIREMENT_MISMATCH, null);
+        }
+
+        // check HTTP scheme requirement
+        $scheme = $this->context->getScheme();
+        $schemes = $route->getSchemes();
+        if ($schemes && !$route->hasScheme($scheme)) {
+            return array(self::ROUTE_MATCH, $this->redirect($pathinfo, $name, current($schemes)));
+        }
+
+        return array(self::REQUIREMENT_MATCH, null);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

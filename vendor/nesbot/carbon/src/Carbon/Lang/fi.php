@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Philippe Vaucher
@@ -86,3 +91,25 @@ return [
     'months_short' => ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'],
     'meridiem' => ['aamupäivä', 'iltapäivä'],
 ];
+=======
+return array(
+    'year' => ':count vuosi|:count vuotta',
+    'y' => ':count vuosi|:count vuotta',
+    'month' => ':count kuukausi|:count kuukautta',
+    'm' => ':count kuukausi|:count kuukautta',
+    'week' => ':count viikko|:count viikkoa',
+    'w' => ':count viikko|:count viikkoa',
+    'day' => ':count päivä|:count päivää',
+    'd' => ':count päivä|:count päivää',
+    'hour' => ':count tunti|:count tuntia',
+    'h' => ':count tunti|:count tuntia',
+    'minute' => ':count minuutti|:count minuuttia',
+    'min' => ':count minuutti|:count minuuttia',
+    'second' => ':count sekunti|:count sekuntia',
+    's' => ':count sekunti|:count sekuntia',
+    'ago' => ':time sitten',
+    'from_now' => ':time tästä hetkestä',
+    'after' => ':time sen jälkeen',
+    'before' => ':time ennen',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

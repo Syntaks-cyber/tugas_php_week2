@@ -26,10 +26,14 @@ interface RouterInterface extends UrlMatcherInterface, UrlGeneratorInterface
     /**
      * Gets the RouteCollection instance associated with this Router.
      *
+<<<<<<< HEAD
      * WARNING: This method should never be used at runtime as it is SLOW.
      *          You might use it in a cache warmer though.
      *
      * @return RouteCollection
+=======
+     * @return RouteCollection A RouteCollection instance
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getRouteCollection();
 }

@@ -50,6 +50,7 @@ framework.
 
 .. include:: reference/map.rst.inc
 
+<<<<<<< HEAD
 Mockery
 -------
 
@@ -62,6 +63,8 @@ Learn about Mockery's configuration, reserved method names, exceptions...
 
 .. include:: mockery/map.rst.inc
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 Cookbook
 --------
 

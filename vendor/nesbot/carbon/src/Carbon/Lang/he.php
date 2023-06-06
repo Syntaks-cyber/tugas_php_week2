@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Daniel Cohen Gindi
@@ -84,3 +89,25 @@ return [
     'list' => [', ', ' ו -'],
     'weekend' => [5, 6],
 ];
+=======
+return array(
+    'year' => 'שנה|{2}שנתיים|:count שנים',
+    'y' => 'שנה|{2}שנתיים|:count שנים',
+    'month' => 'חודש|{2}חודשיים|:count חודשים',
+    'm' => 'חודש|{2}חודשיים|:count חודשים',
+    'week' => 'שבוע|{2}שבועיים|:count שבועות',
+    'w' => 'שבוע|{2}שבועיים|:count שבועות',
+    'day' => 'יום|{2}יומיים|:count ימים',
+    'd' => 'יום|{2}יומיים|:count ימים',
+    'hour' => 'שעה|{2}שעתיים|:count שעות',
+    'h' => 'שעה|{2}שעתיים|:count שעות',
+    'minute' => 'דקה|{2}דקותיים|:count דקות',
+    'min' => 'דקה|{2}דקותיים|:count דקות',
+    'second' => 'שניה|:count שניות',
+    's' => 'שניה|:count שניות',
+    'ago' => 'לפני :time',
+    'from_now' => 'בעוד :time',
+    'after' => 'אחרי :time',
+    'before' => 'לפני :time',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

@@ -26,5 +26,9 @@ interface MessageFormatterInterface
      *
      * @return string
      */
+<<<<<<< HEAD
     public function format(string $message, string $locale, array $parameters = []);
+=======
+    public function format($message, $locale, array $parameters = []);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

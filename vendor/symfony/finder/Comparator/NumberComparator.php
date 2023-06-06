@@ -35,6 +35,7 @@ namespace Symfony\Component\Finder\Comparator;
 class NumberComparator extends Comparator
 {
     /**
+<<<<<<< HEAD
      * @param string|int $test A comparison string or an integer
      *
      * @throws \InvalidArgumentException If the test is not understood
@@ -43,6 +44,18 @@ class NumberComparator extends Comparator
     {
         if (null === $test || !preg_match('#^\s*(==|!=|[<>]=?)?\s*([0-9\.]+)\s*([kmg]i?)?\s*$#i', $test, $matches)) {
             throw new \InvalidArgumentException(sprintf('Don\'t understand "%s" as a number test.', $test ?? 'null'));
+=======
+     * Constructor.
+     *
+     * @param string $test A comparison string
+     *
+     * @throws \InvalidArgumentException If the test is not understood
+     */
+    public function __construct($test)
+    {
+        if (!preg_match('#^\s*(==|!=|[<>]=?)?\s*([0-9\.]+)\s*([kmg]i?)?\s*$#i', $test, $matches)) {
+            throw new \InvalidArgumentException(sprintf('Don\'t understand "%s" as a number test.', $test));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $target = $matches[2];
@@ -73,6 +86,11 @@ class NumberComparator extends Comparator
             }
         }
 
+<<<<<<< HEAD
         parent::__construct($target, $matches[1] ?: '==');
+=======
+        $this->setTarget($target);
+        $this->setOperator(isset($matches[1]) ? $matches[1] : '==');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

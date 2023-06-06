@@ -27,7 +27,11 @@ abstract class AbstractFileExtractor
      */
     protected function extractFiles($resource)
     {
+<<<<<<< HEAD
         if (is_iterable($resource)) {
+=======
+        if (\is_array($resource) || $resource instanceof \Traversable) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $files = [];
             foreach ($resource as $file) {
                 if ($this->canBeExtracted($file)) {
@@ -43,17 +47,37 @@ abstract class AbstractFileExtractor
         return $files;
     }
 
+<<<<<<< HEAD
     private function toSplFileInfo(string $file): \SplFileInfo
     {
         return new \SplFileInfo($file);
     }
 
     /**
+=======
+    /**
+     * @param string $file
+     *
+     * @return \SplFileInfo
+     */
+    private function toSplFileInfo($file)
+    {
+        return ($file instanceof \SplFileInfo) ? $file : new \SplFileInfo($file);
+    }
+
+    /**
+     * @param string $file
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return bool
      *
      * @throws InvalidArgumentException
      */
+<<<<<<< HEAD
     protected function isFile(string $file)
+=======
+    protected function isFile($file)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!is_file($file)) {
             throw new InvalidArgumentException(sprintf('The "%s" file does not exist.', $file));
@@ -63,14 +87,26 @@ abstract class AbstractFileExtractor
     }
 
     /**
+<<<<<<< HEAD
      * @return bool
      */
     abstract protected function canBeExtracted(string $file);
+=======
+     * @param string $file
+     *
+     * @return bool
+     */
+    abstract protected function canBeExtracted($file);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @param string|array $resource Files, a file or a directory
      *
+<<<<<<< HEAD
      * @return iterable
+=======
+     * @return iterable files to be extracted
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     abstract protected function extractFromDirectory($resource);
 }

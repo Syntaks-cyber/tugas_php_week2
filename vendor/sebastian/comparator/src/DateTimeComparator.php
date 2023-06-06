@@ -1,12 +1,20 @@
 <?php
 /*
+<<<<<<< HEAD
  * This file is part of sebastian/comparator.
+=======
+ * This file is part of the Comparator package.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 namespace SebastianBergmann\Comparator;
 
 /**
@@ -17,15 +25,24 @@ class DateTimeComparator extends ObjectComparator
     /**
      * Returns whether the comparator can compare two values.
      *
+<<<<<<< HEAD
      * @param mixed $expected The first value to compare
      * @param mixed $actual   The second value to compare
      *
+=======
+     * @param  mixed $expected The first value to compare
+     * @param  mixed $actual   The second value to compare
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return bool
      */
     public function accepts($expected, $actual)
     {
         return ($expected instanceof \DateTime || $expected instanceof \DateTimeInterface) &&
+<<<<<<< HEAD
                ($actual instanceof \DateTime || $actual instanceof \DateTimeInterface);
+=======
+            ($actual instanceof \DateTime || $actual instanceof \DateTimeInterface);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -38,6 +55,7 @@ class DateTimeComparator extends ObjectComparator
      * @param bool  $ignoreCase   Case is ignored when set to true
      * @param array $processed    List of already processed elements (used to prevent infinite recursion)
      *
+<<<<<<< HEAD
      * @throws \Exception
      * @throws ComparisonFailure
      */
@@ -61,6 +79,19 @@ class DateTimeComparator extends ObjectComparator
             ->add($delta);
 
         if ($actualClone < $expectedLower || $actualClone > $expectedUpper) {
+=======
+     * @throws ComparisonFailure
+     */
+    public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false, array &$processed = array())
+    {
+        $delta = new \DateInterval(sprintf('PT%sS', abs($delta)));
+
+        $expectedLower = clone $expected;
+        $expectedUpper = clone $expected;
+
+        if ($actual < $expectedLower->sub($delta) ||
+            $actual > $expectedUpper->add($delta)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             throw new ComparisonFailure(
                 $expected,
                 $actual,
@@ -76,11 +107,23 @@ class DateTimeComparator extends ObjectComparator
      * Returns an ISO 8601 formatted string representation of a datetime or
      * 'Invalid DateTimeInterface object' if the provided DateTimeInterface was not properly
      * initialized.
+<<<<<<< HEAD
      */
     private function dateTimeToString(\DateTimeInterface $datetime): string
     {
         $string = $datetime->format('Y-m-d\TH:i:s.uO');
 
         return $string ?: 'Invalid DateTimeInterface object';
+=======
+     *
+     * @param  \DateTimeInterface $datetime
+     * @return string
+     */
+    private function dateTimeToString($datetime)
+    {
+        $string = $datetime->format('Y-m-d\TH:i:s.uO');
+
+        return $string ? $string : 'Invalid DateTimeInterface object';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

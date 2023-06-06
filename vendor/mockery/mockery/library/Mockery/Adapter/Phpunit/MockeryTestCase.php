@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -54,5 +55,34 @@ abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
         }
 
         self::assertRegExp($pattern, $string, $message);
+=======
+
+namespace Mockery\Adapter\Phpunit;
+
+use Mockery;
+
+abstract class MockeryTestCase extends \PHPUnit_Framework_TestCase
+{
+    protected function assertPostConditions()
+    {
+        $this->addMockeryExpectationsToAssertionCount();
+        $this->closeMockery();
+
+        parent::assertPostConditions();
+    }
+
+    protected function addMockeryExpectationsToAssertionCount()
+    {
+        $container = Mockery::getContainer();
+        if ($container != null) {
+            $count = $container->mockery_getExpectationCount();
+            $this->addToAssertionCount($count);
+        }
+    }
+
+    protected function closeMockery()
+    {
+        Mockery::close();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

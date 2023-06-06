@@ -1,7 +1,11 @@
 {
     "name": "sebastian/diff",
     "description": "Diff implementation",
+<<<<<<< HEAD
     "keywords": ["diff", "udiff", "unidiff", "unified diff"],
+=======
+    "keywords": ["diff"],
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     "homepage": "https://github.com/sebastianbergmann/diff",
     "license": "BSD-3-Clause",
     "authors": [
@@ -15,17 +19,25 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5 || ^8.0",
         "symfony/process": "^2 || ^3.3 || ^4"
+=======
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     },
     "autoload": {
         "classmap": [
             "src/"
         ]
     },
+<<<<<<< HEAD
     "autoload-dev": {
         "classmap": [
             "tests/"
@@ -34,6 +46,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "3.0-dev"
+=======
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.4-dev"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 }

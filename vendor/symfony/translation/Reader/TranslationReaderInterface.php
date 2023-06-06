@@ -22,6 +22,13 @@ interface TranslationReaderInterface
 {
     /**
      * Reads translation messages from a directory to the catalogue.
+<<<<<<< HEAD
      */
     public function read(string $directory, MessageCatalogue $catalogue);
+=======
+     *
+     * @param string $directory
+     */
+    public function read($directory, MessageCatalogue $catalogue);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -33,25 +33,54 @@ use InvalidArgumentException;
 final class Instantiator
 {
     /**
+<<<<<<< HEAD
+=======
+     * Markers used internally by PHP to define whether {@see \unserialize} should invoke
+     * the method {@see \Serializable::unserialize()} when dealing with classes implementing
+     * the {@see \Serializable} interface.
+     */
+    const SERIALIZATION_FORMAT_USE_UNSERIALIZER   = 'C';
+    const SERIALIZATION_FORMAT_AVOID_UNSERIALIZER = 'O';
+
+    /**
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * {@inheritDoc}
      */
     public function instantiate($className)
     {
         $factory    = $this->buildFactory($className);
         $instance   = $factory();
+<<<<<<< HEAD
+=======
+        $reflection = new ReflectionClass($instance);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return $instance;
     }
 
     /**
+<<<<<<< HEAD
      * Builds a {@see \Closure} capable of instantiating the given $className without
      * invoking its constructor.
+=======
+     * @internal
+     * @private
+     *
+     * Builds a {@see \Closure} capable of instantiating the given $className without
+     * invoking its constructor.
+     * This method is only exposed as public because of PHP 5.3 compatibility. Do not
+     * use this method in your own code
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @param string $className
      *
      * @return Closure
      */
+<<<<<<< HEAD
     private function buildFactory($className)
+=======
+    public function buildFactory($className)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $reflectionClass = $this->getReflectionClass($className);
 
@@ -62,7 +91,12 @@ final class Instantiator
         }
 
         $serializedString = sprintf(
+<<<<<<< HEAD
             'O:%d:"%s":0:{}',
+=======
+            '%s:%d:"%s":0:{}',
+            $this->getSerializationFormat($reflectionClass),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             strlen($className),
             $className
         );
@@ -139,7 +173,15 @@ final class Instantiator
      */
     private function isInstantiableViaReflection(ReflectionClass $reflectionClass)
     {
+<<<<<<< HEAD
         return ! ($reflectionClass->isInternal() && $reflectionClass->isFinal());
+=======
+        if (\PHP_VERSION_ID >= 50600) {
+            return ! ($reflectionClass->isInternal() && $reflectionClass->isFinal());
+        }
+
+        return \PHP_VERSION_ID >= 50400 && ! $this->hasInternalAncestors($reflectionClass);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -159,4 +201,40 @@ final class Instantiator
 
         return false;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Verifies if the given PHP version implements the `Serializable` interface serialization
+     * with an incompatible serialization format. If that's the case, use serialization marker
+     * "C" instead of "O".
+     *
+     * @link http://news.php.net/php.internals/74654
+     *
+     * @param ReflectionClass $reflectionClass
+     *
+     * @return string the serialization format marker, either self::SERIALIZATION_FORMAT_USE_UNSERIALIZER
+     *                or self::SERIALIZATION_FORMAT_AVOID_UNSERIALIZER
+     */
+    private function getSerializationFormat(ReflectionClass $reflectionClass)
+    {
+        if ($this->isPhpVersionWithBrokenSerializationFormat()
+            && $reflectionClass->implementsInterface('Serializable')
+        ) {
+            return self::SERIALIZATION_FORMAT_USE_UNSERIALIZER;
+        }
+
+        return self::SERIALIZATION_FORMAT_AVOID_UNSERIALIZER;
+    }
+
+    /**
+     * Checks whether the current PHP runtime uses an incompatible serialization format
+     *
+     * @return bool
+     */
+    private function isPhpVersionWithBrokenSerializationFormat()
+    {
+        return PHP_VERSION_ID === 50429 || PHP_VERSION_ID === 50513;
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

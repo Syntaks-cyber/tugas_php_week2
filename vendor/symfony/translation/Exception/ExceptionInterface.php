@@ -16,6 +16,10 @@ namespace Symfony\Component\Translation\Exception;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
+<<<<<<< HEAD
 interface ExceptionInterface extends \Throwable
+=======
+interface ExceptionInterface
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
 }

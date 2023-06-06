@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -21,6 +22,12 @@
 namespace Mockery\Generator;
 
 class UndefinedTargetClass implements TargetClassInterface
+=======
+
+namespace Mockery\Generator;
+
+class UndefinedTargetClass
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
     private $name;
 
@@ -29,11 +36,14 @@ class UndefinedTargetClass implements TargetClassInterface
         $this->name = $name;
     }
 
+<<<<<<< HEAD
     public static function factory($name)
     {
         return new self($name);
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function getName()
     {
         return $this->name;
@@ -54,11 +64,14 @@ class UndefinedTargetClass implements TargetClassInterface
         return array();
     }
 
+<<<<<<< HEAD
     public function getInterfaces()
     {
         return array();
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function getNamespaceName()
     {
         $parts = explode("\\", ltrim($this->getName(), "\\"));
@@ -86,9 +99,12 @@ class UndefinedTargetClass implements TargetClassInterface
     {
         return false;
     }
+<<<<<<< HEAD
 
     public function __toString()
     {
         return $this->name;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

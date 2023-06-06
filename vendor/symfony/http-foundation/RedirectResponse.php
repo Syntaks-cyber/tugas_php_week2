@@ -30,9 +30,15 @@ class RedirectResponse extends Response
      *
      * @throws \InvalidArgumentException
      *
+<<<<<<< HEAD
      * @see https://tools.ietf.org/html/rfc2616#section-10.3
      */
     public function __construct(string $url, int $status = 302, array $headers = [])
+=======
+     * @see http://tools.ietf.org/html/rfc2616#section-10.3
+     */
+    public function __construct($url, $status = 302, $headers = array())
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         parent::__construct('', $status, $headers);
 
@@ -41,6 +47,7 @@ class RedirectResponse extends Response
         if (!$this->isRedirect()) {
             throw new \InvalidArgumentException(sprintf('The HTTP status code is not a redirect ("%s" given).', $status));
         }
+<<<<<<< HEAD
 
         if (301 == $status && !\array_key_exists('cache-control', array_change_key_case($headers, \CASE_LOWER))) {
             $this->headers->remove('cache-control');
@@ -60,13 +67,26 @@ class RedirectResponse extends Response
     {
         trigger_deprecation('symfony/http-foundation', '5.1', 'The "%s()" method is deprecated, use "new %s()" instead.', __METHOD__, static::class);
 
+=======
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function create($url = '', $status = 302, $headers = array())
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return new static($url, $status, $headers);
     }
 
     /**
      * Returns the target URL.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string target URL
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getTargetUrl()
     {
@@ -76,6 +96,7 @@ class RedirectResponse extends Response
     /**
      * Sets the redirect target of this response.
      *
+<<<<<<< HEAD
      * @return $this
      *
      * @throws \InvalidArgumentException
@@ -83,6 +104,17 @@ class RedirectResponse extends Response
     public function setTargetUrl(string $url)
     {
         if ('' === $url) {
+=======
+     * @param string $url The URL to redirect to
+     *
+     * @return RedirectResponse The current response
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function setTargetUrl($url)
+    {
+        if (empty($url)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             throw new \InvalidArgumentException('Cannot redirect to an empty URL.');
         }
 
@@ -93,14 +125,22 @@ class RedirectResponse extends Response
 <html>
     <head>
         <meta charset="UTF-8" />
+<<<<<<< HEAD
         <meta http-equiv="refresh" content="0;url=\'%1$s\'" />
+=======
+        <meta http-equiv="refresh" content="1;url=%1$s" />
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         <title>Redirecting to %1$s</title>
     </head>
     <body>
         Redirecting to <a href="%1$s">%1$s</a>.
     </body>
+<<<<<<< HEAD
 </html>', htmlspecialchars($url, \ENT_QUOTES, 'UTF-8')));
+=======
+</html>', htmlspecialchars($url, ENT_QUOTES, 'UTF-8')));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         $this->headers->set('Location', $url);
 

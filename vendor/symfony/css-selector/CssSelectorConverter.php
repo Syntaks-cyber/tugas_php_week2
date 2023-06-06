@@ -27,23 +27,33 @@ use Symfony\Component\CssSelector\XPath\Translator;
 class CssSelectorConverter
 {
     private $translator;
+<<<<<<< HEAD
     private $cache;
 
     private static $xmlCache = [];
     private static $htmlCache = [];
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @param bool $html Whether HTML support should be enabled. Disable it for XML documents
      */
+<<<<<<< HEAD
     public function __construct(bool $html = true)
+=======
+    public function __construct($html = true)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->translator = new Translator();
 
         if ($html) {
             $this->translator->registerExtension(new HtmlExtension($this->translator));
+<<<<<<< HEAD
             $this->cache = &self::$htmlCache;
         } else {
             $this->cache = &self::$xmlCache;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $this->translator
@@ -60,10 +70,21 @@ class CssSelectorConverter
      * Optionally, a prefix can be added to the resulting XPath
      * expression with the $prefix parameter.
      *
+<<<<<<< HEAD
      * @return string
      */
     public function toXPath(string $cssExpr, string $prefix = 'descendant-or-self::')
     {
         return $this->cache[$prefix][$cssExpr] ?? $this->cache[$prefix][$cssExpr] = $this->translator->cssToXPath($cssExpr, $prefix);
+=======
+     * @param string $cssExpr The CSS expression
+     * @param string $prefix  An optional prefix for the XPath expression
+     *
+     * @return string
+     */
+    public function toXPath($cssExpr, $prefix = 'descendant-or-self::')
+    {
+        return $this->translator->cssToXPath($cssExpr, $prefix);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

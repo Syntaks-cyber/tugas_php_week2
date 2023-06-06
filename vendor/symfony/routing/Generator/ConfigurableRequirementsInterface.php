@@ -20,7 +20,11 @@ namespace Symfony\Component\Routing\Generator;
  * The possible configurations and use-cases:
  * - setStrictRequirements(true): Throw an exception for mismatching requirements. This
  *   is mostly useful in development environment.
+<<<<<<< HEAD
  * - setStrictRequirements(false): Don't throw an exception but return an empty string as URL for
+=======
+ * - setStrictRequirements(false): Don't throw an exception but return null as URL for
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *   mismatching requirements and log the problem. Useful when you cannot control all
  *   params because they come from third party libs but don't want to have a 404 in
  *   production environment. It should log the mismatch so one can review it.
@@ -40,8 +44,15 @@ interface ConfigurableRequirementsInterface
     /**
      * Enables or disables the exception on incorrect parameters.
      * Passing null will deactivate the requirements check completely.
+<<<<<<< HEAD
      */
     public function setStrictRequirements(?bool $enabled);
+=======
+     *
+     * @param bool|null $enabled
+     */
+    public function setStrictRequirements($enabled);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * Returns whether to throw an exception on incorrect parameters.

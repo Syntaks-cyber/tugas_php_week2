@@ -14,21 +14,37 @@ interaction with the ``Temperature`` class:
 
     class Temperature
     {
+<<<<<<< HEAD
         private $service;
 
         public function __construct($service)
         {
             $this->service = $service;
+=======
+
+        public function __construct($service)
+        {
+            $this->_service = $service;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         public function average()
         {
             $total = 0;
+<<<<<<< HEAD
             for ($i=0; $i<3; $i++) {
                 $total += $this->service->readTemp();
             }
             return $total/3;
         }
+=======
+            for ($i=0;$i<3;$i++) {
+                $total += $this->_service->readTemp();
+            }
+            return $total/3;
+        }
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
 Even without an actual service class, we can see how we expect it to operate.
@@ -38,6 +54,7 @@ mock object for the real service which allows us to test the behaviour of the
 
 .. code-block:: php
 
+<<<<<<< HEAD
     use \Mockery;
 
     class TemperatureTest extends \PHPUnit\Framework\TestCase
@@ -45,24 +62,44 @@ mock object for the real service which allows us to test the behaviour of the
         public function tearDown()
         {
             Mockery::close();
+=======
+    use \Mockery as m;
+
+    class TemperatureTest extends PHPUnit_Framework_TestCase
+    {
+
+        public function tearDown()
+        {
+            m::close();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         public function testGetsAverageTemperatureFromThreeServiceReadings()
         {
+<<<<<<< HEAD
             $service = Mockery::mock('service');
             $service->shouldReceive('readTemp')
                 ->times(3)
                 ->andReturn(10, 12, 14);
+=======
+            $service = m::mock('service');
+            $service->shouldReceive('readTemp')->times(3)->andReturn(10, 12, 14);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
             $temperature = new Temperature($service);
 
             $this->assertEquals(12, $temperature->average());
         }
+<<<<<<< HEAD
     }
 
 We create a mock object which our ``Temperature`` class will use and set some
 expectations for that mock — that it should receive three calls to the ``readTemp``
 method, and these calls will return 10, 12, and 14 as results.
+=======
+
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 .. note::
 

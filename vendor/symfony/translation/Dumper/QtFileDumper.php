@@ -23,7 +23,11 @@ class QtFileDumper extends FileDumper
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+=======
+    public function formatCatalogue(MessageCatalogue $messages, $domain, array $options = [])
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $dom->formatOutput = true;
@@ -33,6 +37,7 @@ class QtFileDumper extends FileDumper
 
         foreach ($messages->all($domain) as $source => $target) {
             $message = $context->appendChild($dom->createElement('message'));
+<<<<<<< HEAD
             $metadata = $messages->getMetadata($source, $domain);
             if (isset($metadata['sources'])) {
                 foreach ((array) $metadata['sources'] as $location) {
@@ -44,6 +49,8 @@ class QtFileDumper extends FileDumper
                     }
                 }
             }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $message->appendChild($dom->createElement('source', $source));
             $message->appendChild($dom->createElement('translation', $target));
         }

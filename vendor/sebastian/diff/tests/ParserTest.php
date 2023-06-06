@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
 /*
  * This file is part of sebastian/diff.
+=======
+<?php
+/*
+ * This file is part of the Diff package.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
@@ -10,6 +16,7 @@
 
 namespace SebastianBergmann\Diff;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Diff\Utils\FileUtils;
 
@@ -21,17 +28,27 @@ use SebastianBergmann\Diff\Utils\FileUtils;
  * @uses SebastianBergmann\Diff\Line
  */
 final class ParserTest extends TestCase
+=======
+use PHPUnit_Framework_TestCase;
+
+class ParserTest extends PHPUnit_Framework_TestCase
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
     /**
      * @var Parser
      */
     private $parser;
 
+<<<<<<< HEAD
     protected function setUp(): void
+=======
+    protected function setUp()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->parser = new Parser;
     }
 
+<<<<<<< HEAD
     public function testParse(): void
     {
         $content = FileUtils::getFileContent(__DIR__ . '/fixtures/patch.txt');
@@ -54,6 +71,27 @@ final class ParserTest extends TestCase
     public function testParseWithMultipleChunks(): void
     {
         $content = FileUtils::getFileContent(__DIR__ . '/fixtures/patch2.txt');
+=======
+    public function testParse()
+    {
+        $content = file_get_contents(__DIR__ . '/fixtures/patch.txt');
+
+        $diffs = $this->parser->parse($content);
+
+        $this->assertCount(1, $diffs);
+
+        $chunks = $diffs[0]->getChunks();
+        $this->assertCount(1, $chunks);
+
+        $this->assertEquals(20, $chunks[0]->getStart());
+
+        $this->assertCount(5, $chunks[0]->getLines());
+    }
+
+    public function testParseWithMultipleChunks()
+    {
+        $content = file_get_contents(__DIR__ . '/fixtures/patch2.txt');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         $diffs = $this->parser->parse($content);
 
@@ -62,6 +100,7 @@ final class ParserTest extends TestCase
         $chunks = $diffs[0]->getChunks();
         $this->assertCount(3, $chunks);
 
+<<<<<<< HEAD
         $this->assertSame(20, $chunks[0]->getStart());
         $this->assertSame(320, $chunks[1]->getStart());
         $this->assertSame(600, $chunks[2]->getStart());
@@ -166,5 +205,14 @@ END;
                 \unserialize(FileUtils::getFileContent(__DIR__ . '/fixtures/serialized_diff.bin')),
             ],
         ];
+=======
+        $this->assertEquals(20, $chunks[0]->getStart());
+        $this->assertEquals(320, $chunks[1]->getStart());
+        $this->assertEquals(600, $chunks[2]->getStart());
+
+        $this->assertCount(5, $chunks[0]->getLines());
+        $this->assertCount(5, $chunks[1]->getLines());
+        $this->assertCount(5, $chunks[2]->getLines());
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

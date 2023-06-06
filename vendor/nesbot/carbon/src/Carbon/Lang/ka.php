@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Tornike Razmadze
@@ -202,3 +207,25 @@ return [
         return 'ღამის';
     },
 ];
+=======
+return array(
+    'year' => ':count წლის',
+    'y' => ':count წლის',
+    'month' => ':count თვის',
+    'm' => ':count თვის',
+    'week' => ':count კვირის',
+    'w' => ':count კვირის',
+    'day' => ':count დღის',
+    'd' => ':count დღის',
+    'hour' => ':count საათის',
+    'h' => ':count საათის',
+    'minute' => ':count წუთის',
+    'min' => ':count წუთის',
+    'second' => ':count წამის',
+    's' => ':count წამის',
+    'ago' => ':time უკან',
+    'from_now' => ':time შემდეგ',
+    'after' => ':time შემდეგ',
+    'before' => ':time უკან',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

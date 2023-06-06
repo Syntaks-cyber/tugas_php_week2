@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Adam Brunner
@@ -21,6 +26,9 @@ use Carbon\CarbonInterface;
 $huWeekEndings = ['vasárnap', 'hétfőn', 'kedden', 'szerdán', 'csütörtökön', 'pénteken', 'szombaton'];
 
 return [
+=======
+return array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'year' => ':count év',
     'y' => ':count év',
     'month' => ':count hónap',
@@ -40,6 +48,7 @@ return [
     'after' => ':time később',
     'before' => ':time korábban',
     'year_ago' => ':count éve',
+<<<<<<< HEAD
     'y_ago' => ':count éve',
     'month_ago' => ':count hónapja',
     'm_ago' => ':count hónapja',
@@ -116,3 +125,26 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' és '],
 ];
+=======
+    'month_ago' => ':count hónapja',
+    'week_ago' => ':count hete',
+    'day_ago' => ':count napja',
+    'hour_ago' => ':count órája',
+    'minute_ago' => ':count perce',
+    'second_ago' => ':count másodperce',
+    'year_after' => ':count évvel',
+    'month_after' => ':count hónappal',
+    'week_after' => ':count héttel',
+    'day_after' => ':count nappal',
+    'hour_after' => ':count órával',
+    'minute_after' => ':count perccel',
+    'second_after' => ':count másodperccel',
+    'year_before' => ':count évvel',
+    'month_before' => ':count hónappal',
+    'week_before' => ':count héttel',
+    'day_before' => ':count nappal',
+    'hour_before' => ':count órával',
+    'minute_before' => ':count perccel',
+    'second_before' => ':count másodperccel',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

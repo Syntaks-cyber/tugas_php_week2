@@ -50,7 +50,11 @@ class MockArraySessionStorage implements SessionStorageInterface
     /**
      * @var array
      */
+<<<<<<< HEAD
     protected $data = [];
+=======
+    protected $data = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @var MetadataBag
@@ -58,16 +62,38 @@ class MockArraySessionStorage implements SessionStorageInterface
     protected $metadataBag;
 
     /**
+<<<<<<< HEAD
      * @var array|SessionBagInterface[]
      */
     protected $bags = [];
 
     public function __construct(string $name = 'MOCKSESSID', MetadataBag $metaBag = null)
+=======
+     * @var array
+     */
+    protected $bags;
+
+    /**
+     * Constructor.
+     *
+     * @param string      $name    Session name
+     * @param MetadataBag $metaBag MetadataBag instance
+     */
+    public function __construct($name = 'MOCKSESSID', MetadataBag $metaBag = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->name = $name;
         $this->setMetadataBag($metaBag);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Sets the session data.
+     *
+     * @param array $array
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function setSessionData(array $array)
     {
         $this->data = $array;
@@ -94,7 +120,11 @@ class MockArraySessionStorage implements SessionStorageInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function regenerate(bool $destroy = false, int $lifetime = null)
+=======
+    public function regenerate($destroy = false, $lifetime = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!$this->started) {
             $this->start();
@@ -117,7 +147,11 @@ class MockArraySessionStorage implements SessionStorageInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function setId(string $id)
+=======
+    public function setId($id)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ($this->started) {
             throw new \LogicException('Cannot set session ID after the session has started.');
@@ -137,7 +171,11 @@ class MockArraySessionStorage implements SessionStorageInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function setName(string $name)
+=======
+    public function setName($name)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->name = $name;
     }
@@ -148,7 +186,11 @@ class MockArraySessionStorage implements SessionStorageInterface
     public function save()
     {
         if (!$this->started || $this->closed) {
+<<<<<<< HEAD
             throw new \RuntimeException('Trying to save a session that was not started yet or was already closed.');
+=======
+            throw new \RuntimeException('Trying to save a session that was not started yet or was already closed');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
         // nothing to do since we don't persist the session data
         $this->closed = false;
@@ -166,7 +208,11 @@ class MockArraySessionStorage implements SessionStorageInterface
         }
 
         // clear out the session
+<<<<<<< HEAD
         $this->data = [];
+=======
+        $this->data = array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         // reconnect the bags to the session
         $this->loadSession();
@@ -183,10 +229,17 @@ class MockArraySessionStorage implements SessionStorageInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getBag(string $name)
     {
         if (!isset($this->bags[$name])) {
             throw new \InvalidArgumentException(sprintf('The SessionBagInterface "%s" is not registered.', $name));
+=======
+    public function getBag($name)
+    {
+        if (!isset($this->bags[$name])) {
+            throw new \InvalidArgumentException(sprintf('The SessionBagInterface %s is not registered.', $name));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         if (!$this->started) {
@@ -204,6 +257,14 @@ class MockArraySessionStorage implements SessionStorageInterface
         return $this->started;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Sets the MetadataBag.
+     *
+     * @param MetadataBag $bag
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function setMetadataBag(MetadataBag $bag = null)
     {
         if (null === $bag) {
@@ -238,11 +299,19 @@ class MockArraySessionStorage implements SessionStorageInterface
 
     protected function loadSession()
     {
+<<<<<<< HEAD
         $bags = array_merge($this->bags, [$this->metadataBag]);
 
         foreach ($bags as $bag) {
             $key = $bag->getStorageKey();
             $this->data[$key] = $this->data[$key] ?? [];
+=======
+        $bags = array_merge($this->bags, array($this->metadataBag));
+
+        foreach ($bags as $bag) {
+            $key = $bag->getStorageKey();
+            $this->data[$key] = isset($this->data[$key]) ? $this->data[$key] : array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $bag->initialize($this->data[$key]);
         }
 

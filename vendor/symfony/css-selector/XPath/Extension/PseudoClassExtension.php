@@ -29,6 +29,7 @@ class PseudoClassExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getPseudoClassTranslators(): array
     {
         return [
@@ -44,11 +45,42 @@ class PseudoClassExtension extends AbstractExtension
     }
 
     public function translateRoot(XPathExpr $xpath): XPathExpr
+=======
+    public function getPseudoClassTranslators()
+    {
+        return array(
+            'root' => array($this, 'translateRoot'),
+            'first-child' => array($this, 'translateFirstChild'),
+            'last-child' => array($this, 'translateLastChild'),
+            'first-of-type' => array($this, 'translateFirstOfType'),
+            'last-of-type' => array($this, 'translateLastOfType'),
+            'only-child' => array($this, 'translateOnlyChild'),
+            'only-of-type' => array($this, 'translateOnlyOfType'),
+            'empty' => array($this, 'translateEmpty'),
+        );
+    }
+
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateRoot(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition('not(parent::*)');
     }
 
+<<<<<<< HEAD
     public function translateFirstChild(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateFirstChild(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath
             ->addStarPrefix()
@@ -56,7 +88,16 @@ class PseudoClassExtension extends AbstractExtension
             ->addCondition('position() = 1');
     }
 
+<<<<<<< HEAD
     public function translateLastChild(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateLastChild(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath
             ->addStarPrefix()
@@ -65,9 +106,19 @@ class PseudoClassExtension extends AbstractExtension
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateFirstOfType(XPathExpr $xpath): XPathExpr
+=======
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateFirstOfType(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ('*' === $xpath->getElement()) {
             throw new ExpressionErrorException('"*:first-of-type" is not implemented.');
@@ -79,9 +130,19 @@ class PseudoClassExtension extends AbstractExtension
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpressionErrorException
      */
     public function translateLastOfType(XPathExpr $xpath): XPathExpr
+=======
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateLastOfType(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ('*' === $xpath->getElement()) {
             throw new ExpressionErrorException('"*:last-of-type" is not implemented.');
@@ -92,7 +153,16 @@ class PseudoClassExtension extends AbstractExtension
             ->addCondition('position() = last()');
     }
 
+<<<<<<< HEAD
     public function translateOnlyChild(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateOnlyChild(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath
             ->addStarPrefix()
@@ -100,6 +170,7 @@ class PseudoClassExtension extends AbstractExtension
             ->addCondition('last() = 1');
     }
 
+<<<<<<< HEAD
     public function translateOnlyOfType(XPathExpr $xpath): XPathExpr
     {
         $element = $xpath->getElement();
@@ -108,6 +179,30 @@ class PseudoClassExtension extends AbstractExtension
     }
 
     public function translateEmpty(XPathExpr $xpath): XPathExpr
+=======
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     *
+     * @throws ExpressionErrorException
+     */
+    public function translateOnlyOfType(XPathExpr $xpath)
+    {
+        if ('*' === $xpath->getElement()) {
+            throw new ExpressionErrorException('"*:only-of-type" is not implemented.');
+        }
+
+        return $xpath->addCondition('last() = 1');
+    }
+
+    /**
+     * @param XPathExpr $xpath
+     *
+     * @return XPathExpr
+     */
+    public function translateEmpty(XPathExpr $xpath)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $xpath->addCondition('not(*) and not(string-length())');
     }
@@ -115,7 +210,11 @@ class PseudoClassExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getName(): string
+=======
+    public function getName()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return 'pseudo-class';
     }

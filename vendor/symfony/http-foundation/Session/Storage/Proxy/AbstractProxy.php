@@ -12,6 +12,11 @@
 namespace Symfony\Component\HttpFoundation\Session\Storage\Proxy;
 
 /**
+<<<<<<< HEAD
+=======
+ * AbstractProxy.
+ *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @author Drak <drak@zikula.org>
  */
 abstract class AbstractProxy
@@ -31,7 +36,11 @@ abstract class AbstractProxy
     /**
      * Gets the session.save_handler name.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getSaveHandlerName()
     {
@@ -81,12 +90,23 @@ abstract class AbstractProxy
     /**
      * Sets the session ID.
      *
+<<<<<<< HEAD
      * @throws \LogicException
      */
     public function setId(string $id)
     {
         if ($this->isActive()) {
             throw new \LogicException('Cannot change the ID of an active session.');
+=======
+     * @param string $id
+     *
+     * @throws \LogicException
+     */
+    public function setId($id)
+    {
+        if ($this->isActive()) {
+            throw new \LogicException('Cannot change the ID of an active session');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         session_id($id);
@@ -105,12 +125,23 @@ abstract class AbstractProxy
     /**
      * Sets the session name.
      *
+<<<<<<< HEAD
      * @throws \LogicException
      */
     public function setName(string $name)
     {
         if ($this->isActive()) {
             throw new \LogicException('Cannot change the name of an active session.');
+=======
+     * @param string $name
+     *
+     * @throws \LogicException
+     */
+    public function setName($name)
+    {
+        if ($this->isActive()) {
+            throw new \LogicException('Cannot change the name of an active session');
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         session_name($name);

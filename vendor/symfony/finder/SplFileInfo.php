@@ -22,11 +22,20 @@ class SplFileInfo extends \SplFileInfo
     private $relativePathname;
 
     /**
+<<<<<<< HEAD
+=======
+     * Constructor.
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param string $file             The file name
      * @param string $relativePath     The relative path
      * @param string $relativePathname The relative path name
      */
+<<<<<<< HEAD
     public function __construct(string $file, string $relativePath, string $relativePathname)
+=======
+    public function __construct($file, $relativePath, $relativePathname)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         parent::__construct($file);
         $this->relativePath = $relativePath;
@@ -38,7 +47,11 @@ class SplFileInfo extends \SplFileInfo
      *
      * This path does not contain the file name.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string the relative path
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getRelativePath()
     {
@@ -50,13 +63,18 @@ class SplFileInfo extends \SplFileInfo
      *
      * This path contains the file name.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string the relative path name
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getRelativePathname()
     {
         return $this->relativePathname;
     }
 
+<<<<<<< HEAD
     public function getFilenameWithoutExtension(): string
     {
         $filename = $this->getFilename();
@@ -68,11 +86,18 @@ class SplFileInfo extends \SplFileInfo
      * Returns the contents of the file.
      *
      * @return string
+=======
+    /**
+     * Returns the contents of the file.
+     *
+     * @return string the contents of the file
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @throws \RuntimeException
      */
     public function getContents()
     {
+<<<<<<< HEAD
         set_error_handler(function ($type, $msg) use (&$error) { $error = $msg; });
         try {
             $content = file_get_contents($this->getPathname());
@@ -81,6 +106,14 @@ class SplFileInfo extends \SplFileInfo
         }
         if (false === $content) {
             throw new \RuntimeException($error);
+=======
+        $level = error_reporting(0);
+        $content = file_get_contents($this->getPathname());
+        error_reporting($level);
+        if (false === $content) {
+            $error = error_get_last();
+            throw new \RuntimeException($error['message']);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $content;

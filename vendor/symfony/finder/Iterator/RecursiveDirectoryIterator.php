@@ -37,9 +37,21 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
     private $directorySeparator = '/';
 
     /**
+<<<<<<< HEAD
      * @throws \RuntimeException
      */
     public function __construct(string $path, int $flags, bool $ignoreUnreadableDirs = false)
+=======
+     * Constructor.
+     *
+     * @param string $path
+     * @param int    $flags
+     * @param bool   $ignoreUnreadableDirs
+     *
+     * @throws \RuntimeException
+     */
+    public function __construct($path, $flags, $ignoreUnreadableDirs = false)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if ($flags & (self::CURRENT_AS_PATHNAME | self::CURRENT_AS_SELF)) {
             throw new \RuntimeException('This iterator only support returning current as fileinfo.');
@@ -48,29 +60,44 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
         parent::__construct($path, $flags);
         $this->ignoreUnreadableDirs = $ignoreUnreadableDirs;
         $this->rootPath = $path;
+<<<<<<< HEAD
         if ('/' !== \DIRECTORY_SEPARATOR && !($flags & self::UNIX_PATHS)) {
             $this->directorySeparator = \DIRECTORY_SEPARATOR;
+=======
+        if ('/' !== DIRECTORY_SEPARATOR && !($flags & self::UNIX_PATHS)) {
+            $this->directorySeparator = DIRECTORY_SEPARATOR;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 
     /**
      * Return an instance of SplFileInfo with support for relative paths.
      *
+<<<<<<< HEAD
      * @return SplFileInfo
      */
     #[\ReturnTypeWillChange]
+=======
+     * @return SplFileInfo File information
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function current()
     {
         // the logic here avoids redoing the same work in all iterations
 
         if (null === $subPathname = $this->subPath) {
+<<<<<<< HEAD
             $subPathname = $this->subPath = $this->getSubPath();
+=======
+            $subPathname = $this->subPath = (string) $this->getSubPath();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
         if ('' !== $subPathname) {
             $subPathname .= $this->directorySeparator;
         }
         $subPathname .= $this->getFilename();
 
+<<<<<<< HEAD
         if ('/' !== $basePath = $this->rootPath) {
             $basePath .= $this->directorySeparator;
         }
@@ -108,6 +135,16 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
      * @throws AccessDeniedException
      */
     #[\ReturnTypeWillChange]
+=======
+        return new SplFileInfo($this->rootPath.$this->directorySeparator.$subPathname, $this->subPath, $subPathname);
+    }
+
+    /**
+     * @return \RecursiveIterator
+     *
+     * @throws AccessDeniedException
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function getChildren()
     {
         try {
@@ -124,29 +161,54 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
 
             return $children;
         } catch (\UnexpectedValueException $e) {
+<<<<<<< HEAD
             throw new AccessDeniedException($e->getMessage(), $e->getCode(), $e);
+=======
+            if ($this->ignoreUnreadableDirs) {
+                // If directory is unreadable and finder is set to ignore it, a fake empty content is returned.
+                return new \RecursiveArrayIterator(array());
+            } else {
+                throw new AccessDeniedException($e->getMessage(), $e->getCode(), $e);
+            }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
     }
 
     /**
      * Do nothing for non rewindable stream.
+<<<<<<< HEAD
      *
      * @return void
      */
     #[\ReturnTypeWillChange]
+=======
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function rewind()
     {
         if (false === $this->isRewindable()) {
             return;
         }
 
+<<<<<<< HEAD
+=======
+        // @see https://bugs.php.net/68557
+        if (PHP_VERSION_ID < 50523 || PHP_VERSION_ID >= 50600 && PHP_VERSION_ID < 50607) {
+            parent::next();
+        }
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         parent::rewind();
     }
 
     /**
      * Checks if the stream is rewindable.
      *
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return bool true when the stream is rewindable, false otherwise
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function isRewindable()
     {

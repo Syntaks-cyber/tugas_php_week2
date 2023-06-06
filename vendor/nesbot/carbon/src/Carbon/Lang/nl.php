@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Roy
@@ -55,11 +60,29 @@ return [
     'second' => ':count seconde|:count seconden',
     'a_second' => 'een paar seconden|:count seconden',
     's' => ':counts',
+=======
+return array(
+    'year' => ':count jaar',
+    'y' => ':count jaar',
+    'month' => ':count maand|:count maanden',
+    'm' => ':count maand|:count maanden',
+    'week' => ':count week|:count weken',
+    'w' => ':count week|:count weken',
+    'day' => ':count dag|:count dagen',
+    'd' => ':count dag|:count dagen',
+    'hour' => ':count uur',
+    'h' => ':count uur',
+    'minute' => ':count minuut|:count minuten',
+    'min' => ':count minuut|:count minuten',
+    'second' => ':count seconde|:count seconden',
+    's' => ':count seconde|:count seconden',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'ago' => ':time geleden',
     'from_now' => 'over :time',
     'after' => ':time later',
     'before' => ':time eerder',
     'diff_now' => 'nu',
+<<<<<<< HEAD
     'diff_today' => 'vandaag',
     'diff_today_regexp' => 'vandaag(?:\\s+om)?',
     'diff_yesterday' => 'gisteren',
@@ -111,3 +134,10 @@ return [
     'list' => [', ', ' en '],
     'meridiem' => ['\'s ochtends', '\'s middags'],
 ];
+=======
+    'diff_yesterday' => 'gisteren',
+    'diff_tomorrow' => 'morgen',
+    'diff_after_tomorrow' => 'overmorgen',
+    'diff_before_yesterday' => 'eergisteren',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

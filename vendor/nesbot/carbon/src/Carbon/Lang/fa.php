@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -38,10 +43,25 @@ return [
     'h' => ':count ساعت',
     'minute' => ':count دقیقه',
     'a_minute' => 'یک دقیقه'.'|:count '.'دقیقه',
+=======
+return array(
+    'year' => ':count سال',
+    'y' => ':count سال',
+    'month' => ':count ماه',
+    'm' => ':count ماه',
+    'week' => ':count هفته',
+    'w' => ':count هفته',
+    'day' => ':count روز',
+    'd' => ':count روز',
+    'hour' => ':count ساعت',
+    'h' => ':count ساعت',
+    'minute' => ':count دقیقه',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'min' => ':count دقیقه',
     'second' => ':count ثانیه',
     's' => ':count ثانیه',
     'ago' => ':time پیش',
+<<<<<<< HEAD
     'from_now' => ':time دیگر',
     'after' => ':time پس از',
     'before' => ':time پیش از',
@@ -82,3 +102,9 @@ return [
     'months_short_standalone' => ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'],
     'weekend' => [5, 5],
 ];
+=======
+    'from_now' => ':time بعد',
+    'after' => ':time پس از',
+    'before' => ':time پیش از',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

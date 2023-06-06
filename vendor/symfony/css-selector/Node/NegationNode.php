@@ -23,21 +23,52 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class NegationNode extends AbstractNode
 {
+<<<<<<< HEAD
     private $selector;
     private $subSelector;
 
+=======
+    /**
+     * @var NodeInterface
+     */
+    private $selector;
+
+    /**
+     * @var NodeInterface
+     */
+    private $subSelector;
+
+    /**
+     * @param NodeInterface $selector
+     * @param NodeInterface $subSelector
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function __construct(NodeInterface $selector, NodeInterface $subSelector)
     {
         $this->selector = $selector;
         $this->subSelector = $subSelector;
     }
 
+<<<<<<< HEAD
     public function getSelector(): NodeInterface
+=======
+    /**
+     * @return NodeInterface
+     */
+    public function getSelector()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector;
     }
 
+<<<<<<< HEAD
     public function getSubSelector(): NodeInterface
+=======
+    /**
+     * @return NodeInterface
+     */
+    public function getSubSelector()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->subSelector;
     }
@@ -45,12 +76,23 @@ class NegationNode extends AbstractNode
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getSpecificity(): Specificity
+=======
+    public function getSpecificity()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return $this->selector->getSpecificity()->plus($this->subSelector->getSpecificity());
     }
 
+<<<<<<< HEAD
     public function __toString(): string
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return sprintf('%s[%s:not(%s)]', $this->getNodeName(), $this->selector, $this->subSelector);
     }

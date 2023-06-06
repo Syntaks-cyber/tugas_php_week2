@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,12 +13,16 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Muhammad Nasir Rahimi
  * - Nassim Nasibullah (spinzar)
  */
 return [
+=======
+return array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'year' => ':count کال|:count کاله',
     'y' => ':countکال|:countکاله',
     'month' => ':count مياشت|:count مياشتي',
@@ -33,6 +41,7 @@ return [
     'from_now' => ':time له اوس څخه',
     'after' => ':time وروسته',
     'before' => ':time دمخه',
+<<<<<<< HEAD
     'list' => ['، ', ' او '],
     'meridiem' => ['غ.م.', 'غ.و.'],
     'weekdays' => ['اتوار', 'ګل', 'نهه', 'شورو', 'زيارت', 'جمعه', 'خالي'],
@@ -53,3 +62,6 @@ return [
         'LLLL' => 'dddd د YYYY د MMMM D H:mm',
     ],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

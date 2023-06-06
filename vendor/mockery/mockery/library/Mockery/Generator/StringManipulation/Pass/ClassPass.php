@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,6 +18,8 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery\Generator\StringManipulation\Pass;
 
@@ -37,6 +40,7 @@ class ClassPass implements Pass
         }
 
         $className = ltrim($target->getName(), "\\");
+<<<<<<< HEAD
         if (defined('HHVM_VERSION') && preg_match('/^HH\\\\/', $className)) {
             // HH\ namespace is reserved for HHVM class and doesnt require
             // class declaration and extension.
@@ -45,6 +49,26 @@ class ClassPass implements Pass
 
         if (!class_exists($className)) {
             \Mockery::declareClass($className);
+=======
+        if (!class_exists($className)) {
+            $targetCode = '<?php ';
+
+            if ($target->inNamespace()) {
+                $targetCode.= 'namespace ' . $target->getNamespaceName(). '; ';
+            }
+
+            $targetCode.= 'class ' . $target->getShortName() . ' {} ';
+
+            /*
+             * We could eval here, but it doesn't play well with the way
+             * PHPUnit tries to backup global state and the require definition
+             * loader
+             */
+            $tmpfname = tempnam(sys_get_temp_dir(), "Mockery");
+            file_put_contents($tmpfname, $targetCode);
+            require $tmpfname;
+            \Mockery::registerFileForCleanUp($tmpfname);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         $code = str_replace(

@@ -15,7 +15,10 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\Config\Util\XmlUtils;
 use Symfony\Component\Translation\Exception\InvalidResourceException;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
+<<<<<<< HEAD
 use Symfony\Component\Translation\Exception\RuntimeException;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 use Symfony\Component\Translation\MessageCatalogue;
 
 /**
@@ -28,12 +31,17 @@ class QtFileLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function load($resource, string $locale, string $domain = 'messages')
     {
         if (!class_exists(XmlUtils::class)) {
             throw new RuntimeException('Loading translations from the QT format requires the Symfony Config component.');
         }
 
+=======
+    public function load($resource, $locale, $domain = 'messages')
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if (!stream_is_local($resource)) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
         }
@@ -70,7 +78,11 @@ class QtFileLoader implements LoaderInterface
                 $translation = $translation->nextSibling;
             }
 
+<<<<<<< HEAD
             if (class_exists(FileResource::class)) {
+=======
+            if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 $catalogue->addResource(new FileResource($resource));
             }
         }

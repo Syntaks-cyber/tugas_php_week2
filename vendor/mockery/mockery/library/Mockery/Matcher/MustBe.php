@@ -14,17 +14,27 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
 namespace Mockery\Matcher;
 
+<<<<<<< HEAD
 /**
  * @deprecated 2.0 Due to ambiguity, use Hamcrest or PHPUnit equivalents
  */
 class MustBe extends MatcherAbstract
 {
+=======
+class MustBe extends MatcherAbstract
+{
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Check if the actual value matches the expected.
      *
@@ -35,9 +45,15 @@ class MustBe extends MatcherAbstract
     {
         if (!is_object($actual)) {
             return $this->_expected === $actual;
+<<<<<<< HEAD
         }
 
         return $this->_expected == $actual;
+=======
+        } else {
+            return $this->_expected == $actual;
+        }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**

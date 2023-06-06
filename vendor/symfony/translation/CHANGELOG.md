@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 5.4
 ---
 
@@ -83,6 +84,8 @@ CHANGELOG
  * removed `TranslationWriter::writeTranslations()` method
  * removed support for passing `MessageSelector` instances to the constructor of the `Translator` class
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 3.4.0
 -----
 

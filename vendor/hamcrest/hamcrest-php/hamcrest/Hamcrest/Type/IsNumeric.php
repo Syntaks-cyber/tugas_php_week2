@@ -19,14 +19,18 @@ class IsNumeric extends IsTypeOf
 
     public function matches($item)
     {
+<<<<<<< HEAD
         if ($this->isHexadecimal($item)) {
             return true;
         }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return is_numeric($item);
     }
 
     /**
+<<<<<<< HEAD
      * Return if the string passed is a valid hexadecimal number.
      * This check is necessary because PHP 7 doesn't recognize hexadecimal string as numeric anymore.
      *
@@ -43,6 +47,8 @@ class IsNumeric extends IsTypeOf
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Is the value a numeric?
      *
      * @factory

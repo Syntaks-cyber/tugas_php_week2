@@ -11,9 +11,15 @@
 
 namespace Symfony\Component\HttpKernel\Event;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Contracts\EventDispatcher\Event;
+=======
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\EventDispatcher\Event;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * Base class for events thrown in the HttpKernel component.
@@ -22,6 +28,7 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 class KernelEvent extends Event
 {
+<<<<<<< HEAD
     private $kernel;
     private $request;
     private $requestType;
@@ -31,6 +38,31 @@ class KernelEvent extends Event
      *                         HttpKernelInterface::MAIN_REQUEST or HttpKernelInterface::SUB_REQUEST
      */
     public function __construct(HttpKernelInterface $kernel, Request $request, ?int $requestType)
+=======
+    /**
+     * The kernel in which this event was thrown.
+     *
+     * @var HttpKernelInterface
+     */
+    private $kernel;
+
+    /**
+     * The request the kernel is currently processing.
+     *
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * The request type the kernel is currently processing.  One of
+     * HttpKernelInterface::MASTER_REQUEST and HttpKernelInterface::SUB_REQUEST.
+     *
+     * @var int
+     */
+    private $requestType;
+
+    public function __construct(HttpKernelInterface $kernel, Request $request, $requestType)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->kernel = $kernel;
         $this->request = $request;
@@ -60,7 +92,11 @@ class KernelEvent extends Event
     /**
      * Returns the request type the kernel is currently processing.
      *
+<<<<<<< HEAD
      * @return int One of HttpKernelInterface::MAIN_REQUEST and
+=======
+     * @return int One of HttpKernelInterface::MASTER_REQUEST and
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *             HttpKernelInterface::SUB_REQUEST
      */
     public function getRequestType()
@@ -69,6 +105,7 @@ class KernelEvent extends Event
     }
 
     /**
+<<<<<<< HEAD
      * Checks if this is the main request.
      */
     public function isMainRequest(): bool
@@ -88,5 +125,14 @@ class KernelEvent extends Event
         trigger_deprecation('symfony/http-kernel', '5.3', '"%s()" is deprecated, use "isMainRequest()" instead.', __METHOD__);
 
         return $this->isMainRequest();
+=======
+     * Checks if this is a master request.
+     *
+     * @return bool True if the request is a master request
+     */
+    public function isMasterRequest()
+    {
+        return HttpKernelInterface::MASTER_REQUEST === $this->requestType;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

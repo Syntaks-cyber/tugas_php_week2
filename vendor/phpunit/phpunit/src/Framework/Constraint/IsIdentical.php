@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Framework\Constraint;
 
 use function get_class;
@@ -16,17 +21,24 @@ use function is_string;
 use function sprintf;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * Constraint that asserts that one value is identical to another.
  *
  * Identical check is performed with PHP's === operator, the operator is
  * explained in detail at
+<<<<<<< HEAD
  * {@url https://php.net/manual/en/types.comparisons.php}.
+=======
+ * {@url http://www.php.net/manual/en/types.comparisons.php}.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * Two values are identical if they have the same value and are of the same
  * type.
  *
  * The expected value is passed in the constructor.
+<<<<<<< HEAD
  */
 final class IsIdentical extends Constraint
 {
@@ -37,11 +49,38 @@ final class IsIdentical extends Constraint
 
     public function __construct($value)
     {
+=======
+ *
+ * @since Class available since Release 3.0.0
+ */
+class PHPUnit_Framework_Constraint_IsIdentical extends PHPUnit_Framework_Constraint
+{
+    /**
+     * @var float
+     */
+    const EPSILON = 0.0000000001;
+
+    /**
+     * @var mixed
+     */
+    protected $value;
+
+    /**
+     * @param mixed $value
+     */
+    public function __construct($value)
+    {
+        parent::__construct();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->value = $value;
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -50,12 +89,32 @@ final class IsIdentical extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @throws ExpectationFailedException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
         $success = $this->value === $other;
+=======
+     * @param mixed  $other        Value or object to evaluate.
+     * @param string $description  Additional information about the test
+     * @param bool   $returnResult Whether to return a result or throw an exception
+     *
+     * @return mixed
+     *
+     * @throws PHPUnit_Framework_ExpectationFailedException
+     */
+    public function evaluate($other, $description = '', $returnResult = false)
+    {
+        if (is_double($this->value) && is_double($other) &&
+            !is_infinite($this->value) && !is_infinite($other) &&
+            !is_nan($this->value) && !is_nan($other)) {
+            $success = abs($this->value - $other) < self::EPSILON;
+        } else {
+            $success = $this->value === $other;
+        }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         if ($returnResult) {
             return $success;
@@ -66,6 +125,7 @@ final class IsIdentical extends Constraint
 
             // if both values are strings, make sure a diff is generated
             if (is_string($this->value) && is_string($other)) {
+<<<<<<< HEAD
                 $f = new ComparisonFailure(
                     $this->value,
                     $other,
@@ -81,6 +141,13 @@ final class IsIdentical extends Constraint
                     $other,
                     $this->exporter()->export($this->value),
                     $this->exporter()->export($other)
+=======
+                $f = new SebastianBergmann\Comparator\ComparisonFailure(
+                    $this->value,
+                    $other,
+                    $this->value,
+                    $other
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 );
             }
 
@@ -89,6 +156,7 @@ final class IsIdentical extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Returns a string representation of the constraint.
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
@@ -105,15 +173,26 @@ final class IsIdentical extends Constraint
 
     /**
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
+<<<<<<< HEAD
      * @param mixed $other evaluated value or object
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     protected function failureDescription($other): string
+=======
+     * @param mixed $other Evaluated value or object.
+     *
+     * @return string
+     */
+    protected function failureDescription($other)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (is_object($this->value) && is_object($other)) {
             return 'two variables reference the same object';
@@ -123,10 +202,31 @@ final class IsIdentical extends Constraint
             return 'two strings are identical';
         }
 
+<<<<<<< HEAD
         if (is_array($this->value) && is_array($other)) {
             return 'two arrays are identical';
         }
 
         return parent::failureDescription($other);
     }
+=======
+        return parent::failureDescription($other);
+    }
+
+    /**
+     * Returns a string representation of the constraint.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        if (is_object($this->value)) {
+            return 'is identical to an object of class "' .
+                   get_class($this->value) . '"';
+        } else {
+            return 'is identical to ' .
+                   $this->exporter->export($this->value);
+        }
+    }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

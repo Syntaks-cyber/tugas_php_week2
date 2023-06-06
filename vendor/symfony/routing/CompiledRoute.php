@@ -28,6 +28,11 @@ class CompiledRoute implements \Serializable
     private $hostTokens;
 
     /**
+<<<<<<< HEAD
+=======
+     * Constructor.
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @param string      $staticPrefix  The static prefix of the compiled route
      * @param string      $regex         The regular expression to use to match this route
      * @param array       $tokens        An array of tokens to use to generate URL for this route
@@ -37,9 +42,15 @@ class CompiledRoute implements \Serializable
      * @param array       $hostVariables An array of host variables
      * @param array       $variables     An array of variables (variables defined in the path and in the host patterns)
      */
+<<<<<<< HEAD
     public function __construct(string $staticPrefix, string $regex, array $tokens, array $pathVariables, string $hostRegex = null, array $hostTokens = [], array $hostVariables = [], array $variables = [])
     {
         $this->staticPrefix = $staticPrefix;
+=======
+    public function __construct($staticPrefix, $regex, array $tokens, array $pathVariables, $hostRegex = null, array $hostTokens = array(), array $hostVariables = array(), array $variables = array())
+    {
+        $this->staticPrefix = (string) $staticPrefix;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->regex = $regex;
         $this->tokens = $tokens;
         $this->pathVariables = $pathVariables;
@@ -49,9 +60,18 @@ class CompiledRoute implements \Serializable
         $this->variables = $variables;
     }
 
+<<<<<<< HEAD
     public function __serialize(): array
     {
         return [
+=======
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize()
+    {
+        return serialize(array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             'vars' => $this->variables,
             'path_prefix' => $this->staticPrefix,
             'path_regex' => $this->regex,
@@ -60,6 +80,7 @@ class CompiledRoute implements \Serializable
             'host_regex' => $this->hostRegex,
             'host_tokens' => $this->hostTokens,
             'host_vars' => $this->hostVariables,
+<<<<<<< HEAD
         ];
     }
 
@@ -73,6 +94,17 @@ class CompiledRoute implements \Serializable
 
     public function __unserialize(array $data): void
     {
+=======
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized)
+    {
+        $data = unserialize($serialized);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->variables = $data['vars'];
         $this->staticPrefix = $data['path_prefix'];
         $this->regex = $data['path_regex'];
@@ -84,6 +116,7 @@ class CompiledRoute implements \Serializable
     }
 
     /**
+<<<<<<< HEAD
      * @internal
      */
     final public function unserialize($serialized)
@@ -95,6 +128,11 @@ class CompiledRoute implements \Serializable
      * Returns the static prefix.
      *
      * @return string
+=======
+     * Returns the static prefix.
+     *
+     * @return string The static prefix
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getStaticPrefix()
     {
@@ -104,7 +142,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the regex.
      *
+<<<<<<< HEAD
      * @return string
+=======
+     * @return string The regex
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getRegex()
     {
@@ -114,7 +156,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the host regex.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string|null The host regex or null
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getHostRegex()
     {
@@ -124,7 +170,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the tokens.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array The tokens
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getTokens()
     {
@@ -134,7 +184,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the host tokens.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array The tokens
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getHostTokens()
     {
@@ -144,7 +198,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the variables.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array The variables
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getVariables()
     {
@@ -154,7 +212,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the path variables.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array The variables
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getPathVariables()
     {
@@ -164,7 +226,11 @@ class CompiledRoute implements \Serializable
     /**
      * Returns the host variables.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array The variables
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getHostVariables()
     {

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Milos Sakovic
@@ -49,16 +54,37 @@ return [
     'microsecond' => '{1}:count microsecond|{0}:count microseconds|]1,Inf[:count microseconds',
     'a_microsecond' => '{1}a microsecond|{0}:count microseconds|]1,Inf[:count microseconds',
     'µs' => ':countµs',
+=======
+return array(
+    'year' => ':count year|:count years',
+    'y' => ':countyr|:countyrs',
+    'month' => ':count month|:count months',
+    'm' => ':countmo|:countmos',
+    'week' => ':count week|:count weeks',
+    'w' => ':countw|:countw',
+    'day' => ':count day|:count days',
+    'd' => ':countd|:countd',
+    'hour' => ':count hour|:count hours',
+    'h' => ':counth|:counth',
+    'minute' => ':count minute|:count minutes',
+    'min' => ':countm|:countm',
+    'second' => ':count second|:count seconds',
+    's' => ':counts|:counts',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'ago' => ':time ago',
     'from_now' => ':time from now',
     'after' => ':time after',
     'before' => ':time before',
     'diff_now' => 'just now',
+<<<<<<< HEAD
     'diff_today' => 'today',
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'diff_yesterday' => 'yesterday',
     'diff_tomorrow' => 'tomorrow',
     'diff_before_yesterday' => 'before yesterday',
     'diff_after_tomorrow' => 'after tomorrow',
+<<<<<<< HEAD
     'period_recurrences' => '{1}once|{0}:count times|]1,Inf[:count times',
     'period_interval' => 'every :interval',
     'period_start_date' => 'from :date',
@@ -85,3 +111,10 @@ return [
     'first_day_of_week' => 0,
     'day_of_first_week_of_year' => 1,
 ];
+=======
+    'period_recurrences' => 'once|:count times',
+    'period_interval' => 'every :interval',
+    'period_start_date' => 'from :date',
+    'period_end_date' => 'to :date',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

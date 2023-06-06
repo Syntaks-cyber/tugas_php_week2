@@ -22,23 +22,51 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class FileLocator extends BaseFileLocator
 {
     private $kernel;
+<<<<<<< HEAD
 
     public function __construct(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
 
         parent::__construct();
+=======
+    private $path;
+
+    /**
+     * Constructor.
+     *
+     * @param KernelInterface $kernel A KernelInterface instance
+     * @param null|string     $path   The path the global resource directory
+     * @param array           $paths  An array of paths where to look for resources
+     */
+    public function __construct(KernelInterface $kernel, $path = null, array $paths = array())
+    {
+        $this->kernel = $kernel;
+        if (null !== $path) {
+            $this->path = $path;
+            $paths[] = $path;
+        }
+
+        parent::__construct($paths);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function locate(string $file, string $currentPath = null, bool $first = true)
     {
         if (isset($file[0]) && '@' === $file[0]) {
             $resource = $this->kernel->locateResource($file);
 
             return $first ? $resource : [$resource];
+=======
+    public function locate($file, $currentPath = null, $first = true)
+    {
+        if (isset($file[0]) && '@' === $file[0]) {
+            return $this->kernel->locateResource($file, $this->path, $first);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return parent::locate($file, $currentPath, $first);

@@ -23,7 +23,11 @@ abstract class FileLoader extends ArrayLoader
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function load($resource, string $locale, string $domain = 'messages')
+=======
+    public function load($resource, $locale, $domain = 'messages')
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!stream_is_local($resource)) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
@@ -47,7 +51,11 @@ abstract class FileLoader extends ArrayLoader
 
         $catalogue = parent::load($messages, $locale, $domain);
 
+<<<<<<< HEAD
         if (class_exists(FileResource::class)) {
+=======
+        if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $catalogue->addResource(new FileResource($resource));
         }
 
@@ -55,9 +63,18 @@ abstract class FileLoader extends ArrayLoader
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @param string $resource
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @return array
      *
      * @throws InvalidResourceException if stream content has an invalid format
      */
+<<<<<<< HEAD
     abstract protected function loadResource(string $resource);
+=======
+    abstract protected function loadResource($resource);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

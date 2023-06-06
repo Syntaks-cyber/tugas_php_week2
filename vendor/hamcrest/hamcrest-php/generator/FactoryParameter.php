@@ -22,6 +22,7 @@ class FactoryParameter
         $this->reflector = $reflector;
     }
 
+<<<<<<< HEAD
     /**
      * Compute the declaration code.
      *
@@ -31,6 +32,21 @@ class FactoryParameter
     {
         $code = $this->getTypeCode() . $this->getInvocation();
 
+=======
+    public function getDeclaration()
+    {
+        if ($this->reflector->isArray()) {
+            $code = 'array ';
+        } else {
+            $class = $this->reflector->getClass();
+            if ($class !== null) {
+                $code = '\\' . $class->name . ' ';
+            } else {
+                $code = '';
+            }
+        }
+        $code .= '$' . $this->reflector->name;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if ($this->reflector->isOptional()) {
             $default = $this->reflector->getDefaultValue();
             if (is_null($default)) {
@@ -44,7 +60,11 @@ class FactoryParameter
             } elseif (is_array($default)) {
                 $default = 'array()';
             } else {
+<<<<<<< HEAD
                 echo 'Warning: unknown default type for ' . $this->getMethod()->getFullName() . "\n";
+=======
+                echo 'Warning: unknown default type for ' . $this->getMethod()->getFullName() . PHP_EOL;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 var_dump($default);
                 $default = 'null';
             }
@@ -53,6 +73,7 @@ class FactoryParameter
         return $code;
     }
 
+<<<<<<< HEAD
     /**
      * Compute the type code for the paramater.
      *
@@ -124,6 +145,13 @@ class FactoryParameter
      *
      * @return string
      */
+=======
+    public function getInvocation()
+    {
+        return '$' . $this->reflector->name;
+    }
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function getMethod()
     {
         return $this->method;

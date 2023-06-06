@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Framework\Constraint;
 
 use function is_string;
@@ -16,48 +21,124 @@ use function trim;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * Constraint that checks if one value is equal to another.
  *
  * Equality is checked with PHP's == operator, the operator is explained in
+<<<<<<< HEAD
  * detail at {@url https://php.net/manual/en/types.comparisons.php}.
  * Two values are equal if they have the same value disregarding type.
  *
  * The expected value is passed in the constructor.
  */
 final class IsEqual extends Constraint
+=======
+ * detail at {@url http://www.php.net/manual/en/types.comparisons.php}.
+ * Two values are equal if they have the same value disregarding type.
+ *
+ * The expected value is passed in the constructor.
+ *
+ * @since Class available since Release 3.0.0
+ */
+class PHPUnit_Framework_Constraint_IsEqual extends PHPUnit_Framework_Constraint
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
     /**
      * @var mixed
      */
+<<<<<<< HEAD
     private $value;
+=======
+    protected $value;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @var float
      */
+<<<<<<< HEAD
     private $delta;
+=======
+    protected $delta = 0.0;
+
+    /**
+     * @var int
+     */
+    protected $maxDepth = 10;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @var bool
      */
+<<<<<<< HEAD
     private $canonicalize;
+=======
+    protected $canonicalize = false;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
     /**
      * @var bool
      */
+<<<<<<< HEAD
     private $ignoreCase;
 
     public function __construct($value, float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false)
     {
         $this->value        = $value;
         $this->delta        = $delta;
+=======
+    protected $ignoreCase = false;
+
+    /**
+     * @var SebastianBergmann\Comparator\ComparisonFailure
+     */
+    protected $lastFailure;
+
+    /**
+     * @param mixed $value
+     * @param float $delta
+     * @param int   $maxDepth
+     * @param bool  $canonicalize
+     * @param bool  $ignoreCase
+     *
+     * @throws PHPUnit_Framework_Exception
+     */
+    public function __construct($value, $delta = 0.0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false)
+    {
+        parent::__construct();
+
+        if (!is_numeric($delta)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(2, 'numeric');
+        }
+
+        if (!is_int($maxDepth)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(3, 'integer');
+        }
+
+        if (!is_bool($canonicalize)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(4, 'boolean');
+        }
+
+        if (!is_bool($ignoreCase)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(5, 'boolean');
+        }
+
+        $this->value        = $value;
+        $this->delta        = $delta;
+        $this->maxDepth     = $maxDepth;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->canonicalize = $canonicalize;
         $this->ignoreCase   = $ignoreCase;
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -66,9 +147,21 @@ final class IsEqual extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
      * @throws ExpectationFailedException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
+=======
+     * @param mixed  $other        Value or object to evaluate.
+     * @param string $description  Additional information about the test
+     * @param bool   $returnResult Whether to return a result or throw an exception
+     *
+     * @return mixed
+     *
+     * @throws PHPUnit_Framework_ExpectationFailedException
+     */
+    public function evaluate($other, $description = '', $returnResult = false)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // If $this->value and $other are identical, they are also equal.
         // This is the most common path and will allow us to skip
@@ -77,7 +170,11 @@ final class IsEqual extends Constraint
             return true;
         }
 
+<<<<<<< HEAD
         $comparatorFactory = ComparatorFactory::getInstance();
+=======
+        $comparatorFactory = SebastianBergmann\Comparator\Factory::getInstance();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         try {
             $comparator = $comparatorFactory->getComparatorFor(
@@ -92,12 +189,20 @@ final class IsEqual extends Constraint
                 $this->canonicalize,
                 $this->ignoreCase
             );
+<<<<<<< HEAD
         } catch (ComparisonFailure $f) {
+=======
+        } catch (SebastianBergmann\Comparator\ComparisonFailure $f) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             if ($returnResult) {
                 return false;
             }
 
+<<<<<<< HEAD
             throw new ExpectationFailedException(
+=======
+            throw new PHPUnit_Framework_ExpectationFailedException(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 trim($description . "\n" . $f->getMessage()),
                 $f
             );
@@ -109,15 +214,22 @@ final class IsEqual extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
+<<<<<<< HEAD
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function toString(): string
+=======
+     * @return string
+     */
+    public function toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $delta = '';
 
         if (is_string($this->value)) {
             if (strpos($this->value, "\n") !== false) {
                 return 'is equal to <text>';
+<<<<<<< HEAD
             }
 
             return sprintf(
@@ -138,5 +250,27 @@ final class IsEqual extends Constraint
             $this->exporter()->export($this->value),
             $delta
         );
+=======
+            } else {
+                return sprintf(
+                    'is equal to <string:%s>',
+                    $this->value
+                );
+            }
+        } else {
+            if ($this->delta != 0) {
+                $delta = sprintf(
+                    ' with delta <%F>',
+                    $this->delta
+                );
+            }
+
+            return sprintf(
+                'is equal to %s%s',
+                $this->exporter->export($this->value),
+                $delta
+            );
+        }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

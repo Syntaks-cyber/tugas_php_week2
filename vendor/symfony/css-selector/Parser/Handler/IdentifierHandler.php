@@ -13,9 +13,15 @@ namespace Symfony\Component\CssSelector\Parser\Handler;
 
 use Symfony\Component\CssSelector\Parser\Reader;
 use Symfony\Component\CssSelector\Parser\Token;
+<<<<<<< HEAD
 use Symfony\Component\CssSelector\Parser\Tokenizer\TokenizerEscaping;
 use Symfony\Component\CssSelector\Parser\Tokenizer\TokenizerPatterns;
 use Symfony\Component\CssSelector\Parser\TokenStream;
+=======
+use Symfony\Component\CssSelector\Parser\TokenStream;
+use Symfony\Component\CssSelector\Parser\Tokenizer\TokenizerEscaping;
+use Symfony\Component\CssSelector\Parser\Tokenizer\TokenizerPatterns;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * CSS selector comment handler.
@@ -29,9 +35,26 @@ use Symfony\Component\CssSelector\Parser\TokenStream;
  */
 class IdentifierHandler implements HandlerInterface
 {
+<<<<<<< HEAD
     private $patterns;
     private $escaping;
 
+=======
+    /**
+     * @var TokenizerPatterns
+     */
+    private $patterns;
+
+    /**
+     * @var TokenizerEscaping
+     */
+    private $escaping;
+
+    /**
+     * @param TokenizerPatterns $patterns
+     * @param TokenizerEscaping $escaping
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function __construct(TokenizerPatterns $patterns, TokenizerEscaping $escaping)
     {
         $this->patterns = $patterns;
@@ -41,7 +64,11 @@ class IdentifierHandler implements HandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function handle(Reader $reader, TokenStream $stream): bool
+=======
+    public function handle(Reader $reader, TokenStream $stream)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $match = $reader->findPattern($this->patterns->getIdentifierPattern());
 
@@ -51,7 +78,11 @@ class IdentifierHandler implements HandlerInterface
 
         $value = $this->escaping->escapeUnicode($match[0]);
         $stream->push(new Token(Token::TYPE_IDENTIFIER, $value, $reader->getPosition()));
+<<<<<<< HEAD
         $reader->moveForward(\strlen($match[0]));
+=======
+        $reader->moveForward(strlen($match[0]));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         return true;
     }

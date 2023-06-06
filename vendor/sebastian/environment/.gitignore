@@ -2,5 +2,9 @@
 /vendor
 /composer.lock
 /composer.phar
+<<<<<<< HEAD
 /.php_cs.cache
 /.phpunit.result.cache
+=======
+/phpunit.xml
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

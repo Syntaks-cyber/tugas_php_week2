@@ -34,6 +34,7 @@ class EmptyStringParser implements ParserInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function parse(string $source): array
     {
         // Matches an empty string
@@ -42,5 +43,15 @@ class EmptyStringParser implements ParserInterface
         }
 
         return [];
+=======
+    public function parse($source)
+    {
+        // Matches an empty string
+        if ($source == '') {
+            return array(new SelectorNode(new ElementNode(null, '*')));
+        }
+
+        return array();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

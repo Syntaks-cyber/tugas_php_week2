@@ -6,7 +6,12 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
+<<<<<<< HEAD
          stopOnFailure="false">
+=======
+         stopOnFailure="false"
+         syntaxCheck="false">
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
   <testsuites>
     <testsuite name="hamcrest-php">
       <directory suffix="Test.php">.</directory>

@@ -26,10 +26,13 @@ use Symfony\Component\Translation\MessageCatalogueInterface;
  */
 abstract class AbstractOperation implements OperationInterface
 {
+<<<<<<< HEAD
     public const OBSOLETE_BATCH = 'obsolete';
     public const NEW_BATCH = 'new';
     public const ALL_BATCH = 'all';
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     protected $source;
     protected $target;
     protected $result;
@@ -83,6 +86,7 @@ abstract class AbstractOperation implements OperationInterface
     public function getDomains()
     {
         if (null === $this->domains) {
+<<<<<<< HEAD
             $domains = [];
             foreach ([$this->source, $this->target] as $catalogue) {
                 foreach ($catalogue->getDomains() as $domain) {
@@ -95,6 +99,9 @@ abstract class AbstractOperation implements OperationInterface
             }
 
             $this->domains = array_values($domains);
+=======
+            $this->domains = array_values(array_unique(array_merge($this->source->getDomains(), $this->target->getDomains())));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $this->domains;
@@ -103,49 +110,85 @@ abstract class AbstractOperation implements OperationInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getMessages(string $domain)
+=======
+    public function getMessages($domain)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
         }
 
+<<<<<<< HEAD
         if (!isset($this->messages[$domain][self::ALL_BATCH])) {
             $this->processDomain($domain);
         }
 
         return $this->messages[$domain][self::ALL_BATCH];
+=======
+        if (!isset($this->messages[$domain]['all'])) {
+            $this->processDomain($domain);
+        }
+
+        return $this->messages[$domain]['all'];
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getNewMessages(string $domain)
+=======
+    public function getNewMessages($domain)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
         }
 
+<<<<<<< HEAD
         if (!isset($this->messages[$domain][self::NEW_BATCH])) {
             $this->processDomain($domain);
         }
 
         return $this->messages[$domain][self::NEW_BATCH];
+=======
+        if (!isset($this->messages[$domain]['new'])) {
+            $this->processDomain($domain);
+        }
+
+        return $this->messages[$domain]['new'];
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function getObsoleteMessages(string $domain)
+=======
+    public function getObsoleteMessages($domain)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (!\in_array($domain, $this->getDomains())) {
             throw new InvalidArgumentException(sprintf('Invalid domain: "%s".', $domain));
         }
 
+<<<<<<< HEAD
         if (!isset($this->messages[$domain][self::OBSOLETE_BATCH])) {
             $this->processDomain($domain);
         }
 
         return $this->messages[$domain][self::OBSOLETE_BATCH];
+=======
+        if (!isset($this->messages[$domain]['obsolete'])) {
+            $this->processDomain($domain);
+        }
+
+        return $this->messages[$domain]['obsolete'];
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -163,6 +206,7 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param self::*_BATCH $batch
      */
     public function moveMessagesToIntlDomainsIfPossible(string $batch = self::ALL_BATCH): void
@@ -194,10 +238,16 @@ abstract class AbstractOperation implements OperationInterface
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Performs operation on source and target catalogues for the given domain and
      * stores the results.
      *
      * @param string $domain The domain which the operation will be performed for
      */
+<<<<<<< HEAD
     abstract protected function processDomain(string $domain);
+=======
+    abstract protected function processDomain($domain);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

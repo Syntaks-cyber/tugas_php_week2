@@ -15,6 +15,7 @@ namespace Symfony\Component\Finder\Iterator;
  * MultiplePcreFilterIterator filters files using patterns (regexps, globs or strings).
  *
  * @author Fabien Potencier <fabien@symfony.com>
+<<<<<<< HEAD
  *
  * @template-covariant TKey
  * @template-covariant TValue
@@ -30,6 +31,20 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
      * @param \Iterator $iterator        The Iterator to filter
      * @param string[]  $matchPatterns   An array of patterns that need to match
      * @param string[]  $noMatchPatterns An array of patterns that need to not match
+=======
+ */
+abstract class MultiplePcreFilterIterator extends FilterIterator
+{
+    protected $matchRegexps = array();
+    protected $noMatchRegexps = array();
+
+    /**
+     * Constructor.
+     *
+     * @param \Iterator $iterator        The Iterator to filter
+     * @param array     $matchPatterns   An array of patterns that need to match
+     * @param array     $noMatchPatterns An array of patterns that need to not match
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function __construct(\Iterator $iterator, array $matchPatterns, array $noMatchPatterns)
     {
@@ -51,9 +66,17 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
      * Such case can be handled by child classes before calling the method if they want to
      * apply a different behavior.
      *
+<<<<<<< HEAD
      * @return bool
      */
     protected function isAccepted(string $string)
+=======
+     * @param string $string The string to be matched against filters
+     *
+     * @return bool
+     */
+    protected function isAccepted($string)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // should at least not match one rule to exclude
         foreach ($this->noMatchRegexps as $regex) {
@@ -80,6 +103,7 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
     /**
      * Checks whether the string is a regex.
      *
+<<<<<<< HEAD
      * @return bool
      */
     protected function isRegex(string $str)
@@ -91,6 +115,15 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
         }
 
         if (preg_match('/^(.{3,}?)['.$availableModifiers.']*$/', $str, $m)) {
+=======
+     * @param string $str
+     *
+     * @return bool Whether the given string is a regex
+     */
+    protected function isRegex($str)
+    {
+        if (preg_match('/^(.{3,}?)[imsxuADU]*$/', $str, $m)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $start = substr($m[1], 0, 1);
             $end = substr($m[1], -1);
 
@@ -98,7 +131,11 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
                 return !preg_match('/[*?[:alnum:] \\\\]/', $start);
             }
 
+<<<<<<< HEAD
             foreach ([['{', '}'], ['(', ')'], ['[', ']'], ['<', '>']] as $delimiters) {
+=======
+            foreach (array(array('{', '}'), array('(', ')'), array('[', ']'), array('<', '>')) as $delimiters) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 if ($start === $delimiters[0] && $end === $delimiters[1]) {
                     return true;
                 }
@@ -111,7 +148,15 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
     /**
      * Converts string into regexp.
      *
+<<<<<<< HEAD
      * @return string
      */
     abstract protected function toRegex(string $str);
+=======
+     * @param string $str Pattern
+     *
+     * @return string regexp corresponding to a given string
+     */
+    abstract protected function toRegex($str);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

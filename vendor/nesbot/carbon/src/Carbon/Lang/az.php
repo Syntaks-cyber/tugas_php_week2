@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -40,23 +45,45 @@ return [
     'min' => ':count dəqiqə',
     'second' => ':count san.',
     'a_second' => '{1}birneçə saniyə|]1,Inf[:count saniyə',
+=======
+return array(
+    'year' => ':count il',
+    'y' => ':count il',
+    'month' => ':count ay',
+    'm' => ':count ay',
+    'week' => ':count həftə',
+    'w' => ':count həftə',
+    'day' => ':count gün',
+    'd' => ':count gün',
+    'hour' => ':count saat',
+    'h' => ':count saat',
+    'minute' => ':count dəqiqə',
+    'min' => ':count dəqiqə',
+    'second' => ':count saniyə',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     's' => ':count saniyə',
     'ago' => ':time əvvəl',
     'from_now' => ':time sonra',
     'after' => ':time sonra',
     'before' => ':time əvvəl',
     'diff_now' => 'indi',
+<<<<<<< HEAD
     'diff_today' => 'bugün',
     'diff_today_regexp' => 'bugün(?:\\s+saat)?',
     'diff_yesterday' => 'dünən',
     'diff_tomorrow' => 'sabah',
     'diff_tomorrow_regexp' => 'sabah(?:\\s+saat)?',
+=======
+    'diff_yesterday' => 'dünən',
+    'diff_tomorrow' => 'sabah',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'diff_before_yesterday' => 'srağagün',
     'diff_after_tomorrow' => 'birisi gün',
     'period_recurrences' => ':count dəfədən bir',
     'period_interval' => 'hər :interval',
     'period_start_date' => ':date tarixindən başlayaraq',
     'period_end_date' => ':date tarixinədək',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -126,3 +153,6 @@ return [
     'day_of_first_week_of_year' => 1,
     'list' => [', ', ' və '],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

@@ -16,7 +16,11 @@ Let's take the following code for an example:
     {
         function callExternalService($param)
         {
+<<<<<<< HEAD
             $externalService = new Service\External($version = 5);
+=======
+            $externalService = new Service\External();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             $externalService->sendSomething($param);
             return $externalService->getSomething();
         }
@@ -91,6 +95,7 @@ Our test example from above now becomes:
             $this->assertSame('Tested!', $result);
         }
     }
+<<<<<<< HEAD
 
 
 
@@ -135,3 +140,5 @@ constructor.
     This cookbook entry is an adaption of the blog post titled
     `"Mocking hard dependencies with Mockery" <https://robertbasic.com/blog/mocking-hard-dependencies-with-mockery/>`_,
     published by Robert Basic on his blog.
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

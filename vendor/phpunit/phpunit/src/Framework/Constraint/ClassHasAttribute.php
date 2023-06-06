@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Framework\Constraint;
 
 use function get_class;
@@ -15,29 +20,72 @@ use function sprintf;
 use PHPUnit\Framework\Exception;
 use ReflectionClass;
 use ReflectionException;
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * Constraint that asserts that the class it is evaluated for has a given
  * attribute.
  *
  * The attribute name is passed in the constructor.
+<<<<<<< HEAD
  */
 class ClassHasAttribute extends Constraint
+=======
+ *
+ * @since Class available since Release 3.1.0
+ */
+class PHPUnit_Framework_Constraint_ClassHasAttribute extends PHPUnit_Framework_Constraint
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
     /**
      * @var string
      */
+<<<<<<< HEAD
     private $attributeName;
 
     public function __construct(string $attributeName)
     {
+=======
+    protected $attributeName;
+
+    /**
+     * @param string $attributeName
+     */
+    public function __construct($attributeName)
+    {
+        parent::__construct();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->attributeName = $attributeName;
     }
 
     /**
+<<<<<<< HEAD
      * Returns a string representation of the constraint.
      */
     public function toString(): string
+=======
+     * Evaluates the constraint for parameter $other. Returns true if the
+     * constraint is met, false otherwise.
+     *
+     * @param mixed $other Value or object to evaluate.
+     *
+     * @return bool
+     */
+    protected function matches($other)
+    {
+        $class = new ReflectionClass($other);
+
+        return $class->hasProperty($this->attributeName);
+    }
+
+    /**
+     * Returns a string representation of the constraint.
+     *
+     * @return string
+     */
+    public function toString()
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return sprintf(
             'has attribute "%s"',
@@ -46,6 +94,7 @@ class ClassHasAttribute extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
@@ -68,13 +117,24 @@ class ClassHasAttribute extends Constraint
 
     /**
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
+<<<<<<< HEAD
      * @param mixed $other evaluated value or object
      */
     protected function failureDescription($other): string
+=======
+     * @param mixed $other Evaluated value or object.
+     *
+     * @return string
+     */
+    protected function failureDescription($other)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         return sprintf(
             '%sclass "%s" %s',
@@ -83,9 +143,12 @@ class ClassHasAttribute extends Constraint
             $this->toString()
         );
     }
+<<<<<<< HEAD
 
     protected function attributeName(): string
     {
         return $this->attributeName;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

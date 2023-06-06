@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Util;
 
 use const DIRECTORY_SEPARATOR;
@@ -28,13 +33,46 @@ final class Filesystem
     {
         return str_replace(
             ['_', '\\'],
+=======
+
+/**
+ * Filesystem helpers.
+ *
+ * @since Class available since Release 3.0.0
+ */
+class PHPUnit_Util_Filesystem
+{
+    /**
+     * @var array
+     */
+    protected static $buffer = array();
+
+    /**
+     * Maps class names to source file names:
+     *   - PEAR CS:   Foo_Bar_Baz -> Foo/Bar/Baz.php
+     *   - Namespace: Foo\Bar\Baz -> Foo/Bar/Baz.php
+     *
+     * @param string $className
+     *
+     * @return string
+     *
+     * @since  Method available since Release 3.4.0
+     */
+    public static function classNameToFilename($className)
+    {
+        return str_replace(
+            array('_', '\\'),
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             DIRECTORY_SEPARATOR,
             $className
         ) . '.php';
     }
+<<<<<<< HEAD
 
     public static function createDirectory(string $directory): bool
     {
         return !(!is_dir($directory) && !@mkdir($directory, 0777, true) && !is_dir($directory));
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

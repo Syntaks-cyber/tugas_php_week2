@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -38,10 +43,34 @@ return [
     'diff_today' => 'ယနေ.',
     'diff_yesterday' => 'မနေ့က',
     'diff_yesterday_regexp' => 'မနေ.က',
+=======
+return array(
+    'year' => ':count နှစ်|:count နှစ်',
+    'y' => ':count နှစ်|:count နှစ်',
+    'month' => ':count လ|:count လ',
+    'm' => ':count လ|:count လ',
+    'week' => ':count ပတ်|:count ပတ်',
+    'w' => ':count ပတ်|:count ပတ်',
+    'day' => ':count ရက်|:count ရက်',
+    'd' => ':count ရက်|:count ရက်',
+    'hour' => ':count နာရီ|:count နာရီ',
+    'h' => ':count နာရီ|:count နာရီ',
+    'minute' => ':count မိနစ်|:count မိနစ်',
+    'min' => ':count မိနစ်|:count မိနစ်',
+    'second' => ':count စက္ကန့်|:count စက္ကန့်',
+    's' => ':count စက္ကန့်|:count စက္ကန့်',
+    'ago' => 'လွန်ခဲ့သော :time က',
+    'from_now' => 'ယခုမှစ၍နောက် :time အကြာ',
+    'after' => ':time ကြာပြီးနောက်',
+    'before' => ':time မတိုင်ခင်',
+    'diff_now' => 'အခုလေးတင်',
+    'diff_yesterday' => 'မနေ့က',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'diff_tomorrow' => 'မနက်ဖြန်',
     'diff_before_yesterday' => 'တမြန်နေ့က',
     'diff_after_tomorrow' => 'တဘက်ခါ',
     'period_recurrences' => ':count ကြိမ်',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'Oh:Om A',
         'LTS' => 'Oh:Om:Os A',
@@ -68,3 +97,6 @@ return [
     'alt_numbers' => ['၀၀', '၀၁', '၀၂', '၀၃', '၀၄', '၀၅', '၀၆', '၀၇', '၀၈', '၀၉', '၁၀', '၁၁', '၁၂', '၁၃', '၁၄', '၁၅', '၁၆', '၁၇', '၁၈', '၁၉', '၂၀', '၂၁', '၂၂', '၂၃', '၂၄', '၂၅', '၂၆', '၂၇', '၂၈', '၂၉', '၃၀', '၃၁', '၃၂', '၃၃', '၃၄', '၃၅', '၃၆', '၃၇', '၃၈', '၃၉', '၄၀', '၄၁', '၄၂', '၄၃', '၄၄', '၄၅', '၄၆', '၄၇', '၄၈', '၄၉', '၅၀', '၅၁', '၅၂', '၅၃', '၅၄', '၅၅', '၅၆', '၅၇', '၅၈', '၅၉', '၆၀', '၆၁', '၆၂', '၆၃', '၆၄', '၆၅', '၆၆', '၆၇', '၆၈', '၆၉', '၇၀', '၇၁', '၇၂', '၇၃', '၇၄', '၇၅', '၇၆', '၇၇', '၇၈', '၇၉', '၈၀', '၈၁', '၈၂', '၈၃', '၈၄', '၈၅', '၈၆', '၈၇', '၈၈', '၈၉', '၉၀', '၉၁', '၉၂', '၉၃', '၉၄', '၉၅', '၉၆', '၉၇', '၉၈', '၉၉'],
     'meridiem' => ['နံနက်', 'ညနေ'],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

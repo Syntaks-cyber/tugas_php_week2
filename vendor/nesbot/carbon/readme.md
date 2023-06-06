@@ -1,5 +1,6 @@
 # Carbon
 
+<<<<<<< HEAD
 [![Latest Stable Version](https://img.shields.io/packagist/v/nesbot/carbon.svg?style=flat-square)](https://packagist.org/packages/nesbot/carbon)
 [![Total Downloads](https://img.shields.io/packagist/dt/nesbot/carbon.svg?style=flat-square)](https://packagist.org/packages/nesbot/carbon)
 [![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fbriannesbitt%2FCarbon%2Fbadge&style=flat-square&label=Build&logo=none)](https://actions-badge.atrox.dev/briannesbitt/Carbon/goto)
@@ -11,6 +12,19 @@ An international PHP extension for DateTime. [https://carbon.nesbot.com](https:/
 ```php
 <?php
 
+=======
+[![Latest Stable Version](https://poser.pugx.org/nesbot/carbon/v/stable.png)](https://packagist.org/packages/nesbot/carbon)
+[![Total Downloads](https://poser.pugx.org/nesbot/carbon/downloads.png)](https://packagist.org/packages/nesbot/carbon)
+[![Build Status](https://travis-ci.org/briannesbitt/Carbon.svg?branch=master)](https://travis-ci.org/briannesbitt/Carbon)
+[![StyleCI](https://styleci.io/repos/5724990/shield?style=flat)](https://styleci.io/repos/5724990)
+[![codecov.io](https://codecov.io/github/briannesbitt/Carbon/coverage.svg?branch=master)](https://codecov.io/github/briannesbitt/Carbon?branch=master)
+[![PHP-Eye](https://php-eye.com/badge/nesbot/carbon/tested.svg?style=flat)](https://php-eye.com/package/nesbot/carbon)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+
+A simple PHP API extension for DateTime. [http://carbon.nesbot.com](http://carbon.nesbot.com)
+
+```php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 use Carbon\Carbon;
 
 printf("Right now is %s", Carbon::now()->toDateTimeString());
@@ -41,11 +55,15 @@ Carbon::setTestNow();
 if (Carbon::now()->isWeekend()) {
     echo 'Party!';
 }
+<<<<<<< HEAD
 // Over 200 languages (and over 500 regional variants) supported:
 echo Carbon::now()->subMinutes(2)->diffForHumans(); // '2 minutes ago'
 echo Carbon::now()->subMinutes(2)->locale('zh_CN')->diffForHumans(); // '2分钟前'
 echo Carbon::parse('2019-07-23 14:51')->isoFormat('LLLL'); // 'Tuesday, July 23, 2019 2:51 PM'
 echo Carbon::parse('2019-07-23 14:51')->locale('fr_FR')->isoFormat('LLLL'); // 'mardi 23 juillet 2019 14:51'
+=======
+echo Carbon::now()->subMinutes(2)->diffForHumans(); // '2 minutes ago'
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 // ... but also does 'from now', 'after' and 'before'
 // rolling up to seconds, minutes, hours, days, months, years
@@ -53,8 +71,11 @@ echo Carbon::parse('2019-07-23 14:51')->locale('fr_FR')->isoFormat('LLLL'); // '
 $daysSinceEpoch = Carbon::createFromTimestamp(0)->diffInDays();
 ```
 
+<<<<<<< HEAD
 [Get supported nesbot/carbon with the Tidelift Subscription](https://tidelift.com/subscription/pkg/packagist-nesbot-carbon?utm_source=packagist-nesbot-carbon&utm_medium=referral&utm_campaign=readme)
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 ## Installation
 
 ### With Composer
@@ -66,7 +87,11 @@ $ composer require nesbot/carbon
 ```json
 {
     "require": {
+<<<<<<< HEAD
         "nesbot/carbon": "^2.16"
+=======
+        "nesbot/carbon": "~1.21"
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }
 ```
@@ -80,6 +105,7 @@ use Carbon\Carbon;
 printf("Now: %s", Carbon::now());
 ```
 
+<<<<<<< HEAD
 ### Without Composer
 
 Why are you not using [composer](https://getcomposer.org/)? Download the Carbon [latest release](https://github.com/briannesbitt/Carbon/releases) and put the contents of the ZIP archive into a directory in your project. Then require the file `autoload.php` to get all classes and dependencies loaded on need.
@@ -87,6 +113,17 @@ Why are you not using [composer](https://getcomposer.org/)? Download the Carbon 
 ```php
 <?php
 require 'path-to-Carbon-directory/autoload.php';
+=======
+<a name="install-nocomposer"/>
+
+### Without Composer
+
+Why are you not using [composer](http://getcomposer.org/)? Download [Carbon.php](https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Carbon.php) from the repo and save the file into your project path somewhere.
+
+```php
+<?php
+require 'path/to/Carbon.php';
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 use Carbon\Carbon;
 
@@ -95,6 +132,7 @@ printf("Now: %s", Carbon::now());
 
 ## Docs
 
+<<<<<<< HEAD
 [https://carbon.nesbot.com/docs](https://carbon.nesbot.com/docs)
 
 ## Security contact information
@@ -152,3 +190,6 @@ Thank you to all our backers! 🙏
 Available as part of the Tidelift Subscription.
 
 The maintainers of ``Carbon`` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-nesbot-carbon?utm_source=packagist-nesbot-carbon&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+=======
+[http://carbon.nesbot.com/docs](http://carbon.nesbot.com/docs)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

@@ -11,10 +11,16 @@
 
 namespace Symfony\Component\Routing\Matcher;
 
+<<<<<<< HEAD
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\NoConfigurationException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RequestContextAwareInterface;
+=======
+use Symfony\Component\Routing\RequestContextAwareInterface;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * UrlMatcherInterface is the interface that all URL matcher classes must implement.
@@ -26,11 +32,16 @@ interface UrlMatcherInterface extends RequestContextAwareInterface
     /**
      * Tries to match a URL path with a set of routes.
      *
+<<<<<<< HEAD
      * If the matcher cannot find information, it must throw one of the exceptions documented
+=======
+     * If the matcher can not find information, it must throw one of the exceptions documented
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * below.
      *
      * @param string $pathinfo The path info to be parsed (raw format, i.e. not urldecoded)
      *
+<<<<<<< HEAD
      * @return array
      *
      * @throws NoConfigurationException  If no routing configuration could be found
@@ -38,4 +49,12 @@ interface UrlMatcherInterface extends RequestContextAwareInterface
      * @throws MethodNotAllowedException If the resource was found but the request method is not allowed
      */
     public function match(string $pathinfo);
+=======
+     * @return array An array of parameters
+     *
+     * @throws ResourceNotFoundException If the resource could not be found
+     * @throws MethodNotAllowedException If the resource was found but the request method is not allowed
+     */
+    public function match($pathinfo);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

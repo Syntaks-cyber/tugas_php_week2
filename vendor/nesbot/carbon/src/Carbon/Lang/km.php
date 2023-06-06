@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Kruy Vanna
@@ -69,3 +74,25 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', 'និង '],
 ];
+=======
+return array(
+    'year' => ':count ឆ្នាំ',
+    'y' => ':count ឆ្នាំ',
+    'month' => ':count ខែ',
+    'm' => ':count ខែ',
+    'week' => ':count សប្ដាហ៍',
+    'w' => ':count សប្ដាហ៍',
+    'day' => ':count ថ្ងៃ',
+    'd' => ':count ថ្ងៃ',
+    'hour' => ':count ម៉ោង',
+    'h' => ':count ម៉ោង',
+    'minute' => ':count នាទី',
+    'min' => ':count នាទី',
+    'second' => ':count វិនាទី',
+    's' => ':count វិនាទី',
+    'ago' => ':timeមុន',
+    'from_now' => ':timeពី​ឥឡូវ',
+    'after' => 'នៅ​ក្រោយ :time',
+    'before' => 'នៅ​មុន :time',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

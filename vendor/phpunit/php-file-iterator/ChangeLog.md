@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+<<<<<<< HEAD
 ## [2.0.5] - 2021-12-02
 
 ### Changed
@@ -50,23 +51,37 @@ All notable changes to this project will be documented in this file. This projec
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 ## [1.4.5] - 2017-11-27
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#37](https://github.com/sebastianbergmann/php-file-iterator/issues/37): Regression caused by fix for [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30)
+=======
+* Fixed [#37](https://github.com/sebastianbergmann/php-file-iterator/issues/37): Regression caused by fix for [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 ## [1.4.4] - 2017-11-27
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+=======
+* Fixed [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 ## [1.4.3] - 2017-11-25
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#34](https://github.com/sebastianbergmann/php-file-iterator/issues/34): Factory should use canonical directory names
+=======
+* Fixed [#34](https://github.com/sebastianbergmann/php-file-iterator/issues/34): Factory should use canonical directory names
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 ## [1.4.2] - 2016-11-26
 
@@ -82,12 +97,15 @@ No changes
 
 * [Added support for wildcards (glob) in exclude](https://github.com/sebastianbergmann/php-file-iterator/pull/23)
 
+<<<<<<< HEAD
 [2.0.5]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4...2.0.0
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 [1.4.5]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.4...1.4.5
 [1.4.4]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.3...1.4.4
 [1.4.3]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.2...1.4.3

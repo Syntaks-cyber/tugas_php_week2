@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,6 +18,8 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery\Generator;
 
@@ -33,7 +36,11 @@ class MockConfigurationBuilder
         '__toString',
         '__isset',
         '__destruct',
+<<<<<<< HEAD
         '__debugInfo', ## mocking this makes it difficult to debug with xdebug
+=======
+        '__debugInfo',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         // below are reserved words in PHP
         "__halt_compiler", "abstract", "and", "array", "as",
@@ -50,6 +57,7 @@ class MockConfigurationBuilder
         "static", "switch", "throw", "trait", "try",
         "unset", "use", "var", "while", "xor"
     );
+<<<<<<< HEAD
 
     protected $php7SemiReservedKeywords = [
         "callable", "class", "trait", "extends", "implements", "static", "abstract", "final",
@@ -61,10 +69,13 @@ class MockConfigurationBuilder
         "declare", "case", "do", "while", "as", "catch", "die", "self", "parent",
     ];
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     protected $whiteListedMethods = array();
     protected $instanceMock = false;
     protected $parameterOverrides = array();
 
+<<<<<<< HEAD
     protected $mockOriginalDestructor = false;
     protected $targets = array();
 
@@ -77,6 +88,10 @@ class MockConfigurationBuilder
         }
     }
 
+=======
+    protected $targets = array();
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function addTarget($target)
     {
         $this->targets[] = $target;
@@ -149,6 +164,7 @@ class MockConfigurationBuilder
         $this->parameterOverrides = $overrides;
     }
 
+<<<<<<< HEAD
     public function setMockOriginalDestructor($mockDestructor)
     {
         $this->mockOriginalDestructor = $mockDestructor;
@@ -160,6 +176,8 @@ class MockConfigurationBuilder
         $this->constantsMap = $map;
     }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function getMockConfiguration()
     {
         return new MockConfiguration(
@@ -168,9 +186,13 @@ class MockConfigurationBuilder
             $this->whiteListedMethods,
             $this->name,
             $this->instanceMock,
+<<<<<<< HEAD
             $this->parameterOverrides,
             $this->mockOriginalDestructor,
             $this->constantsMap
+=======
+            $this->parameterOverrides
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         );
     }
 }

@@ -18,10 +18,13 @@ namespace Symfony\Component\HttpFoundation;
  */
 class Cookie
 {
+<<<<<<< HEAD
     public const SAMESITE_NONE = 'none';
     public const SAMESITE_LAX = 'lax';
     public const SAMESITE_STRICT = 'strict';
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     protected $name;
     protected $value;
     protected $domain;
@@ -30,6 +33,7 @@ class Cookie
     protected $secure;
     protected $httpOnly;
 
+<<<<<<< HEAD
     private $raw;
     private $sameSite;
     private $secureDefault = false;
@@ -93,6 +97,25 @@ class Cookie
     {
         // from PHP source code
         if ($raw && false !== strpbrk($name, self::RESERVED_CHARS_LIST)) {
+=======
+    /**
+     * Constructor.
+     *
+     * @param string                        $name     The name of the cookie
+     * @param string                        $value    The value of the cookie
+     * @param int|string|\DateTimeInterface $expire   The time the cookie expires
+     * @param string                        $path     The path on the server in which the cookie will be available on
+     * @param string                        $domain   The domain that the cookie is available to
+     * @param bool                          $secure   Whether the cookie should only be transmitted over a secure HTTPS connection from the client
+     * @param bool                          $httpOnly Whether the cookie will be made accessible only through the HTTP protocol
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function __construct($name, $value = null, $expire = 0, $path = '/', $domain = null, $secure = false, $httpOnly = true)
+    {
+        // from PHP source code
+        if (preg_match("/[=,; \t\r\n\013\014]/", $name)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             throw new \InvalidArgumentException(sprintf('The cookie name "%s" contains invalid characters.', $name));
         }
 
@@ -100,6 +123,7 @@ class Cookie
             throw new \InvalidArgumentException('The cookie name cannot be empty.');
         }
 
+<<<<<<< HEAD
         $this->name = $name;
         $this->value = $value;
         $this->domain = $domain;
@@ -159,17 +183,24 @@ class Cookie
      */
     private static function expiresTimestamp($expire = 0): int
     {
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         // convert expiration time to a Unix timestamp
         if ($expire instanceof \DateTimeInterface) {
             $expire = $expire->format('U');
         } elseif (!is_numeric($expire)) {
             $expire = strtotime($expire);
 
+<<<<<<< HEAD
             if (false === $expire) {
+=======
+            if (false === $expire || -1 === $expire) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 throw new \InvalidArgumentException('The cookie expiration time is not valid.');
             }
         }
 
+<<<<<<< HEAD
         return 0 < $expire ? (int) $expire : 0;
     }
 
@@ -250,11 +281,21 @@ class Cookie
         $cookie->sameSite = $sameSite;
 
         return $cookie;
+=======
+        $this->name = $name;
+        $this->value = $value;
+        $this->domain = $domain;
+        $this->expire = $expire;
+        $this->path = empty($path) ? '/' : $path;
+        $this->secure = (bool) $secure;
+        $this->httpOnly = (bool) $httpOnly;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Returns the cookie as a string.
      *
+<<<<<<< HEAD
      * @return string
      */
     public function __toString()
@@ -279,6 +320,26 @@ class Cookie
 
         if ($this->getPath()) {
             $str .= '; path='.$this->getPath();
+=======
+     * @return string The cookie
+     */
+    public function __toString()
+    {
+        $str = urlencode($this->getName()).'=';
+
+        if ('' === (string) $this->getValue()) {
+            $str .= 'deleted; expires='.gmdate('D, d-M-Y H:i:s T', time() - 31536001);
+        } else {
+            $str .= urlencode($this->getValue());
+
+            if ($this->getExpiresTime() !== 0) {
+                $str .= '; expires='.gmdate('D, d-M-Y H:i:s T', $this->getExpiresTime());
+            }
+        }
+
+        if ($this->path) {
+            $str .= '; path='.$this->path;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         if ($this->getDomain()) {
@@ -293,10 +354,13 @@ class Cookie
             $str .= '; httponly';
         }
 
+<<<<<<< HEAD
         if (null !== $this->getSameSite()) {
             $str .= '; samesite='.$this->getSameSite();
         }
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         return $str;
     }
 
@@ -313,7 +377,11 @@ class Cookie
     /**
      * Gets the value of the cookie.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getValue()
     {
@@ -323,7 +391,11 @@ class Cookie
     /**
      * Gets the domain that the cookie is available to.
      *
+<<<<<<< HEAD
      * @return string|null
+=======
+     * @return string
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getDomain()
     {
@@ -341,6 +413,7 @@ class Cookie
     }
 
     /**
+<<<<<<< HEAD
      * Gets the max-age attribute.
      *
      * @return int
@@ -353,6 +426,8 @@ class Cookie
     }
 
     /**
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * Gets the path on the server in which the cookie will be available on.
      *
      * @return string
@@ -369,7 +444,11 @@ class Cookie
      */
     public function isSecure()
     {
+<<<<<<< HEAD
         return $this->secure ?? $this->secureDefault;
+=======
+        return $this->secure;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -389,6 +468,7 @@ class Cookie
      */
     public function isCleared()
     {
+<<<<<<< HEAD
         return 0 !== $this->expire && $this->expire < time();
     }
 
@@ -418,5 +498,8 @@ class Cookie
     public function setSecureDefault(bool $default): void
     {
         $this->secureDefault = $default;
+=======
+        return $this->expire < time();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

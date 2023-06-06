@@ -20,6 +20,7 @@ namespace Symfony\Component\Routing\Exception;
  */
 class MethodNotAllowedException extends \RuntimeException implements ExceptionInterface
 {
+<<<<<<< HEAD
     protected $allowedMethods = [];
 
     /**
@@ -33,6 +34,15 @@ class MethodNotAllowedException extends \RuntimeException implements ExceptionIn
             $message = '';
         }
 
+=======
+    /**
+     * @var array
+     */
+    protected $allowedMethods = array();
+
+    public function __construct(array $allowedMethods, $message = null, $code = 0, \Exception $previous = null)
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->allowedMethods = array_map('strtoupper', $allowedMethods);
 
         parent::__construct($message, $code, $previous);
@@ -41,7 +51,11 @@ class MethodNotAllowedException extends \RuntimeException implements ExceptionIn
     /**
      * Gets the allowed HTTP methods.
      *
+<<<<<<< HEAD
      * @return string[]
+=======
+     * @return array
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      */
     public function getAllowedMethods()
     {

@@ -65,9 +65,15 @@ class PhpStringTokenParser
      *
      * @param string $str String token content
      *
+<<<<<<< HEAD
      * @return string
      */
     public static function parse(string $str)
+=======
+     * @return string The parsed string
+     */
+    public static function parse($str)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $bLength = 0;
         if ('b' === $str[0]) {
@@ -91,9 +97,15 @@ class PhpStringTokenParser
      * @param string      $str   String without quotes
      * @param string|null $quote Quote type
      *
+<<<<<<< HEAD
      * @return string
      */
     public static function parseEscapeSequences(string $str, string $quote = null)
+=======
+     * @return string String with escape sequences parsed
+     */
+    public static function parseEscapeSequences($str, $quote)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         if (null !== $quote) {
             $str = str_replace('\\'.$quote, $quote, $str);
@@ -106,7 +118,11 @@ class PhpStringTokenParser
         );
     }
 
+<<<<<<< HEAD
     private static function parseCallback(array $matches): string
+=======
+    private static function parseCallback($matches)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $str = $matches[1];
 
@@ -125,15 +141,25 @@ class PhpStringTokenParser
      * @param string $startToken Doc string start token content (<<<SMTHG)
      * @param string $str        String token content
      *
+<<<<<<< HEAD
      * @return string
      */
     public static function parseDocString(string $startToken, string $str)
+=======
+     * @return string Parsed string
+     */
+    public static function parseDocString($startToken, $str)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // strip last newline (thanks tokenizer for sticking it into the string!)
         $str = preg_replace('~(\r\n|\n|\r)$~', '', $str);
 
         // nowdoc string
+<<<<<<< HEAD
         if (str_contains($startToken, '\'')) {
+=======
+        if (false !== strpos($startToken, '\'')) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             return $str;
         }
 

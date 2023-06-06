@@ -4,6 +4,7 @@
 Upgrading
 =========
 
+<<<<<<< HEAD
 Upgrading to 1.0.0
 ------------------
 
@@ -60,11 +61,17 @@ pattern matcher in the ":doc:`/reference/argument_validation`" section.
 
 As of 1.0.0, the ``andThrow`` can now throw any ``\Throwable``.
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 Upgrading to 0.9
 ----------------
 
 The generator was completely rewritten, so any code with a deep integration to
+<<<<<<< HEAD
 mockery will need evaluating.
+=======
+mockery will need evaluating
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 Upgrading to 0.8
 ----------------
@@ -74,7 +81,11 @@ Since the release of 0.8.0 the following behaviours were altered:
 1. The ``shouldIgnoreMissing()`` behaviour optionally applied to mock objects
    returned an instance of ``\Mockery\Undefined`` when methods called did not
    match a known expectation. Since 0.8.0, this behaviour was switched to
+<<<<<<< HEAD
    returning ``null`` instead. You can restore the 0.7.2 behaviour by using the
+=======
+   returning ``null`` instead. You can restore the 0.7.2 behavour by using the
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
    following:
 
    .. code-block:: php

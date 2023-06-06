@@ -14,7 +14,11 @@
  *
  * @category   Mockery
  * @package    Mockery
+<<<<<<< HEAD
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+=======
+ * @copyright  Copyright (c) 2010-2014 Pádraic Brady (http://blog.astrumfutura.com)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
@@ -22,6 +26,10 @@ namespace Mockery\Matcher;
 
 class Type extends MatcherAbstract
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     /**
      * Check if the actual value matches the expected.
      *
@@ -30,11 +38,15 @@ class Type extends MatcherAbstract
      */
     public function match(&$actual)
     {
+<<<<<<< HEAD
         if ($this->_expected == 'real') {
             $function = 'is_float';
         } else {
             $function = 'is_' . strtolower($this->_expected);
         }
+=======
+        $function = 'is_' . strtolower($this->_expected);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         if (function_exists($function)) {
             return $function($actual);
         } elseif (is_string($this->_expected)

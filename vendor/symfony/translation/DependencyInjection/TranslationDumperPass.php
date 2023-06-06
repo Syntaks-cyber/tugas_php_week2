@@ -23,12 +23,17 @@ class TranslationDumperPass implements CompilerPassInterface
     private $writerServiceId;
     private $dumperTag;
 
+<<<<<<< HEAD
     public function __construct(string $writerServiceId = 'translation.writer', string $dumperTag = 'translation.dumper')
     {
         if (1 < \func_num_args()) {
             trigger_deprecation('symfony/translation', '5.3', 'Configuring "%s" is deprecated.', __CLASS__);
         }
 
+=======
+    public function __construct($writerServiceId = 'translation.writer', $dumperTag = 'translation.dumper')
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->writerServiceId = $writerServiceId;
         $this->dumperTag = $dumperTag;
     }

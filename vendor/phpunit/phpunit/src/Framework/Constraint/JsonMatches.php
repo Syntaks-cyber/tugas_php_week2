@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -7,6 +11,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 namespace PHPUnit\Framework\Constraint;
 
 use function json_decode;
@@ -19,10 +24,20 @@ use SebastianBergmann\Comparator\ComparisonFailure;
  * Asserts whether or not two JSON objects are equal.
  */
 final class JsonMatches extends Constraint
+=======
+
+/**
+ * Asserts whether or not two JSON objects are equal.
+ *
+ * @since Class available since Release 3.7.0
+ */
+class PHPUnit_Framework_Constraint_JsonMatches extends PHPUnit_Framework_Constraint
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 {
     /**
      * @var string
      */
+<<<<<<< HEAD
     private $value;
 
     public function __construct(string $value)
@@ -39,6 +54,19 @@ final class JsonMatches extends Constraint
             'matches JSON string "%s"',
             $this->value
         );
+=======
+    protected $value;
+
+    /**
+     * Creates a new constraint.
+     *
+     * @param string $value
+     */
+    public function __construct($value)
+    {
+        parent::__construct();
+        $this->value = $value;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -47,6 +75,7 @@ final class JsonMatches extends Constraint
      *
      * This method can be overridden to implement the evaluation algorithm.
      *
+<<<<<<< HEAD
      * @param mixed $other value or object to evaluate
      */
     protected function matches($other): bool
@@ -105,5 +134,37 @@ final class JsonMatches extends Constraint
         }
 
         parent::fail($other, $description, $comparisonFailure);
+=======
+     * @param mixed $other Value or object to evaluate.
+     *
+     * @return bool
+     */
+    protected function matches($other)
+    {
+        $decodedOther = json_decode($other);
+        if (json_last_error()) {
+            return false;
+        }
+
+        $decodedValue = json_decode($this->value);
+        if (json_last_error()) {
+            return false;
+        }
+
+        return $decodedOther == $decodedValue;
+    }
+
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return sprintf(
+            'matches JSON string "%s"',
+            $this->value
+        );
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

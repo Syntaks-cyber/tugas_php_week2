@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -80,3 +85,25 @@ return [
     'day_of_first_week_of_year' => 1,
     'weekend' => [0, 0],
 ];
+=======
+return array(
+    'year' => ':count વર્ષ|:count વર્ષો',
+    'y' => ':countવર્ષ|:countવર્ષો',
+    'month' => ':count મહિનો|:count મહિના',
+    'm' => ':countમહિનો|:countમહિના',
+    'week' => ':count અઠવાડિયું|:count અઠવાડિયા',
+    'w' => ':countઅઠ.|:countઅઠ.',
+    'day' => ':count દિવસ|:count દિવસો',
+    'd' => ':countદિ.|:countદિ.',
+    'hour' => ':count કલાક|:count કલાકો',
+    'h' => ':countક.|:countક.',
+    'minute' => ':count મિનિટ|:count મિનિટ',
+    'min' => ':countમિ.|:countમિ.',
+    'second' => ':count સેકેન્ડ|:count સેકેન્ડ',
+    's' => ':countસે.|:countસે.',
+    'ago' => ':time પહેલા',
+    'from_now' => ':time અત્યારથી',
+    'after' => ':time પછી',
+    'before' => ':time પહેલા',
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

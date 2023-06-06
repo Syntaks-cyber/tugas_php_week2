@@ -3,6 +3,7 @@ HttpKernel Component
 
 The HttpKernel component provides a structured process for converting a Request
 into a Response by making use of the EventDispatcher component. It's flexible
+<<<<<<< HEAD
 enough to create full-stack frameworks, micro-frameworks or advanced CMS systems like Drupal.
 
 Sponsor
@@ -16,10 +17,15 @@ consulting, coaching, training and audits. We also are highly skilled in JS, Go 
 We are a worker cooperative!
 
 Help Symfony by [sponsoring][3] its development!
+=======
+enough to create a full-stack framework (Symfony), a micro-framework (Silex) or
+an advanced CMS system (Drupal).
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 Resources
 ---------
 
+<<<<<<< HEAD
  * [Documentation](https://symfony.com/doc/current/components/http_kernel.html)
  * [Contributing](https://symfony.com/doc/current/contributing/index.html)
  * [Report issues](https://github.com/symfony/symfony/issues) and
@@ -29,3 +35,10 @@ Resources
 [1]: https://symfony.com/backers
 [2]: https://les-tilleuls.coop
 [3]: https://symfony.com/sponsor
+=======
+  * [Documentation](https://symfony.com/doc/current/components/http_kernel/index.html)
+  * [Contributing](https://symfony.com/doc/current/contributing/index.html)
+  * [Report issues](https://github.com/symfony/symfony/issues) and
+    [send Pull Requests](https://github.com/symfony/symfony/pulls)
+    in the [main Symfony repository](https://github.com/symfony/symfony)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

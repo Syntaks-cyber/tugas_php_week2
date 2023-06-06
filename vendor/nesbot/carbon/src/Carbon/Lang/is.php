@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,11 +13,15 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Kristján Ingi Geirsson
  */
 return [
+=======
+return array(
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'year' => '1 ár|:count ár',
     'y' => '1 ár|:count ár',
     'month' => '1 mánuður|:count mánuðir',
@@ -32,6 +40,7 @@ return [
     'from_now' => ':time síðan',
     'after' => ':time eftir',
     'before' => ':time fyrir',
+<<<<<<< HEAD
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' og '],
@@ -53,3 +62,6 @@ return [
     'months' => ['janúar', 'febrúar', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'september', 'október', 'nóvember', 'desember'],
     'months_short' => ['jan', 'feb', 'mar', 'apr', 'maí', 'jún', 'júl', 'ágú', 'sep', 'okt', 'nóv', 'des'],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 /.idea
 /vendor/
 /.php_cs
 /.php_cs.cache
 /composer.lock
+=======
+build/api
+build/code-browser
+build/coverage
+build/logs
+build/pdepend
+cache.properties
+phpunit.xml
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

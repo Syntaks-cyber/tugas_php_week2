@@ -12,15 +12,24 @@
 namespace Symfony\Component\Routing\Loader;
 
 use Symfony\Component\Config\Loader\FileLoader;
+<<<<<<< HEAD
 use Symfony\Component\Config\Resource\DirectoryResource;
 use Symfony\Component\Routing\RouteCollection;
+=======
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Config\Resource\DirectoryResource;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 class DirectoryLoader extends FileLoader
 {
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function load($file, string $type = null)
+=======
+    public function load($file, $type = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $path = $this->locator->locate($file);
 
@@ -49,7 +58,11 @@ class DirectoryLoader extends FileLoader
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function supports($resource, string $type = null)
+=======
+    public function supports($resource, $type = null)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // only when type is forced to directory, not to conflict with AnnotationLoader
 

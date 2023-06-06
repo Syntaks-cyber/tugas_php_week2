@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Josh Soref
@@ -47,12 +52,35 @@ return [
     'before' => ':time আগে',
     'diff_now' => 'এখন',
     'diff_today' => 'আজ',
+=======
+return array(
+    'year' => '১ বছর|:count বছর',
+    'y' => '১ বছর|:count বছর',
+    'month' => '১ মাস|:count মাস',
+    'm' => '১ মাস|:count মাস',
+    'week' => '১ সপ্তাহ|:count সপ্তাহ',
+    'w' => '১ সপ্তাহ|:count সপ্তাহ',
+    'day' => '১ দিন|:count দিন',
+    'd' => '১ দিন|:count দিন',
+    'hour' => '১ ঘন্টা|:count ঘন্টা',
+    'h' => '১ ঘন্টা|:count ঘন্টা',
+    'minute' => '১ মিনিট|:count মিনিট',
+    'min' => '১ মিনিট|:count মিনিট',
+    'second' => '১ সেকেন্ড|:count সেকেন্ড',
+    's' => '১ সেকেন্ড|:count সেকেন্ড',
+    'ago' => ':time পূর্বে',
+    'from_now' => 'এখন থেকে :time',
+    'after' => ':time পরে',
+    'before' => ':time আগে',
+    'diff_now' => 'এখন',
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     'diff_yesterday' => 'গতকাল',
     'diff_tomorrow' => 'আগামীকাল',
     'period_recurrences' => ':count বার|:count বার',
     'period_interval' => 'প্রতি :interval',
     'period_start_date' => ':date থেকে',
     'period_end_date' => ':date পর্যন্ত',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'A Oh:Om সময়',
         'LTS' => 'A Oh:Om:Os সময়',
@@ -98,3 +126,6 @@ return [
     'months_short_standalone' => ['জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'],
     'alt_numbers' => ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'],
 ];
+=======
+);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

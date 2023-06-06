@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /**
  * Mockery
  *
@@ -17,13 +18,19 @@
  * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
  * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 namespace Mockery;
 
 class ReceivedMethodCalls
 {
     private $methodCalls = array();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function push(MethodCall $methodCall)
     {
         $this->methodCalls[] = $methodCall;

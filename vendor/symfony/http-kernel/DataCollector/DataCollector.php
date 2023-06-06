@@ -11,12 +11,16 @@
 
 namespace Symfony\Component\HttpKernel\DataCollector;
 
+<<<<<<< HEAD
 use Symfony\Component\VarDumper\Caster\CutStub;
 use Symfony\Component\VarDumper\Caster\ReflectionCaster;
 use Symfony\Component\VarDumper\Cloner\ClonerInterface;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\VarDumper\Cloner\Stub;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
+=======
+use Symfony\Component\HttpKernel\DataCollector\Util\ValueExporter;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * DataCollector.
@@ -26,6 +30,7 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bernhard Schussek <bschussek@symfony.com>
  */
+<<<<<<< HEAD
 abstract class DataCollector implements DataCollectorInterface
 {
     /**
@@ -108,5 +113,40 @@ abstract class DataCollector implements DataCollectorInterface
      */
     final protected function unserialize($data)
     {
+=======
+abstract class DataCollector implements DataCollectorInterface, \Serializable
+{
+    protected $data = array();
+
+    /**
+     * @var ValueExporter
+     */
+    private $valueExporter;
+
+    public function serialize()
+    {
+        return serialize($this->data);
+    }
+
+    public function unserialize($data)
+    {
+        $this->data = unserialize($data);
+    }
+
+    /**
+     * Converts a PHP variable to a string.
+     *
+     * @param mixed $var A PHP variable
+     *
+     * @return string The string representation of the variable
+     */
+    protected function varToString($var)
+    {
+        if (null === $this->valueExporter) {
+            $this->valueExporter = new ValueExporter();
+        }
+
+        return $this->valueExporter->exportValue($var);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

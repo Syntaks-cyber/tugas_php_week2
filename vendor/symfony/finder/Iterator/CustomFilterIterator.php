@@ -18,6 +18,7 @@ namespace Symfony\Component\Finder\Iterator;
  * to remove files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+<<<<<<< HEAD
  *
  * @extends \FilterIterator<string, \SplFileInfo>
  */
@@ -28,13 +29,29 @@ class CustomFilterIterator extends \FilterIterator
     /**
      * @param \Iterator<string, \SplFileInfo> $iterator The Iterator to filter
      * @param callable[]                      $filters  An array of PHP callbacks
+=======
+ */
+class CustomFilterIterator extends FilterIterator
+{
+    private $filters = array();
+
+    /**
+     * Constructor.
+     *
+     * @param \Iterator  $iterator The Iterator to filter
+     * @param callable[] $filters  An array of PHP callbacks
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *
      * @throws \InvalidArgumentException
      */
     public function __construct(\Iterator $iterator, array $filters)
     {
         foreach ($filters as $filter) {
+<<<<<<< HEAD
             if (!\is_callable($filter)) {
+=======
+            if (!is_callable($filter)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 throw new \InvalidArgumentException('Invalid PHP callback.');
             }
         }
@@ -46,15 +63,24 @@ class CustomFilterIterator extends \FilterIterator
     /**
      * Filters the iterator values.
      *
+<<<<<<< HEAD
      * @return bool
      */
     #[\ReturnTypeWillChange]
+=======
+     * @return bool true if the value should be kept, false otherwise
+     */
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     public function accept()
     {
         $fileinfo = $this->current();
 
         foreach ($this->filters as $filter) {
+<<<<<<< HEAD
             if (false === $filter($fileinfo)) {
+=======
+            if (false === call_user_func($filter, $fileinfo)) {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
                 return false;
             }
         }

@@ -12,9 +12,14 @@
 namespace Symfony\Component\Routing\Matcher;
 
 use Symfony\Component\HttpFoundation\Request;
+<<<<<<< HEAD
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\NoConfigurationException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+=======
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * RequestMatcherInterface is the interface that all request matcher classes must implement.
@@ -26,12 +31,22 @@ interface RequestMatcherInterface
     /**
      * Tries to match a request with a set of routes.
      *
+<<<<<<< HEAD
      * If the matcher cannot find information, it must throw one of the exceptions documented
      * below.
      *
      * @return array
      *
      * @throws NoConfigurationException  If no routing configuration could be found
+=======
+     * If the matcher can not find information, it must throw one of the exceptions documented
+     * below.
+     *
+     * @param Request $request The request to match
+     *
+     * @return array An array of parameters
+     *
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      * @throws ResourceNotFoundException If no matching resource could be found
      * @throws MethodNotAllowedException If a matching resource was found but the request method is not allowed
      */

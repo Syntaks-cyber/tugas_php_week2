@@ -15,6 +15,7 @@ namespace Symfony\Component\Routing\Annotation;
  * Annotation class for @Route().
  *
  * @Annotation
+<<<<<<< HEAD
  * @NamedArgumentConstructor
  * @Target({"CLASS", "METHOD"})
  *
@@ -145,12 +146,52 @@ class Route
             $method = 'set'.str_replace('_', '', $key);
             if (!method_exists($this, $method)) {
                 throw new \BadMethodCallException(sprintf('Unknown property "%s" on annotation "%s".', $key, static::class));
+=======
+ * @Target({"CLASS", "METHOD"})
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
+ */
+class Route
+{
+    private $path;
+    private $name;
+    private $requirements = array();
+    private $options = array();
+    private $defaults = array();
+    private $host;
+    private $methods = array();
+    private $schemes = array();
+    private $condition;
+
+    /**
+     * Constructor.
+     *
+     * @param array $data An array of key/value parameters
+     *
+     * @throws \BadMethodCallException
+     */
+    public function __construct(array $data)
+    {
+        if (isset($data['value'])) {
+            $data['path'] = $data['value'];
+            unset($data['value']);
+        }
+
+        foreach ($data as $key => $value) {
+            $method = 'set'.str_replace('_', '', $key);
+            if (!method_exists($this, $method)) {
+                throw new \BadMethodCallException(sprintf('Unknown property "%s" on annotation "%s".', $key, get_class($this)));
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
             }
             $this->$method($value);
         }
     }
 
+<<<<<<< HEAD
     public function setPath(string $path)
+=======
+    public function setPath($path)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->path = $path;
     }
@@ -160,6 +201,7 @@ class Route
         return $this->path;
     }
 
+<<<<<<< HEAD
     public function setLocalizedPaths(array $localizedPaths)
     {
         $this->localizedPaths = $localizedPaths;
@@ -171,6 +213,9 @@ class Route
     }
 
     public function setHost(string $pattern)
+=======
+    public function setHost($pattern)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->host = $pattern;
     }
@@ -180,7 +225,11 @@ class Route
         return $this->host;
     }
 
+<<<<<<< HEAD
     public function setName(string $name)
+=======
+    public function setName($name)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->name = $name;
     }
@@ -190,7 +239,11 @@ class Route
         return $this->name;
     }
 
+<<<<<<< HEAD
     public function setRequirements(array $requirements)
+=======
+    public function setRequirements($requirements)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->requirements = $requirements;
     }
@@ -200,7 +253,11 @@ class Route
         return $this->requirements;
     }
 
+<<<<<<< HEAD
     public function setOptions(array $options)
+=======
+    public function setOptions($options)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->options = $options;
     }
@@ -210,7 +267,11 @@ class Route
         return $this->options;
     }
 
+<<<<<<< HEAD
     public function setDefaults(array $defaults)
+=======
+    public function setDefaults($defaults)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->defaults = $defaults;
     }
@@ -222,7 +283,11 @@ class Route
 
     public function setSchemes($schemes)
     {
+<<<<<<< HEAD
         $this->schemes = \is_array($schemes) ? $schemes : [$schemes];
+=======
+        $this->schemes = is_array($schemes) ? $schemes : array($schemes);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function getSchemes()
@@ -232,7 +297,11 @@ class Route
 
     public function setMethods($methods)
     {
+<<<<<<< HEAD
         $this->methods = \is_array($methods) ? $methods : [$methods];
+=======
+        $this->methods = is_array($methods) ? $methods : array($methods);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     public function getMethods()
@@ -240,7 +309,11 @@ class Route
         return $this->methods;
     }
 
+<<<<<<< HEAD
     public function setCondition(?string $condition)
+=======
+    public function setCondition($condition)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         $this->condition = $condition;
     }
@@ -249,6 +322,7 @@ class Route
     {
         return $this->condition;
     }
+<<<<<<< HEAD
 
     public function setPriority(int $priority): void
     {
@@ -269,4 +343,6 @@ class Route
     {
         return $this->env;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

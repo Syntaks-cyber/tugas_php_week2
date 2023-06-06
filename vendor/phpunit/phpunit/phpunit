@@ -1,5 +1,9 @@
 #!/usr/bin/env php
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 /*
  * This file is part of PHPUnit.
  *
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 if (!version_compare(PHP_VERSION, PHP_VERSION, '=')) {
     fwrite(
         STDERR,
@@ -48,6 +53,16 @@ foreach (['dom', 'json', 'libxml', 'mbstring', 'tokenizer', 'xml', 'xmlwriter'] 
         sprintf(
             'PHPUnit requires the "%s" extension.' . PHP_EOL,
             $extension
+=======
+if (version_compare('5.3.3', PHP_VERSION, '>')) {
+    fwrite(
+        STDERR,
+        sprintf(
+            'This version of PHPUnit is supported on PHP 5.3, PHP 5.4, PHP 5.5, and PHP 5.6.' . PHP_EOL .
+            'You are using PHP %s%s.' . PHP_EOL,
+            PHP_VERSION,
+            defined('PHP_BINARY') ? ' (' . PHP_BINARY . ')' : ''
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         )
     );
 
@@ -58,6 +73,7 @@ if (!ini_get('date.timezone')) {
     ini_set('date.timezone', 'UTC');
 }
 
+<<<<<<< HEAD
 if (isset($GLOBALS['_composer_autoload_path'])) {
     define('PHPUNIT_COMPOSER_INSTALL', $GLOBALS['_composer_autoload_path']);
 
@@ -77,6 +93,20 @@ if (isset($GLOBALS['_composer_autoload_path'])) {
 if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
     fwrite(
         STDERR,
+=======
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        define('PHPUNIT_COMPOSER_INSTALL', $file);
+
+        break;
+    }
+}
+
+unset($file);
+
+if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
+    fwrite(STDERR,
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
         '    composer install' . PHP_EOL . PHP_EOL .
         'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
@@ -85,6 +115,7 @@ if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
     die(1);
 }
 
+<<<<<<< HEAD
 $options = getopt('', array('prepend:'));
 
 if (isset($options['prepend'])) {
@@ -96,3 +127,8 @@ unset($options);
 require PHPUNIT_COMPOSER_INSTALL;
 
 PHPUnit\TextUI\Command::main();
+=======
+require PHPUNIT_COMPOSER_INSTALL;
+
+PHPUnit_TextUI_Command::main();
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17

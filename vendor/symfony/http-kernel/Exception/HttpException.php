@@ -21,6 +21,7 @@ class HttpException extends \RuntimeException implements HttpExceptionInterface
     private $statusCode;
     private $headers;
 
+<<<<<<< HEAD
     public function __construct(int $statusCode, ?string $message = '', \Throwable $previous = null, array $headers = [], ?int $code = 0)
     {
         if (null === $message) {
@@ -34,6 +35,10 @@ class HttpException extends \RuntimeException implements HttpExceptionInterface
             $code = 0;
         }
 
+=======
+    public function __construct($statusCode, $message = null, \Exception $previous = null, array $headers = array(), $code = 0)
+    {
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         $this->statusCode = $statusCode;
         $this->headers = $headers;
 
@@ -49,6 +54,7 @@ class HttpException extends \RuntimeException implements HttpExceptionInterface
     {
         return $this->headers;
     }
+<<<<<<< HEAD
 
     /**
      * Set response headers.
@@ -59,4 +65,6 @@ class HttpException extends \RuntimeException implements HttpExceptionInterface
     {
         $this->headers = $headers;
     }
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 }

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
 /*
  * This file is part of sebastian/diff.
+=======
+<?php
+/*
+ * This file is part of the Diff package.
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
@@ -10,12 +16,19 @@
 
 namespace SebastianBergmann\Diff;
 
+<<<<<<< HEAD
 use SebastianBergmann\Diff\Output\DiffOutputBuilderInterface;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+=======
+use SebastianBergmann\Diff\LCS\LongestCommonSubsequence;
+use SebastianBergmann\Diff\LCS\TimeEfficientImplementation;
+use SebastianBergmann\Diff\LCS\MemoryEfficientImplementation;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
 /**
  * Diff implementation.
  */
+<<<<<<< HEAD
 final class Differ
 {
     public const OLD                     = 0;
@@ -53,11 +66,33 @@ final class Differ
                 )
             );
         }
+=======
+class Differ
+{
+    /**
+     * @var string
+     */
+    private $header;
+
+    /**
+     * @var bool
+     */
+    private $showNonDiffLines;
+
+    /**
+     * @param string $header
+     */
+    public function __construct($header = "--- Original\n+++ New\n", $showNonDiffLines = true)
+    {
+        $this->header           = $header;
+        $this->showNonDiffLines = $showNonDiffLines;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Returns the diff between two arrays or strings as string.
      *
+<<<<<<< HEAD
      * @param array|string                            $from
      * @param array|string                            $to
      * @param null|LongestCommonSubsequenceCalculator $lcs
@@ -73,19 +108,98 @@ final class Differ
         );
 
         return $this->outputBuilder->getDiff($diff);
+=======
+     * @param array|string             $from
+     * @param array|string             $to
+     * @param LongestCommonSubsequence $lcs
+     *
+     * @return string
+     */
+    public function diff($from, $to, LongestCommonSubsequence $lcs = null)
+    {
+        if (!is_array($from) && !is_string($from)) {
+            $from = (string) $from;
+        }
+
+        if (!is_array($to) && !is_string($to)) {
+            $to = (string) $to;
+        }
+
+        $buffer = $this->header;
+        $diff   = $this->diffToArray($from, $to, $lcs);
+
+        $inOld = false;
+        $i     = 0;
+        $old   = array();
+
+        foreach ($diff as $line) {
+            if ($line[1] ===  0 /* OLD */) {
+                if ($inOld === false) {
+                    $inOld = $i;
+                }
+            } elseif ($inOld !== false) {
+                if (($i - $inOld) > 5) {
+                    $old[$inOld] = $i - 1;
+                }
+
+                $inOld = false;
+            }
+
+            ++$i;
+        }
+
+        $start = isset($old[0]) ? $old[0] : 0;
+        $end   = count($diff);
+
+        if ($tmp = array_search($end, $old)) {
+            $end = $tmp;
+        }
+
+        $newChunk = true;
+
+        for ($i = $start; $i < $end; $i++) {
+            if (isset($old[$i])) {
+                $buffer  .= "\n";
+                $newChunk = true;
+                $i        = $old[$i];
+            }
+
+            if ($newChunk) {
+                if ($this->showNonDiffLines === true) {
+                    $buffer .= "@@ @@\n";
+                }
+                $newChunk = false;
+            }
+
+            if ($diff[$i][1] === 1 /* ADDED */) {
+                $buffer .= '+' . $diff[$i][0] . "\n";
+            } elseif ($diff[$i][1] === 2 /* REMOVED */) {
+                $buffer .= '-' . $diff[$i][0] . "\n";
+            } elseif ($this->showNonDiffLines === true) {
+                $buffer .= ' ' . $diff[$i][0] . "\n";
+            }
+        }
+
+        return $buffer;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
      * Returns the diff between two arrays or strings as array.
      *
      * Each array element contains two elements:
+<<<<<<< HEAD
      *   - [0] => mixed $token
+=======
+     *   - [0] => string $token
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
      *   - [1] => 2|1|0
      *
      * - 2: REMOVED: $token was removed from $from
      * - 1: ADDED: $token was added to $from
      * - 0: OLD: $token is not changed in $to
      *
+<<<<<<< HEAD
      * @param array|string                       $from
      * @param array|string                       $to
      * @param LongestCommonSubsequenceCalculator $lcs
@@ -107,11 +221,58 @@ final class Differ
         }
 
         [$from, $to, $start, $end] = self::getArrayDiffParted($from, $to);
+=======
+     * @param array|string             $from
+     * @param array|string             $to
+     * @param LongestCommonSubsequence $lcs
+     *
+     * @return array
+     */
+    public function diffToArray($from, $to, LongestCommonSubsequence $lcs = null)
+    {
+        preg_match_all('(\r\n|\r|\n)', $from, $fromMatches);
+        preg_match_all('(\r\n|\r|\n)', $to, $toMatches);
+
+        if (is_string($from)) {
+            $from = preg_split('(\r\n|\r|\n)', $from);
+        }
+
+        if (is_string($to)) {
+            $to = preg_split('(\r\n|\r|\n)', $to);
+        }
+
+        $start      = array();
+        $end        = array();
+        $fromLength = count($from);
+        $toLength   = count($to);
+        $length     = min($fromLength, $toLength);
+
+        for ($i = 0; $i < $length; ++$i) {
+            if ($from[$i] === $to[$i]) {
+                $start[] = $from[$i];
+                unset($from[$i], $to[$i]);
+            } else {
+                break;
+            }
+        }
+
+        $length -= $i;
+
+        for ($i = 1; $i < $length; ++$i) {
+            if ($from[$fromLength - $i] === $to[$toLength - $i]) {
+                array_unshift($end, $from[$fromLength - $i]);
+                unset($from[$fromLength - $i], $to[$toLength - $i]);
+            } else {
+                break;
+            }
+        }
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 
         if ($lcs === null) {
             $lcs = $this->selectLcsImplementation($from, $to);
         }
 
+<<<<<<< HEAD
         $common = $lcs->calculate(\array_values($from), \array_values($to));
         $diff   = [];
 
@@ -151,12 +312,58 @@ final class Differ
 
         if ($this->detectUnmatchedLineEndings($diff)) {
             \array_unshift($diff, ["#Warning: Strings contain different line endings!\n", self::DIFF_LINE_END_WARNING]);
+=======
+        $common = $lcs->calculate(array_values($from), array_values($to));
+        $diff   = array();
+
+        if (isset($fromMatches[0]) && $toMatches[0] &&
+            count($fromMatches[0]) === count($toMatches[0]) &&
+            $fromMatches[0] !== $toMatches[0]) {
+            $diff[] = array(
+              '#Warning: Strings contain different line endings!', 0
+            );
+        }
+
+        foreach ($start as $token) {
+            $diff[] = array($token, 0 /* OLD */);
+        }
+
+        reset($from);
+        reset($to);
+
+        foreach ($common as $token) {
+            while ((($fromToken = reset($from)) !== $token)) {
+                $diff[] = array(array_shift($from), 2 /* REMOVED */);
+            }
+
+            while ((($toToken = reset($to)) !== $token)) {
+                $diff[] = array(array_shift($to), 1 /* ADDED */);
+            }
+
+            $diff[] = array($token, 0 /* OLD */);
+
+            array_shift($from);
+            array_shift($to);
+        }
+
+        while (($token = array_shift($from)) !== null) {
+            $diff[] = array($token, 2 /* REMOVED */);
+        }
+
+        while (($token = array_shift($to)) !== null) {
+            $diff[] = array($token, 1 /* ADDED */);
+        }
+
+        foreach ($end as $token) {
+            $diff[] = array($token, 0 /* OLD */);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
         }
 
         return $diff;
     }
 
     /**
+<<<<<<< HEAD
      * Casts variable to string if it is not a string or array.
      *
      * @param mixed $input
@@ -191,6 +398,14 @@ final class Differ
      * @return LongestCommonSubsequenceCalculator
      */
     private function selectLcsImplementation(array $from, array $to): LongestCommonSubsequenceCalculator
+=======
+     * @param array $from
+     * @param array $to
+     *
+     * @return LongestCommonSubsequence
+     */
+    private function selectLcsImplementation(array $from, array $to)
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     {
         // We do not want to use the time-efficient implementation if its memory
         // footprint will probably exceed this value. Note that the footprint
@@ -199,10 +414,17 @@ final class Differ
         $memoryLimit = 100 * 1024 * 1024;
 
         if ($this->calculateEstimatedFootprint($from, $to) > $memoryLimit) {
+<<<<<<< HEAD
             return new MemoryEfficientLongestCommonSubsequenceCalculator;
         }
 
         return new TimeEfficientLongestCommonSubsequenceCalculator;
+=======
+            return new MemoryEfficientImplementation;
+        }
+
+        return new TimeEfficientImplementation;
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 
     /**
@@ -211,6 +433,7 @@ final class Differ
      * @param array $from
      * @param array $to
      *
+<<<<<<< HEAD
      * @return float|int
      */
     private function calculateEstimatedFootprint(array $from, array $to)
@@ -326,5 +549,14 @@ final class Differ
         } while (true);
 
         return [$from, $to, $start, $end];
+=======
+     * @return int
+     */
+    private function calculateEstimatedFootprint(array $from, array $to)
+    {
+        $itemSize = PHP_INT_SIZE == 4 ? 76 : 144;
+
+        return $itemSize * pow(min(count($from), count($to)), 2);
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
     }
 }

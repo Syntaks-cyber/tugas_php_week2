@@ -1,6 +1,7 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
 5.4
 ---
 
@@ -164,6 +165,8 @@ CHANGELOG
 
  * Added support for creating `JsonResponse` with a string of JSON data
 
+=======
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
 3.0.0
 -----
 
@@ -275,10 +278,17 @@ CHANGELOG
  * Added `FlashBag`. Flashes expire when retrieved by `get()` or `all()`. This
    implementation is ESI compatible.
  * Added `AutoExpireFlashBag` (default) to replicate Symfony 2.0.x auto expire
+<<<<<<< HEAD
    behavior of messages auto expiring after one page page load.  Messages must
    be retrieved by `get()` or `all()`.
  * Added `Symfony\Component\HttpFoundation\Attribute\AttributeBag` to replicate
    attributes storage behavior from 2.0.x (default).
+=======
+   behaviour of messages auto expiring after one page page load.  Messages must
+   be retrieved by `get()` or `all()`.
+ * Added `Symfony\Component\HttpFoundation\Attribute\AttributeBag` to replicate
+   attributes storage behaviour from 2.0.x (default).
+>>>>>>> fdb0ae8042c202d617c3f5102c9bf58ec6057c17
  * Added `Symfony\Component\HttpFoundation\Attribute\NamespacedAttributeBag` for
    namespace session attributes.
  * Flash API can stores messages in an array so there may be multiple messages
